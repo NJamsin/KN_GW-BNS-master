@@ -1,0 +1,6 @@
+KNphi = Uniform(name='KNphi', minimum=15., maximum=75., latex_label='$\Phi$')
+log10_mej_dyn  = Uniform(name='log10_mej_dyn', minimum=-3., maximum=-1., latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', boundary='reflective')
+log10_mej_wind = Uniform(name='log10_mej_wind', minimum=-3., maximum=-0.5, latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', boundary='reflective')
+inclination_EM = Sine(name='inclination_EM', minimum=0., maximum=np.pi/2, latex_label='$\\iota$')
+luminosity_distance = Uniform(minimum=0, maximum=500, name='luminosity_distance',latex_label='$D_L$')
+timeshift = Uniform(minimum = -1, maximum = 1.5, name='timeshift', latex_label='t')
