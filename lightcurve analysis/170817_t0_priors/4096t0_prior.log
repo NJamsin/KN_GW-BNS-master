@@ -1,0 +1,69 @@
+14:27 INFO    : Running for label '4096t0_prior', output will be saved to '170817_t0_priors'
+14:27 INFO    : Analysis priors:
+14:27 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+14:27 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+14:27 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+14:27 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+14:27 INFO    : luminosity_distance=Uniform(minimum=0, maximum=500, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+14:27 INFO    : timeshift=0.0
+14:27 INFO    : Ebv=0.0
+14:27 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+14:27 INFO    : Analysis likelihood noise evidence: 0.0
+14:28 INFO    : Single likelihood evaluation took 2.454e-02 s
+14:28 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+14:28 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+14:28 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': False, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 4096, 'n_params': 5, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x72f71412b280>>}
+14:28 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+14:28 INFO    : Using temporary file /tmp/tmpcvjwcp62
+14:30 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:30 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:31 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:32 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:32 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:33 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:34 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:35 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:35 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:36 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:37 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:38 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:39 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:39 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:40 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:41 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:42 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:43 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:44 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:44 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:45 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:46 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:47 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:48 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:49 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:50 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:51 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:52 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:53 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:54 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:55 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:56 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:57 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:58 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+14:59 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:00 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:01 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:02 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:04 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:05 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:06 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:07 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:07 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:07 INFO    : Overwriting 170817_t0_priors/pm_4096t0_prior/ with /tmp/tmpcvjwcp62/
+15:07 INFO    : Sampling time: 0:39:32.171077
+15:07 INFO    : Summary of results:
+nsamples: 20513
+ln_noise_evidence:  0.000
+ln_evidence: -200.282 +/-  0.042
+ln_bayes_factor: -200.282 +/-  0.042
+
+15:07 INFO    : Writing samples file to /home/liteul/memoir_code/170817_t0_priors/4096t0_prior_posterior_samples.dat

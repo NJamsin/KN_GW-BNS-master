@@ -1,0 +1,73 @@
+19:27 INFO    : Running for label '170817_dist_kappa', output will be saved to '170817_dist_priors/Kappa'
+19:27 INFO    : Analysis priors:
+19:27 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+19:27 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+19:27 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+19:27 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+19:27 INFO    : luminosity_distance=Uniform(minimum=35, maximum=45, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+19:27 INFO    : timeshift=Uniform(minimum=-2, maximum=0, name='timeshift', latex_label='t', unit=None, boundary=None)
+19:27 INFO    : log10_kappa_r=Uniform(minimum=-1.0, maximum=2.0, name='log10_kappa_r', latex_label='$\\log_{10}\\kappa_r$', unit=None, boundary=None)
+19:27 INFO    : Ebv=0.0
+19:27 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+19:27 INFO    : Analysis likelihood noise evidence: 0.0
+19:27 INFO    : Single likelihood evaluation took 5.872e-02 s
+19:27 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+19:27 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+19:27 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': False, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 4096, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x767b0ce9b7c0>>}
+19:27 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+19:27 INFO    : Using temporary file /tmp/tmp57osrafl
+19:31 INFO    : Running for label '170817_dist_kappa', output will be saved to '170817_dist_priors/Kappa'
+19:31 INFO    : Analysis priors:
+19:31 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+19:31 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+19:31 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+19:31 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+19:31 INFO    : luminosity_distance=Uniform(minimum=35, maximum=45, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+19:31 INFO    : timeshift=Uniform(minimum=-2, maximum=0, name='timeshift', latex_label='t', unit=None, boundary=None)
+19:31 INFO    : log10_kappa_r=Uniform(minimum=-1.0, maximum=2.0, name='log10_kappa_r', latex_label='$\\log_{10}\\kappa_r$', unit=None, boundary=None)
+19:31 INFO    : Ebv=0.0
+19:31 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+19:31 INFO    : Analysis likelihood noise evidence: 0.0
+19:31 INFO    : Single likelihood evaluation took 6.664e-02 s
+19:31 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+19:31 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+19:31 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': False, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 4096, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x7c9cdd30b820>>}
+19:31 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+19:31 INFO    : Using temporary file /tmp/tmpmve0kqzw
+19:36 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:38 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:39 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:41 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:42 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:44 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:46 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:48 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:49 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:51 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:53 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:55 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:57 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+19:59 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:02 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:04 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:06 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:08 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:10 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:13 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:15 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:17 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:20 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:22 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:25 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:27 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:29 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:29 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:29 INFO    : Overwriting 170817_dist_priors/Kappa/pm_170817_dist_kappa/ with /tmp/tmpmve0kqzw/
+20:29 INFO    : Sampling time: 0:58:12.864731
+20:29 INFO    : Summary of results:
+nsamples: 18797
+ln_noise_evidence:  0.000
+ln_evidence: -185.960 +/-  0.030
+ln_bayes_factor: -185.960 +/-  0.030
+
+20:29 INFO    : Writing samples file to /home/liteul/memoir_code/170817_dist_priors/Kappa/170817_dist_kappa_posterior_samples.dat

@@ -1,0 +1,67 @@
+13:39 INFO    : Running for label '4096large_prior', output will be saved to '170817_large_priors'
+13:39 INFO    : Analysis priors:
+13:39 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+13:39 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+13:39 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary='reflective')
+13:39 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+13:39 INFO    : luminosity_distance=Uniform(minimum=0, maximum=500, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+13:39 INFO    : timeshift=Uniform(minimum=-2, maximum=0, name='timeshift', latex_label='t', unit=None, boundary=None)
+13:39 INFO    : Ebv=0.0
+13:39 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+13:39 INFO    : Analysis likelihood noise evidence: 0.0
+13:39 INFO    : Single likelihood evaluation took 2.835e-02 s
+13:39 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+13:39 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+13:39 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': False, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 4096, 'n_params': 6, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x7cef541273d0>>}
+13:39 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+13:39 INFO    : Using temporary file /tmp/tmpmmiyrbj2
+13:42 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:43 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:43 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:44 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:45 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:46 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:46 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:47 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:48 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:49 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:50 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:50 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:51 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:52 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:53 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:54 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:55 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:56 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:57 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:57 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:58 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+13:59 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:00 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:01 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:02 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:03 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:04 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:06 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:07 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:08 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:09 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:10 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:11 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:12 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:13 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:15 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:16 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:17 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:18 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:18 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:18 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:18 INFO    : Overwriting 170817_large_priors/pm_4096large_prior/ with /tmp/tmpmmiyrbj2/
+14:18 INFO    : Sampling time: 0:39:03.938284
+14:19 INFO    : Summary of results:
+nsamples: 20556
+ln_noise_evidence:  0.000
+ln_evidence: -187.003 +/-  0.040
+ln_bayes_factor: -187.003 +/-  0.040
+
+14:19 INFO    : Writing samples file to /home/liteul/memoir_code/170817_large_priors/4096large_prior_posterior_samples.dat
