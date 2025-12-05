@@ -1,0 +1,16 @@
+executable = /home/liteul/memoir_code/run_wrapper.sh
+arguments  = $(Process)
+
+output     = /home/liteul/memoir_code/logs/job_$(Process).out
+error      = /home/liteul/memoir_code/logs/job_$(Process).err
+log        = /home/liteul/memoir_code/logs/job_$(Process).log
+
+# Demande 1 CPU par job (Condor en lancera 10 en parallèle sur ta machine)
+request_cpus = 1
+request_memory = 2795MB
+
+# Transférer les variables d'env (utile pour certains paths)
+getenv = True
+
+# Lance 50 jobs (de 0 à 49)
+queue 50

@@ -1,0 +1,69 @@
+15:11 INFO    : Running for label 'inj_6', output will be saved to '/home/liteul/memoir_code/manual_inj/inj_6'
+15:11 INFO    : Analysis priors:
+15:11 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+15:11 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+15:11 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+15:11 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+15:11 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+15:11 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+15:11 INFO    : Ebv=0.0
+15:11 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+15:11 INFO    : Analysis likelihood noise evidence: 0.0
+15:11 INFO    : Single likelihood evaluation took 2.546e-02 s
+15:11 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+15:11 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+15:11 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 2048, 'n_params': 6, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x70c0851e7c40>>}
+15:11 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+15:11 INFO    : Using temporary file /tmp/tmpsdigg_sc
+15:14 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:15 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:16 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:17 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:18 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:20 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:21 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:22 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:24 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:25 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:27 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:29 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:30 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:32 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:34 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:36 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:37 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:39 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:41 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:43 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:46 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:48 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:50 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:52 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:55 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+15:57 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:00 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:03 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:05 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:08 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:11 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:14 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:17 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:21 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:24 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:27 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:30 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:33 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:37 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:40 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:43 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:45 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:45 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:45 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_6/pm_inj_6/ with /tmp/tmpsdigg_sc/
+16:45 INFO    : Sampling time: 1:33:13.661871
+16:45 INFO    : Summary of results:
+nsamples: 13066
+ln_noise_evidence:  0.000
+ln_evidence: -311.003 +/-  0.089
+ln_bayes_factor: -311.003 +/-  0.089
+
+16:45 INFO    : Writing samples file to /home/liteul/memoir_code/manual_inj/inj_6/inj_6_posterior_samples.dat

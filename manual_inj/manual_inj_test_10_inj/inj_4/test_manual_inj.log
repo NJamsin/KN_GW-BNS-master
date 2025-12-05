@@ -1,0 +1,29 @@
+20:35 INFO    : Running for label 'test_manual_inj', output will be saved to '/home/liteul/memoir_code/manual_inj/inj_4'
+20:35 INFO    : Analysis priors:
+20:35 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+20:35 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+20:35 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+20:35 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+20:35 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+20:35 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+20:35 INFO    : Ebv=0.0
+20:35 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+20:35 INFO    : Analysis likelihood noise evidence: 0.0
+20:35 INFO    : Single likelihood evaluation took 3.288e-02 s
+20:35 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+20:35 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+20:35 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 64, 'n_params': 6, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x7aa37d9d7ee0>>}
+20:35 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+20:35 INFO    : Using temporary file /tmp/tmp4xg8kcbf
+20:37 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_4/pm_test_manual_inj/ with /tmp/tmp4xg8kcbf/
+20:38 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_4/pm_test_manual_inj/ with /tmp/tmp4xg8kcbf/
+20:38 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_4/pm_test_manual_inj/ with /tmp/tmp4xg8kcbf/
+20:38 INFO    : Overwriting /home/liteul/memoir_code/manual_inj/inj_4/pm_test_manual_inj/ with /tmp/tmp4xg8kcbf/
+20:38 INFO    : Sampling time: 0:02:20.343822
+20:38 INFO    : Summary of results:
+nsamples: 355
+ln_noise_evidence:  0.000
+ln_evidence: -322.446 +/-  0.461
+ln_bayes_factor: -322.446 +/-  0.461
+
+20:38 INFO    : Writing samples file to /home/liteul/memoir_code/manual_inj/inj_4/test_manual_inj_posterior_samples.dat

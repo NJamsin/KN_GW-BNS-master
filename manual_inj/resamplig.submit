@@ -1,0 +1,15 @@
+    executable = /home/liteul/memoir_code/run_resamp.sh
+    arguments  = $(Process)
+
+    output     = /home/liteul/memoir_code/logs_resample/job_$(Process).out
+    error      = /home/liteul/memoir_code/logs_resample/job_$(Process).err
+    log        = /home/liteul/memoir_code/logs_resample/job_$(Process).log
+
+    # Demande 1 CPU par job (Condor en lancera 10 en parallèle sur ta machine)
+    request_cpus = 1
+    request_memory = 2795MB
+
+    # Transférer les variables d'env (utile pour certains paths)
+    getenv = True
+
+    queue 10
