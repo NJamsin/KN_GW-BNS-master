@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 # define injection index
-idx = 7 # change as needed (can be adapted for condor if needed)
+idx = 7 # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
 
 # 0th step: base directory
 BASE_DIR = "/home/liteul/memoir_code/manual_inj_test_nlive2048"
@@ -63,14 +63,14 @@ if not os.path.exists(inj_file):
     subprocess.run(cmd, check=True, cwd="/home/liteul/memoir_code")
     print("injection.json created.")
 
-# 1.5 step: ensure GWsamples.dat exists
+# 1.5th step: ensure GWsamples.dat exists
 gw_samples_file = f"{BASE_DIR}/GWsamples.dat"
 if not os.path.exists(gw_samples_file):
     # Create GWsamples.dat if it does not exist (reuse code from gwsamples_generation.py)
     import bilby
 
     # load posterior file
-    eos_post = np.loadtxt('home/liteul/memoir_code/posterior_probability.txt')
+    eos_post = np.loadtxt('/home/liteul/memoir_code/posterior_probability.txt')
 
     npts = 150000 
     Neos = 5000
