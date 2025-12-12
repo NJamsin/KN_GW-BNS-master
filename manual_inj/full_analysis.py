@@ -255,6 +255,50 @@ figure = corner.corner(
     figsize=(12, 12),
     labelpad=0.03,  
     )
+
+# get quantiles for annotations
+quantiles = {}
+for i, col in enumerate(["m1", "m2", "chirp_mass", "mass_ratio"]):
+    q16, q50, q84 = np.percentile(samples[col], [16, 50, 84])
+    quantiles[col] = (q16, q50, q84)
+
+axes = np.array(figure.axes).reshape(len(["m1", "m2", "chirp_mass", "mass_ratio"]), len(["m1", "m2", "chirp_mass", "mass_ratio"]))
+
+for i, col in enumerate(["m1", "m2", "chirp_mass", "mass_ratio"]):
+    ax = axes[i, i]   # Distribution marginale (diagonale)
+
+    q16, q50, q84 = quantiles[col]
+    minus = q50 - q16
+    plus  = q84 - q50
+
+    # Texte inféré (ligne 1)
+    inferred_text = rf"${q50:.3f}^{{+{plus:.3f}}}_{{-{minus:.3f}}}$"
+
+    # Injection (ligne 2)
+    truth_val = truth1_params[i]
+    truth_text = rf"{truth_val:.3f}"
+
+    # Clear the automatic title
+    ax.set_title("")
+
+    # Add manual 2 lines: one black, one red
+    ax.text(
+        0.3, 1.03,
+        inferred_text,
+        ha='center', va='bottom',
+        fontsize=13,
+        transform=ax.transAxes,
+        color='black'
+    )
+    ax.text(
+        0.8, 1.03,
+        truth_text,
+        ha='center', va='bottom',
+        fontsize=13,
+        transform=ax.transAxes,
+        color='red'
+    )
+
 # set the figure suptitle and then show the plot
 figure.suptitle(f"Injection {idx} posterior samples", y=1.05, fontsize=20)
 figure.savefig(f"{OUT_DIR}/inj_{idx}_qchirp_to_masses.png", bbox_inches='tight')
