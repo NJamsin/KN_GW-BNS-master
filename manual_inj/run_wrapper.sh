@@ -7,4 +7,4 @@ source /home/liteul/anaconda3/etc/profile.d/conda.sh
 conda activate nmma_env
 
 # 3. Lancer le script python avec l'argument donné par Condor ($1)
-python /home/liteul/memoir_code/run_analysis.py $1
+python /home/liteul/memoir_code/full_analysis.py $1

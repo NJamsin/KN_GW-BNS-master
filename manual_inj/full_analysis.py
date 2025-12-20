@@ -4,12 +4,15 @@ import numpy as np
 import os
 import subprocess
 import sys
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 # define injection index
-idx = 7 # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
+idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
 
 # 0th step: base directory
-BASE_DIR = "/home/liteul/memoir_code/manual_inj_test_nlive2048"
+BASE_DIR = "/home/liteul/memoir_code/condor_other_eos_small_nlive128"  # change as needed
 
 # 1st injection file
 inj_file = f"{BASE_DIR}/injection.json"
@@ -34,8 +37,8 @@ if not os.path.exists(inj_file):
             np.random.uniform(samples['latitude'].min(), samples['latitude'].max()),
             np.random.uniform(0, np.pi/2),
             np.random.uniform(0, 500),
-            np.random.uniform(1.0, 3.0),
-            np.random.uniform(1.0, 3.0),
+            np.random.uniform(1.0, 2.25),
+            np.random.uniform(1.0, 2.25),
             np.random.uniform(np.min(samples['spin1z']), np.max(samples['spin1z'])),
             np.random.uniform(np.min(samples['spin2z']), np.max(samples['spin2z']))
         ]
@@ -51,7 +54,7 @@ if not os.path.exists(inj_file):
         "nmma-create-injection",
         "--injection-file", dat_file,
         "--prior-file", "NMMA/priors/Bu2019lm500.prior", # change prior as needed
-        "--eos-file", "NMMA/EOS/15nsat_cse_uniform_R14/macro/2098", # change EOS as needed
+        "--eos-file", "NMMA/EOS/15nsat_cse_uniform_R14/macro/4818", # change EOS as needed
         "--binary-type", "BNS",
         "--n-injection", str(INJ_NUMBER),
         "--original-parameters",
@@ -78,7 +81,7 @@ if not os.path.exists(gw_samples_file):
 
     ############# [mass1,    mass2,   DL] adjust as needed
     params_low =  [1., 1., 0.]
-    params_high = [3.,      3.,     500.]
+    params_high = [2.25,      2.25,     500.]
 
     # 1) create dummy EOS samples with eos_post from nature paper
     EOS_raw = np.arange(0, Neos)  # the gwem_resampling will add one to this
@@ -106,21 +109,20 @@ if os.path.exists(inj_posterior_file):
     print(f"Posterior file for injection {idx} already exists. Skipping analysis.")
 else:
     INJ_FILE = f"{BASE_DIR}/injection.json"
-    GW_SAMPLES = f"{BASE_DIR}/GWsamples.dat"
 
     os.makedirs(OUT_DIR, exist_ok=True)
+    lc_path = "/home/liteul/anaconda3/envs/nmma_env/bin/lightcurve-analysis"
 
     # Lightcurve Analysis (adjust parameters as needed)
     print(f"Starting lightcurve-analysis for {idx}...")
-    cmd_lc = [
-        "lightcurve-analysis",
+    cmd_lc = [lc_path,
         "--model", "Bu2019lm",
-        "--svd-path", "NMMA/svdmodels",
+        "--svd-path", "/home/liteul/memoir_code/NMMA/svdmodels",
         "--outdir", OUT_DIR,
         "--label", f"inj_{idx}",
-        "--prior", "NMMA/priors/Bu2019lm500.prior",
+        "--prior", "/home/liteul/memoir_code/NMMA/priors/Bu2019lm500.prior",
         "--tmin", "0.1", "--tmax", "20", "--dt", "0.1",
-        "--nlive", "2048", 
+        "--nlive", "128", 
         "--Ebv-max", "0",
         "--injection", INJ_FILE,
         "--injection-num", str(idx), 
@@ -140,20 +142,20 @@ else:
     print(f"Starting gwem-resampling for {idx}...")
     resamp_out = f"{OUT_DIR}/resampling"
     os.makedirs(resamp_out, exist_ok=True)
+    GW_SAMPLES = f"{BASE_DIR}/GWsamples.dat"
 
     # The file produced by lightcurve-analysis
     posterior_file = f"{OUT_DIR}/inj_{idx}_posterior_samples.dat"
-
-    cmd_resamp = [
-        "gwem-resampling",
+    gwem_path = "/home/liteul/anaconda3/envs/nmma_env/bin/gwem-resampling"
+    cmd_resamp = [gwem_path,
         "--outdir", resamp_out,
         "--GWsamples", GW_SAMPLES,
-        "--GWprior", "NMMA/priors/GWBNS2.prior",
+        "--GWprior", "/home/liteul/memoir_code/NMMA/priors/GWBNS2.prior",
         "--EMsamples", posterior_file,
-        "--EOSpath", "NMMA/EOS/15nsat_cse_uniform_R14/macro/",
+        "--EOSpath", "/home/liteul/memoir_code/NMMA/EOS/15nsat_cse_uniform_R14/macro/",
         "--Neos", "5000",
-        "--EMprior", "NMMA/priors/Bu2019lm_GW_500.prior",
-        "--nlive", "2048"
+        "--EMprior", "/home/liteul/memoir_code/NMMA/priors/Bu2019lm_GW_500.prior",
+        "--nlive", "128"
     ]
     subprocess.run(cmd_resamp, check=True, cwd=BASE_DIR)
 
@@ -162,7 +164,6 @@ else:
 print("Full analysis completed.")
 
 # 4th step: plotting (based on reversingposterior.ipynb)
-import matplotlib.pyplot as plt
 
 # import necessary functions
 from lal import MRSUN_SI
@@ -210,8 +211,8 @@ with open(inj_path) as f:
 inj = inj['injections']
 inj = inj['content']
 
-m1 = inj['mass_1'][idx-1] # idx-1 because injections start at 1 and python at 0 (only for test_nlive2048)
-m2 = inj['mass_2'][idx-1]
+m1 = inj['mass_1'][idx] # idx-1 because injections start at 1 and python at 0 (only for test_nlive2048) (no -1 if using 0-based indexing)
+m2 = inj['mass_2'][idx]
 print(f"Injection masses: m1 = {m1}, m2 = {m2}")
 
 inj_chirp = m1**(3/5) * m2**(3/5) / (m1 + m2)**(1/5)
@@ -308,17 +309,17 @@ col_labels = {
     'luminosity_distance': '$D_L$ [Mpc]',
     'KNphi': r'$\phi$ [deg]',
     'KNtheta': r'$\theta$ [deg]',
-    'log10_mej_dyn': r'$\log_{10} M_{ej,dyn}$ [$M_\odot$]',
+    'log10_mej_dyn': r' ',
     'log10_mej_wind': r'$\log_{10} M_{ej,wind}$ [$M_\odot$]',
     'timeshift': r'$t_{0}$ [days]'
 }
 true_inj = {
-    'luminosity_distance': inj['luminosity_distance'][idx-1], # adjust for 0-based index
-    'KNphi': inj['KNphi'][idx-1],
-    'KNtheta': inj['KNtheta'][idx-1],
-    'log10_mej_dyn': inj['log10_mej_dyn'][idx-1],
-    'log10_mej_wind': inj['log10_mej_wind'][idx-1],
-    'timeshift': inj['timeshift'][idx-1]
+    'luminosity_distance': inj['luminosity_distance'][idx], # adjust for 0-based index
+    'KNphi': inj['KNphi'][idx],
+    'KNtheta': inj['KNtheta'][idx],
+    'log10_mej_dyn': inj['log10_mej_dyn'][idx],
+    'log10_mej_wind': inj['log10_mej_wind'][idx],
+    'timeshift': inj['timeshift'][idx]
 }
 truths_list = [
     true_inj['luminosity_distance'],
@@ -415,3 +416,71 @@ for i, col in enumerate(cols_available):
 
 fig.suptitle(f"Injection {idx} EM posterior samples", y=0.99, fontsize=20)
 fig.savefig(f"{OUT_DIR}/inj_{idx}_EM_corner.png", bbox_inches='tight')
+
+# resampling only corner plot
+fig = corner.corner(
+    samples[['chirp_mass', 'mass_ratio', 'EOS', 'alpha', 'zeta']],
+    labels=['$\mathcal{M}$', '$q$', 'EOS', r'$\alpha$', r'$\zeta$'],
+    quantiles=[0.16, 0.5, 0.84],
+    show_titles=True,
+    title_fmt='.3f',
+    title_kwargs={'fontsize': 14, 'pad': 12},
+    label_kwargs={'fontsize': 14},
+    smooth=1.0,
+    bins=30,
+    color='steelblue',
+    hist_kwargs={'density': True},
+    max_n_ticks=4,
+    figsize=(12, 12),
+    labelpad=0.03,
+)
+# get quantiles for annotations
+quantiles = {}
+for i, col in enumerate(samples[['chirp_mass', 'mass_ratio', 'EOS', 'alpha', 'zeta']].columns):
+    q16, q50, q84 = np.percentile(samples[col], [16, 50, 84])
+    quantiles[col] = (q16, q50, q84)
+
+axes = np.array(fig.axes).reshape(5, 5)
+
+truths_list = [inj_chirp, inj_q, 4818] # adjust EOS index as needed
+
+for i, col in enumerate(samples[['chirp_mass', 'mass_ratio', 'EOS']].columns):
+    ax = axes[i, i]   # Distribution marginale (diagonale)
+
+    q16, q50, q84 = quantiles[col]
+    minus = q50 - q16
+    plus  = q84 - q50
+
+    # Texte inféré (ligne 1)
+    if col == 'EOS':
+        inferred_text = rf"${int(q50)}^{{+{int(plus)}}}_{{-{int(minus)}}}$"
+    else:
+        inferred_text = rf"${q50:.3f}^{{+{plus:.3f}}}_{{-{minus:.3f}}}$"
+
+    # Injection (ligne 2)
+    truth_val = truths_list[i]
+    truth_text = rf"{truth_val:.3f}" if truth_val is not None else "N/A"
+
+    # Clear the automatic title
+    ax.set_title("")
+
+    # Add manual 2 lines: one black, one red
+    ax.text(
+        0.3, 1.03,
+        inferred_text,
+        ha='center', va='bottom',
+        fontsize=13,
+        transform=ax.transAxes,
+        color='black'
+    )
+    ax.text(
+        0.8, 1.03,
+        truth_text,
+        ha='center', va='bottom',
+        fontsize=13,
+        transform=ax.transAxes,
+        color='red'
+    )
+
+fig.suptitle(f"Injection {idx} resampling posterior samples", y=0.99, fontsize=20)
+fig.savefig(f"{OUT_DIR}/inj_{idx}_resampling_corner.png", bbox_inches='tight')
