@@ -1,0 +1,85 @@
+14:28 INFO    : Running for label '0', output will be saved to '/home/stu_jamsin/jamsin/condor_synth_lc_2perday/0'
+14:28 INFO    : Analysis priors:
+14:28 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+14:28 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+14:28 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+14:28 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+14:28 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+14:28 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+14:28 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+14:28 INFO    : Ebv=0.0
+14:28 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+14:28 INFO    : Analysis likelihood noise evidence: 0.0
+14:29 INFO    : Single likelihood evaluation took 1.400e-01 s
+14:29 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+14:29 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+14:29 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 2048, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0xd0cb1aa2bf0>>}
+14:29 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+14:29 INFO    : Using temporary file /tmp/tmpe23o93zj
+14:35 INFO    : Running for label '0', output will be saved to '/home/stu_jamsin/jamsin/condor_synth_lc_2perday/0'
+14:35 INFO    : Analysis priors:
+14:35 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+14:35 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+14:35 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+14:35 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+14:35 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+14:35 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+14:35 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+14:35 INFO    : Ebv=0.0
+14:35 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+14:35 INFO    : Analysis likelihood noise evidence: 0.0
+14:35 INFO    : Single likelihood evaluation took 1.842e-01 s
+14:35 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+14:35 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+14:35 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 2048, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0xfaa2c426a40>>}
+14:35 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+14:35 INFO    : Using temporary file /tmp/tmpbalamtz6
+14:46 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+14:52 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:00 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:07 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:15 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:23 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:30 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:38 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:48 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+15:58 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+16:10 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+16:21 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+16:30 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+16:41 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+16:53 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+17:03 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+17:14 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+17:25 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+17:36 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+17:46 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+17:57 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+18:06 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+18:17 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+18:29 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+18:41 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+18:52 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+19:04 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+19:16 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+19:27 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+19:38 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+19:50 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+20:02 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+20:13 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+20:24 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+20:36 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+20:47 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+20:57 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+21:09 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+21:13 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+21:13 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+21:13 INFO    : Overwriting /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/pm_0/ with /tmp/tmpbalamtz6/
+21:13 INFO    : Sampling time: 6:37:29.460084
+21:13 INFO    : Summary of results:
+nsamples: 15642
+ln_noise_evidence:  0.000
+ln_evidence: -148.744 +/-  0.082
+ln_bayes_factor: -148.744 +/-  0.082
+
+21:13 INFO    : Writing samples file to /home/stu_jamsin/jamsin/condor_synth_lc_2perday/0/0_posterior_samples.dat
