@@ -10,15 +10,16 @@ import matplotlib.pyplot as plt
 
 # define injection index
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
+#idx = 7
 
 # 0th step: base directory
-BASE_DIR = "/home/liteul/memoir_code/condor_other_eos_small_nlive128"  # change as needed
+BASE_DIR = "/home/liteul/memoir_code/condor_nlive2048"  # change as needed
 
 # 1st injection file
 inj_file = f"{BASE_DIR}/injection.json"
 if not os.path.exists(inj_file):
     # Create injection file if it does not exist (reuse code from create_injection.py)
-    INJ_NUMBER = 50  # inj number
+    INJ_NUMBER = 10  # inj number ! must be the same as in the condor submission
     OS_INJECTIONS = "/home/liteul/memoir_code/bns_O4_injections.dat" # NMMA injections sample file to get parameter ranges
 
     os.makedirs(BASE_DIR, exist_ok=True) # create directory if necessary
@@ -37,8 +38,8 @@ if not os.path.exists(inj_file):
             np.random.uniform(samples['latitude'].min(), samples['latitude'].max()),
             np.random.uniform(0, np.pi/2),
             np.random.uniform(0, 500),
-            np.random.uniform(1.0, 2.25),
-            np.random.uniform(1.0, 2.25),
+            np.random.uniform(1.0, 2.8),
+            np.random.uniform(1.0, 2.8),
             np.random.uniform(np.min(samples['spin1z']), np.max(samples['spin1z'])),
             np.random.uniform(np.min(samples['spin2z']), np.max(samples['spin2z']))
         ]
@@ -53,13 +54,13 @@ if not os.path.exists(inj_file):
     cmd = [
         "nmma-create-injection",
         "--injection-file", dat_file,
-        "--prior-file", "NMMA/priors/Bu2019lm500.prior", # change prior as needed
-        "--eos-file", "NMMA/EOS/15nsat_cse_uniform_R14/macro/4818", # change EOS as needed
+        "--prior-file", "NMMA/priors/Bu2019lm_inj_500.prior", # change prior as needed
+        "--eos-file", "NMMA/EOS/15nsat_cse_uniform_R14/macro/4818.dat", # change EOS as needed
         "--binary-type", "BNS",
         "--n-injection", str(INJ_NUMBER),
-        "--original-parameters",
         "--extension", "json",
         "--aligned-spin",
+        "--eject",
         "-f", os.path.join(BASE_DIR, "injection.json")
     ]
 
@@ -81,7 +82,7 @@ if not os.path.exists(gw_samples_file):
 
     ############# [mass1,    mass2,   DL] adjust as needed
     params_low =  [1., 1., 0.]
-    params_high = [2.25,      2.25,     500.]
+    params_high = [2.8,      2.8,     500.]
 
     # 1) create dummy EOS samples with eos_post from nature paper
     EOS_raw = np.arange(0, Neos)  # the gwem_resampling will add one to this
@@ -122,7 +123,7 @@ else:
         "--label", f"inj_{idx}",
         "--prior", "/home/liteul/memoir_code/NMMA/priors/Bu2019lm500.prior",
         "--tmin", "0.1", "--tmax", "20", "--dt", "0.1",
-        "--nlive", "128", 
+        "--nlive", "2048", 
         "--Ebv-max", "0",
         "--injection", INJ_FILE,
         "--injection-num", str(idx), 
@@ -155,7 +156,7 @@ else:
         "--EOSpath", "/home/liteul/memoir_code/NMMA/EOS/15nsat_cse_uniform_R14/macro/",
         "--Neos", "5000",
         "--EMprior", "/home/liteul/memoir_code/NMMA/priors/Bu2019lm_GW_500.prior",
-        "--nlive", "128"
+        "--nlive", "2048"
     ]
     subprocess.run(cmd_resamp, check=True, cwd=BASE_DIR)
 
@@ -164,29 +165,6 @@ else:
 print("Full analysis completed.")
 
 # 4th step: plotting (based on reversingposterior.ipynb)
-
-# import necessary functions
-from lal import MRSUN_SI
-def dyn_ej(a = -9.3335, b = 114.17, d = -337.56, n = 1.5465, M1 = 1.4, R1 = 10, M2 = 1.4, R2 = 10):
-    C1 = M1 / (R1 * 1e3 / MRSUN_SI)
-    C2 = M2 / (R2 * 1e3 / MRSUN_SI)
-    x = (a/C1 + b*(M2**n/M1**n) + d*C1)*M1 + (a/C2 + b*(M1**n/M2**n) + d*C2)*M2
-    if x < 0:
-        return 0
-    else:
-        return x/1000
-    
-def wind_ej(M1, M2, a0=-1.581, deltaa=-2.439, b0=-0.538, deltab=-0.406, c=0.953, d=0.0417, beta=3.91, qtrans=0.9, Mtov=1.97, R16=11.137): 
-    r16 = R16 * 1e3 / MRSUN_SI
-    Mtresh = (2.38 - 3.606 * (Mtov/r16))*Mtov
-    q = M2/M1
-    xsi = 0.5 * np.tanh(beta * (q - qtrans))
-    a = a0 + deltaa * xsi
-    b = b0 + deltab * xsi
-    mwind = a * (1 + b * np.tanh( (c - (M1+M2)/Mtresh)/d ))
-    mwind = np.maximum(-3.0, mwind)
-    return mwind
-    
 
 # mass chirp
 def chirp_mass(m1, m2):
@@ -309,7 +287,7 @@ col_labels = {
     'luminosity_distance': '$D_L$ [Mpc]',
     'KNphi': r'$\phi$ [deg]',
     'KNtheta': r'$\theta$ [deg]',
-    'log10_mej_dyn': r' ',
+    'log10_mej_dyn': r'$\log_{10} M_{ej,dyn}$ [$M_\odot$]',
     'log10_mej_wind': r'$\log_{10} M_{ej,wind}$ [$M_\odot$]',
     'timeshift': r'$t_{0}$ [days]'
 }

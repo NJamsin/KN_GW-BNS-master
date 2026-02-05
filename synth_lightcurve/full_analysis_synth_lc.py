@@ -10,11 +10,15 @@ import matplotlib.pyplot as plt
 from utils import generate_synth_lc
 from utils import wind_ej, dyn_ej
 
+'''
+!!! DO NOT run this several times for the same BASE_DIR as the true model parameters will be overwritten but not the lightcurve analysis!!!
+'''
+
 # define injection index
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
 #idx = 5  # example injection index
 # 0th step: base directory
-BASE_DIR = "/home/stu_jamsin/jamsin/condor_synth_lc_2perday"  # change as needed
+BASE_DIR = "/home/stu_jamsin/jamsin/condor_synth_large"  # change as needed
 
 # 1st synth lc 
 synth_data = f"{BASE_DIR}/{idx}/data{idx}.dat"
@@ -57,10 +61,10 @@ param_df = pd.DataFrame([{"mass_1": mass_1, "mass_2": mass_2}, model_param])
 param_df.to_csv(f"{BASE_DIR}/{idx}/true{idx}.csv", index=False)   
 
 # generate sample times
-sample_times = np.arange(0.1, 20, 0.5) # 20 days, 2 per day cadence
+sample_times = np.arange(0.1, 10, 0.5) # 10 days, 2 per day cadence
 for i in range(len(sample_times)):
     sample_times[i]+= np.random.uniform(-0.2, 0.2)  # add some jitter to sample times
-filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z', 'sdssu', '2massh'] # filters used for "observation"
+filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z'] # filters used for "observation"
 print("Generating synthetic lightcurve...")
 data_nmma_svd, trig = generate_synth_lc(
         model_name='Bu2019lm',
@@ -72,7 +76,8 @@ data_nmma_svd, trig = generate_synth_lc(
         max_error_level=0.6,
         trigger_iso='2025-01-01T00:00:00',
         save=True,
-        filename=f"{BASE_DIR}/{idx}/data{idx}.dat"
+        filename=f"{BASE_DIR}/{idx}/data{idx}.dat",
+        detection_limit_dict={'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
 )
 
 # 1.5th step: ensure GWsamples.dat exists
@@ -109,6 +114,14 @@ if not os.path.exists(gw_samples_file):
 
     # 4) save GWsamples.dat file
     dataset.to_csv(gw_samples_file, index=False, sep=' ')
+    # ensure gw samples file is well formatted
+    with open(gw_samples_file, 'r') as f:
+        lines = f.readlines()
+    with open(gw_samples_file, 'w') as f:
+        for line in lines:
+            if len(line.split()) == 6:
+                f.write(line)
+
     print("GWsamples.dat created.")
 
 # 2nd step: run lightcurve analysis
@@ -118,10 +131,11 @@ if os.path.exists(inj_posterior_file):
     print(f"Posterior file for {idx} already exists. Skipping analysis.")
 else:
     DATA_FILE = f"{BASE_DIR}/{idx}/data{idx}.dat"
-
+    import json
     os.makedirs(OUT_DIR, exist_ok=True)
 
     # Lightcurve Analysis (adjust parameters as needed)
+    detection_limit_dict = {'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
     print(f"Starting lightcurve-analysis for {idx}...")
     cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
         "--model", "Bu2019lm",
@@ -129,16 +143,16 @@ else:
         "--outdir", OUT_DIR,
         "--label", f"{idx}",
         "--prior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm500.prior",
-        "--tmin", "0.1", "--tmax", "20", "--dt", "0.1",
         "--nlive", "2048", 
         "--Ebv-max", "0",
-        "--filters", "ps1__g,ps1__r,ps1__i,ps1__z,sdssu,2massh",
+        "--filters", "ps1__g,ps1__r,ps1__i,ps1__z",
         "--remove-nondetections",
         "--data", DATA_FILE,
         "--error-budget", "0.5",
         "--plot", 
-        "--ylim", "26,19"
-    ]
+        "--ylim", "26,17",
+        #"--detection-limit", json.dumps(detection_limit_dict)
+       ]
     subprocess.run(cmd_lc, check=True, cwd=BASE_DIR) 
 
 # 3rd step: run gwem-resampling
