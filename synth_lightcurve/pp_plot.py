@@ -5,13 +5,14 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-BASE_DIR = f"/home/stu_jamsin/jamsin/condor_synth_large/"
+BASE_DIR = f"/home/stu_jamsin/jamsin/condor_synth_large"
 lower_bound = 0.16
-higher_bound = 0.64 # for 1 sigma credible interval, but can be modified as needed
+higher_bound = 0.84 # for 1 sigma credible interval, but can be modified as needed
+inj_number = 75
 
 for (param, bounds) in zip(['luminosity_distance', 'KNphi', 'KNtheta', 'log10_mej_dyn', 'log10_mej_wind', 'timeshift'], [(0, 500), (0, 90), (0, 90), (-3, -1), (-3, -0.5), (-2, 1)]):
     fig = plt.figure(figsize=(8, 8))
-    for i in range(25):
+    for i in range(inj_number):
         out_file = f"{BASE_DIR}/{i}/{i}_posterior_samples.dat"
         if not os.path.exists(out_file): # skip if file does not exist
             continue
@@ -34,12 +35,11 @@ for (param, bounds) in zip(['luminosity_distance', 'KNphi', 'KNtheta', 'log10_me
     file_path = f'{BASE_DIR}/plots/{param}_injection_recovery_full.png'
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     plt.savefig(file_path)
-    plt.show()
 
     # resampling 
 for (param, bounds) in zip(['chirp_mass', 'mass_ratio'], [(1., 3.), (0.125, 1.)]):
     fig = plt.figure(figsize=(8, 8))
-    for i in range(25):
+    for i in range(inj_number):
         # Get M1 and M2 from chirp mass and mass ratio
         out_file = f"{BASE_DIR}/{i}/resampling/posterior_samples.dat"
         if not os.path.exists(out_file): # skip if file does not exist
@@ -69,12 +69,11 @@ for (param, bounds) in zip(['chirp_mass', 'mass_ratio'], [(1., 3.), (0.125, 1.)]
     file_path = f'{BASE_DIR}/plots/{param}_injection_recovery_full.png'
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     plt.savefig(file_path)
-    plt.show()
 
 # component masses
 for (param, bounds) in zip(['mass_1', 'mass_2'], [(1., 3.), (1., 3.)]):
     fig = plt.figure(figsize=(8, 8))
-    for i in range(25):
+    for i in range(inj_number):
         # Get M1 and M2 from chirp mass and mass ratio
         out_file = f"{BASE_DIR}/{i}/resampling/posterior_samples.dat"
         if not os.path.exists(out_file): # skip if file does not exist
@@ -108,4 +107,3 @@ for (param, bounds) in zip(['mass_1', 'mass_2'], [(1., 3.), (1., 3.)]):
     file_path = f'{BASE_DIR}/plots/{param}_injection_recovery_full.png'
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     plt.savefig(file_path)
-    plt.show()

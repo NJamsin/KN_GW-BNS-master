@@ -47,7 +47,7 @@ def mass_ratio(m1, m2):
     
     # V3 of the function : now returns fig, ax 
 # v4 ejecta plot
-def ejecta_plot_v4(eos_number, model_name='Bu2019lm', model_param={"luminosity_distance": 40.0, "KNphi": 30.0, "KNtheta": 30.0}, filters=['ztfr', 'ztfi', 'ztfg'], plot=True, title=None, get_fig=False, EOS_path='/home/liteul/memoir_code/NMMA/EOS/15nsat_cse_uniform_R14/macro', mass_limit=(1.0, 3.0)):
+def ejecta_plot_v4(eos_number, model_name='Bu2019lm', model_param={"luminosity_distance": 40.0, "KNphi": 30.0, "KNtheta": 30.0}, filters=['ztfr', 'ztfi', 'ztfg'], plot=True, title=None, get_fig=False, EOS_path='/home/stu_jamsin/jamsin/NMMA/EOS/15nsat_cse_uniform_R14/macro', mass_limit=(1.0, 3.0)):
     '''Plot the ejecta properties for a given EOS model.
     Parameters
     ----------
@@ -66,7 +66,7 @@ def ejecta_plot_v4(eos_number, model_name='Bu2019lm', model_param={"luminosity_d
     get_fig : bool, optional
         Whether to return the figure and axes objects (default is False).
     EOS_path : str, optional
-        Path to the EOS data files (default is '/home/liteul/memoir_code/NMMA/EOS/15nsat_cse_uniform_R14/macro/').
+        Path to the EOS data files (default is '/home/stu_jamsin/jamsin/NMMA/EOS/15nsat_cse_uniform_R14/macro/').
     mass_limit : tuple, optional
         Mass limits for the neutron stars (default is (1.0, 3.0) solar masses).
     Returns
@@ -600,6 +600,9 @@ def plot_lc_for_indices_v3(selected_indices, dic, title, filters_band, model_nam
     import matplotlib.pyplot as plt
     import matplotlib.colors as colors
     from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
+
+    # Load Bulla dataset
+    bulla_dataset = BullaDataset("/home/stu_jamsin/jamsin/lcs_bulla_2019_bns")
 
     for idx in selected_indices:
         print(f"Selected point (index {idx}):")
@@ -1226,3 +1229,143 @@ def generate_synth_lc(sample_times,
         data_nmma_svd.to_csv(filename, sep=' ', index=False, header=False)
     return data_nmma_svd, trigger
 
+# analytical reversal of fitting formula
+
+def ejecta_to_mass(ejecta_dic, dyn_range=(-3, np.log10(5e-3)), wind_range=(np.log10(1e-2), np.log10(5e-2)), plot=True, title=None, get_fig=False):
+    '''Extract mass pairs corresponding to ejecta masses within specified ranges.
+    Parameters
+    ----------
+    ejecta_dic : dict
+        Dictionary containing ejecta data with keys 'fit_masses', 'wind_linear', and 'pair_array' (as returned by ejecta_plot_v4).
+    dyn_range : tuple, optional
+        Range for dynamical ejecta mass in log10 (default is (-3, np.log10(5e-3))) M_solar).
+    wind_range : tuple, optional
+        Range for wind ejecta mass in log10 (default is (np.log10(1e-2), np.log10(5e-2))) M_solar).
+    plot : bool, optional
+        Whether to plot the results (default is True).
+    title : str, optional
+        Title for the plots (suptitle).
+    get_fig : bool, optional
+        Whether to return the figure and axes objects (default is False).
+    
+    Returns
+    -------
+    dyn_masses_in_range : np.ndarray
+        Array of mass pairs with dynamical ejecta mass within the specified range.
+    wind_masses_in_range : np.ndarray
+        Array of mass pairs with wind ejecta mass within the specified range.
+    '''
+    import matplotlib.pyplot as plt
+    import matplotlib.colors as colors
+    import numpy as np
+    from scipy.ndimage import gaussian_filter
+
+    dyn_masses_in_range = []
+    wind_masses_in_range = []
+    for i in range(ejecta_dic['pair_array'].shape[0]):
+        dyn_value = ejecta_dic['fit_masses'][i]
+        wind_value = ejecta_dic['wind_linear'][i]
+        if 10**dyn_range[0] <= dyn_value <= 10**dyn_range[1]:
+            dyn_masses_in_range.append(ejecta_dic['pair_array'][i])
+        if 10**wind_range[0] <= wind_value <= 10**wind_range[1]:
+            wind_masses_in_range.append(ejecta_dic['pair_array'][i])
+
+    if plot:
+        # plot the ejecta masses with highlighted points in range
+        # 1st plot: ejecta masses as in ejcta_plot_v4
+        dyn_masses_in_range = np.array(dyn_masses_in_range)
+        wind_masses_in_range = np.array(wind_masses_in_range)
+        fig, ax = plt.subplots(2,2, figsize=(10, 10), sharey=True)
+        sym_Norm = colors.SymLogNorm(vmin=0, vmax=ejecta_dic['fit_masses'].max(), linthresh=1e-4, linscale=0.5)
+        sc = ax[0,0].scatter(ejecta_dic['pair_array'][:,0], ejecta_dic['pair_array'][:,1], c=ejecta_dic['fit_masses'], cmap='viridis', norm=sym_Norm, s=300, edgecolors=None, linewidths=0.2)
+        cbar = fig.colorbar(sc, ax=ax[0,0], orientation='vertical', fraction=0.05)
+        cbar.set_label('$M_{dyn}$ [M$_\\odot$]')
+        ax[0,0].set_xlabel('$M_1$ [$M_\\odot$]', fontsize=12)
+        ax[0,0].set_ylabel('$M_2$ [$M_\\odot$]', fontsize=12)
+        ax[0,0].set_title('Dynamical ejecta mass')
+        sc2 = ax[0,1].scatter(ejecta_dic['pair_array'][:,0], ejecta_dic['pair_array'][:,1], c=ejecta_dic['wind_linear'], cmap='viridis', s=300, edgecolors=None, linewidths=0.2, norm=colors.LogNorm(vmin=10e-5, vmax=ejecta_dic['wind_linear'].max()))
+        cbar2 = fig.colorbar(sc2, ax=ax[0,1], orientation='vertical', fraction=0.05)
+        cbar2.set_label('$M_{wind}$ [M$_\\odot$]')
+        ax[0,1].set_xlabel('$M_1$ [$M_\\odot$]', fontsize=12)
+        ax[0,1].set_title('Wind ejecta mass')
+        # 2nd: highlighted points
+        ax[0,0].scatter(dyn_masses_in_range[:,0], dyn_masses_in_range[:,1], facecolors='red', edgecolors='none', s=300, linewidths=1)
+        ax[0,1].scatter(wind_masses_in_range[:,0], wind_masses_in_range[:,1], facecolors='red', edgecolors='none', s=300, linewidths=1)
+
+        # 2nd row: hist2d of points in range
+        # smooting parameters
+        bins = 100
+        ranges = [[1.0, ejecta_dic['pair_array'][:,0].max()+0.1], [1.0, ejecta_dic['pair_array'][:,1].max()+0.1]]
+        sigma = 2.0  # Increase for more smoothing
+
+        # Left: Dynamical ejetca
+        # 1. Calculate histogram manually
+        H_dyn, xedges, yedges = np.histogram2d(dyn_masses_in_range[:,0], dyn_masses_in_range[:,1], bins=bins, range=ranges)
+        # 2. Apply Gaussian filter (Transpose .T needed for imshow as histogram2d returns (x,y)) and plot with imshow
+        H_dyn_smooth = gaussian_filter(H_dyn.T, sigma=sigma)
+        im1 = ax[1,0].imshow(H_dyn_smooth, interpolation='nearest', origin='lower', 
+                       extent=[ranges[0][0], ranges[0][1], ranges[1][0], ranges[1][1]], 
+                       cmap='Blues', aspect='auto')
+        ax[1,0].set_xlabel('$M_1$ [$M_\\odot$]', fontsize=12)
+        ax[1,0].set_ylabel('$M_2$ [$M_\\odot$]', fontsize=12)
+        ax[1,0].set_title('Dynamical ejecta mass (Smoothed)')
+        # compute stats for text box
+        dyn_stats = (f'Median $M_1$: {np.median(dyn_masses_in_range[:,0]):.2f} M$_\\odot$\n'
+                    f'Median $M_2$: {np.median(dyn_masses_in_range[:,1]):.2f} M$_\\odot$\n'
+                    f'Count: {dyn_masses_in_range.shape[0]}')
+        ax[1,0].text(0.03, 0.97, dyn_stats, transform=ax[1,0].transAxes,
+                    fontsize=12, va='top', ha='left',
+                    bbox=dict(boxstyle='round,pad=0.4', facecolor='lightblue', alpha=0.85, edgecolor='0'))
+        cbar = fig.colorbar(im1, ax=ax[1,0], orientation='vertical', fraction=0.05)
+        cbar.set_label('Density (arbitrary units)')
+
+        # Right: Wind ejecta
+        H_wind, xedges, yedges = np.histogram2d(wind_masses_in_range[:,0], wind_masses_in_range[:,1], bins=bins, range=ranges)
+        H_wind_smooth = gaussian_filter(H_wind.T, sigma=sigma)
+        im2 = ax[1,1].imshow(H_wind_smooth, interpolation='nearest', origin='lower', 
+                       extent=[ranges[0][0], ranges[0][1], ranges[1][0], ranges[1][1]], 
+                       cmap='Blues', aspect='auto')
+        ax[1,1].set_xlabel('$M_1$ [$M_\\odot$]', fontsize=12)
+        ax[1,1].set_title('Wind ejecta mass (Smoothed)')
+        # compute stats for text box
+        wind_stats = (f'Median M1: {np.median(wind_masses_in_range[:,0]):.2f} M$_\\odot$\n'
+                    f'Median M2: {np.median(wind_masses_in_range[:,1]):.2f} M$_\\odot$\n'
+                    f'Count: {wind_masses_in_range.shape[0]}')
+        ax[1,1].text(0.03, 0.97, wind_stats, transform=ax[1,1].transAxes,
+                    fontsize=12, va='top', ha='left',
+                    bbox=dict(boxstyle='round,pad=0.4', facecolor='lightblue', alpha=0.85, edgecolor='0'))
+        cbar2 = fig.colorbar(im2, ax=ax[1,1], orientation='vertical', fraction=0.05)
+        cbar2.set_label('Density (arbitrary units)')
+
+    if title is not None:
+        plt.suptitle(title, fontsize=16, y=0.99)
+        plt.tight_layout()
+        plt.show()
+    if get_fig:
+        return fig, ax, np.array(dyn_masses_in_range), np.array(wind_masses_in_range)
+    else:
+        return np.array(dyn_masses_in_range), np.array(wind_masses_in_range)
+
+# check consistency between dynamical and wind ejecta mass sets
+def compare_mass_sets(set1, set2, tol=1e-1):
+    '''Compare two sets of mass pairs and find common pairs within a tolerance.
+    Parameters
+    ----------
+    set1 : np.ndarray
+        First array of mass pairs (N x 2).
+    set2 : np.ndarray
+        Second array of mass pairs (M x 2).
+    tol : float, optional
+        Tolerance for matching mass pairs (default is 1e-2).
+    Returns
+    -------
+    common_pairs : np.ndarray
+        Array of common mass pairs found in both sets within the tolerance.
+    '''
+    common_pairs = []
+    for mass1 in set1:
+        for mass2 in set2:
+            if np.all(np.abs(mass1 - mass2) <= tol):
+                common_pairs.append(mass1)
+                break
+    return np.array(common_pairs)
