@@ -107,3 +107,75 @@ ln_evidence: -311.306 +/-  0.086
 ln_bayes_factor: -311.306 +/-  0.086
 
 11:46 INFO    : Writing samples file to /home/liteul/memoir_code/condor_nlive2048/inj_4/inj_4_posterior_samples.dat
+13:10 INFO    : Running for label 'inj_4', output will be saved to '/home/liteul/memoir_code/condor_nlive2048/inj_4'
+13:10 INFO    : Analysis priors:
+13:10 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+13:10 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+13:10 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+13:10 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+13:10 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+13:10 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+13:10 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+13:10 INFO    : Ebv=0.0
+13:10 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+13:10 INFO    : Analysis likelihood noise evidence: 0.0
+13:10 INFO    : Single likelihood evaluation took 1.335e-01 s
+13:10 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+13:10 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+13:10 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+13:10 WARNING : Using cached result
+13:11 INFO    : Summary of results:
+nsamples: 12751
+ln_noise_evidence:  0.000
+ln_evidence: -311.306 +/-  0.086
+ln_bayes_factor: -311.306 +/-  0.086
+
+13:11 INFO    : Writing samples file to /home/liteul/memoir_code/condor_nlive2048/inj_4/inj_4_posterior_samples.dat
+17:20 INFO    : Running for label 'inj_4', output will be saved to '/home/liteul/memoir_code/condor_nlive2048/inj_4'
+17:23 INFO    : Analysis priors:
+17:23 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+17:23 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+17:23 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+17:23 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+17:23 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+17:23 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:23 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:23 INFO    : Ebv=0.0
+17:23 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+17:23 INFO    : Analysis likelihood noise evidence: 0.0
+17:23 INFO    : Single likelihood evaluation took 1.203e-01 s
+17:23 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+17:23 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+17:23 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+17:23 WARNING : Using cached result
+17:23 INFO    : Summary of results:
+nsamples: 12751
+ln_noise_evidence:  0.000
+ln_evidence: -311.306 +/-  0.086
+ln_bayes_factor: -311.306 +/-  0.086
+
+17:23 INFO    : Writing samples file to /home/liteul/memoir_code/condor_nlive2048/inj_4/inj_4_posterior_samples.dat
+17:30 INFO    : Running for label 'inj_4', output will be saved to '/home/liteul/memoir_code/condor_nlive2048/inj_4'
+17:31 INFO    : Analysis priors:
+17:31 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+17:31 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+17:31 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+17:31 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+17:31 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+17:31 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:31 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:31 INFO    : Ebv=0.0
+17:31 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+17:31 INFO    : Analysis likelihood noise evidence: 0.0
+17:31 INFO    : Single likelihood evaluation took 1.043e-01 s
+17:31 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+17:31 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+17:31 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+17:31 WARNING : Using cached result
+17:31 INFO    : Summary of results:
+nsamples: 12751
+ln_noise_evidence:  0.000
+ln_evidence: -311.306 +/-  0.086
+ln_bayes_factor: -311.306 +/-  0.086
+
+17:31 INFO    : Writing samples file to /home/liteul/memoir_code/condor_nlive2048/inj_4/inj_4_posterior_samples.dat
