@@ -10,75 +10,76 @@ import matplotlib.pyplot as plt
 from utils import generate_synth_lc
 from utils import wind_ej, dyn_ej
 
-'''
-!!! DO NOT run this several times for the same BASE_DIR as the true model parameters will be overwritten but not the lightcurve analysis!!!
-'''
-
 # define injection index
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
-#idx = 5  # example injection index
+#idx = 1  # example injection index
 # 0th step: base directory
-BASE_DIR = "/home/stu_jamsin/jamsin/condor_synth_large"  # change as needed
+BASE_DIR = "/home/stu_jamsin/jamsin/condor_synth_0.5t0"  # change as needed
 
 # 1st synth lc 
 synth_data = f"{BASE_DIR}/{idx}/data{idx}.dat"
-# must create synthetic lightcurve if it does not exist to get trigger time
+al_done = False
 
 os.makedirs(f"{BASE_DIR}/{idx}", exist_ok=True) # create directory if necessary
-    # Create injections
-print("Generating parameters...")
+# Create injections
+DATA_path = f"{BASE_DIR}/{idx}/true{idx}.csv"
+if os.path.exists(DATA_path):
+    print(f"Synthetic data for injection {idx} already exists. Skipping generation.")
+    al_done = True # need to set this flag to true for later plotting step to know whether to load from file or from previous variables in the code
+else:
+    print("Generating parameters...")
 
-# import best fit eos to get radius for fitting formulae
-eos = np.loadtxt('/home/stu_jamsin/jamsin/NMMA/EOS/15nsat_cse_uniform_R14/macro/4818.dat')
-r_eos = eos[:,0]  # radius in km
-M_eos = eos[:,1]  # mass in solar masses
-# interpolate to get radius at 1.4 solar masses
-R_16 = np.interp(1.6, M_eos, r_eos) # radius of 1.6 solar masses
+    # import best fit eos to get radius for fitting formulae
+    eos = np.loadtxt('/home/stu_jamsin/jamsin/NMMA/EOS/15nsat_cse_uniform_R14/macro/4818.dat')
+    r_eos = eos[:,0]  # radius in km
+    M_eos = eos[:,1]  # mass in solar masses
+    # interpolate to get radius at 1.4 solar masses
+    R_16 = np.interp(1.6, M_eos, r_eos) # radius of 1.6 solar masses
 
-# fix a seed for reproducibility
-#np.random.seed(42 + idx)
-mej_dyn = -1
-# draw random parameters from prior
-while mej_dyn <= 0:
-    mass_1 = np.random.uniform(1, 3.)  # solar masses
-    mass_2 = np.random.uniform(1, mass_1)  # solar masses
-    r1 = np.interp(mass_1, M_eos, r_eos)
-    r2 = np.interp(mass_2, M_eos, r_eos)
-    mej_dyn = dyn_ej(M1=mass_1, M2=mass_2, R1=r1, R2=r2)
-log10_mej_dyn = np.log10(mej_dyn)
-log10_mej_wind = wind_ej(M1=mass_1, M2=mass_2, Mtov=np.max(M_eos), R16=R_16) + np.log10(0.3) # assume 30% of disk mass goes into wind
+    # fix a seed for reproducibility
+    #np.random.seed(42 + idx)
+    mej_dyn = -1
+    # draw random parameters from prior
+    while mej_dyn <= 0:
+        mass_1 = np.random.uniform(1.2, np.max(M_eos))  # solar masses
+        mass_2 = np.random.uniform(1., mass_1)  # solar masses
+        r1 = np.interp(mass_1, M_eos, r_eos)
+        r2 = np.interp(mass_2, M_eos, r_eos)
+        mej_dyn = dyn_ej(M1=mass_1, M2=mass_2, R1=r1, R2=r2)
+    log10_mej_dyn = np.log10(mej_dyn)
+    log10_mej_wind = wind_ej(M1=mass_1, M2=mass_2, Mtov=np.max(M_eos), R16=R_16) + np.log10(0.3) # assume 30% of disk mass goes into wind
 
-model_param = {
-                    "KNphi": np.random.uniform(15,75),
-                    "log10_mej_dyn": log10_mej_dyn,
-                    "log10_mej_wind": log10_mej_wind,
-                    "KNtheta": np.random.uniform(0, 90),
-                    "luminosity_distance": np.random.uniform(10,200),
-                    "timeshift": np.random.uniform(-2,0)
-                    }
-# save model param to csv for reference
-param_df = pd.DataFrame([{"mass_1": mass_1, "mass_2": mass_2}, model_param])
-param_df.to_csv(f"{BASE_DIR}/{idx}/true{idx}.csv", index=False)   
+    model_param = {
+                        "KNphi": np.random.uniform(15,75),
+                        "log10_mej_dyn": log10_mej_dyn,
+                        "log10_mej_wind": log10_mej_wind,
+                        "KNtheta": np.random.uniform(0, 90),
+                        "luminosity_distance": np.random.uniform(10,200),
+                        "timeshift": np.random.uniform(-0.5,0)
+                        }
+    # save model param to csv for reference
+    param_df = pd.DataFrame([{"mass_1": mass_1, "mass_2": mass_2}, model_param])
+    param_df.to_csv(f"{BASE_DIR}/{idx}/true{idx}.csv", index=False)   
 
-# generate sample times
-sample_times = np.arange(0.1, 10, 0.5) # 10 days, 2 per day cadence
-for i in range(len(sample_times)):
-    sample_times[i]+= np.random.uniform(-0.2, 0.2)  # add some jitter to sample times
-filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z'] # filters used for "observation"
-print("Generating synthetic lightcurve...")
-data_nmma_svd, trig = generate_synth_lc(
-        model_name='Bu2019lm',
-        model_param=model_param,
-        filters_band=filters_band,
-        sample_times=sample_times,
-        noise_level=0.2,
-        min_error_level=0.1,
-        max_error_level=0.6,
-        trigger_iso='2025-01-01T00:00:00',
-        save=True,
-        filename=f"{BASE_DIR}/{idx}/data{idx}.dat",
-        detection_limit_dict={'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
-)
+    # generate sample times
+    sample_times = np.arange(0.1, 10, 0.5) # 10 days, 2 per day cadence
+    for i in range(len(sample_times)):
+        sample_times[i]+= np.random.uniform(-0.2, 0.2)  # add some jitter to sample times
+    filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z'] # filters used for "observation"
+    print("Generating synthetic lightcurve...")
+    data_nmma_svd, trig = generate_synth_lc(
+            model_name='Bu2019lm',
+            model_param=model_param,
+            filters_band=filters_band,
+            sample_times=sample_times,
+            noise_level=0.2,
+            min_error_level=0.03,
+            max_error_level=0.4,
+            trigger_iso='2025-01-01T00:00:00',
+            save=True,
+            filename=f"{BASE_DIR}/{idx}/data{idx}.dat",
+            detection_limit_dict={'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
+    )
 
 # 1.5th step: ensure GWsamples.dat exists
 gw_samples_file = f"{BASE_DIR}/GWsamples.dat"
@@ -127,17 +128,13 @@ if not os.path.exists(gw_samples_file):
 # 2nd step: run lightcurve analysis
 inj_posterior_file = f"{BASE_DIR}/{idx}/{idx}_posterior_samples.dat"
 OUT_DIR = f"{BASE_DIR}/{idx}"
-if os.path.exists(inj_posterior_file):
-    print(f"Posterior file for {idx} already exists. Skipping analysis.")
-else:
-    DATA_FILE = f"{BASE_DIR}/{idx}/data{idx}.dat"
-    import json
-    os.makedirs(OUT_DIR, exist_ok=True)
 
-    # Lightcurve Analysis (adjust parameters as needed)
-    detection_limit_dict = {'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
-    print(f"Starting lightcurve-analysis for {idx}...")
-    cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
+DATA_FILE = f"{BASE_DIR}/{idx}/data{idx}.dat"
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# Lightcurve Analysis (adjust parameters as needed)
+print(f"Starting lightcurve-analysis for {idx}...")
+cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
         "--model", "Bu2019lm",
         "--svd-path", "/home/stu_jamsin/jamsin/NMMA/svdmodels",
         "--outdir", OUT_DIR,
@@ -151,9 +148,10 @@ else:
         "--error-budget", "0.5",
         "--plot", 
         "--ylim", "26,17",
+        "--xlim=-2,14"
         #"--detection-limit", json.dumps(detection_limit_dict)
-       ]
-    subprocess.run(cmd_lc, check=True, cwd=BASE_DIR) 
+    ]
+subprocess.run(cmd_lc, check=True, cwd=BASE_DIR) 
 
 # 3rd step: run gwem-resampling
 resampling_out = f"{BASE_DIR}/{idx}/resampling/posterior_samples.dat"
@@ -198,6 +196,19 @@ samples = pd.read_csv(f"{BASE_DIR}/{idx}/resampling/posterior_samples.dat", deli
 EM_samples = pd.read_csv(f"{BASE_DIR}/{idx}/{idx}_posterior_samples.dat", delim_whitespace=True)
 
 # import synth lc parameters 
+if al_done:
+    print(f"Loading existing parameters for injection {idx}...")
+    param_df = pd.read_csv(f"{BASE_DIR}/{idx}/true{idx}.csv")
+    mass_1 = param_df["mass_1"].values[0] # 0 for masses and 1 model params
+    mass_2 = param_df["mass_2"].values[0]
+    model_param = {
+                        "KNphi": param_df["KNphi"].values[1],
+                        "log10_mej_dyn": param_df["log10_mej_dyn"].values[1],
+                        "log10_mej_wind": param_df["log10_mej_wind"].values[1],
+                        "KNtheta": param_df["KNtheta"].values[1],
+                        "luminosity_distance": param_df["luminosity_distance"].values[1],
+                        "timeshift": param_df["timeshift"].values[1]
+                        }
 
 print(f"True masses: m1 = {mass_1}, m2 = {mass_2}")
 
@@ -289,6 +300,7 @@ for i, col in enumerate(["m1", "m2", "chirp_mass", "mass_ratio"]):
 # set the figure suptitle and then show the plot
 figure.suptitle(f"Injection {idx} posterior samples", y=1.05, fontsize=20)
 figure.savefig(f"{OUT_DIR}/inj_{idx}_qchirp_to_masses.png", bbox_inches='tight')
+print(f"Chirp mass to masses corner plot saved {OUT_DIR}/inj_{idx}_qchirp_to_masses.png")
 
 # EM corner plot
 col_labels = {
@@ -402,6 +414,7 @@ for i, col in enumerate(cols_available):
 
 fig.suptitle(f"Injection {idx} EM posterior samples", y=0.99, fontsize=20)
 fig.savefig(f"{OUT_DIR}/inj_{idx}_EM_corner.png", bbox_inches='tight')
+print(f"EM corner plot saved {OUT_DIR}/inj_{idx}_EM_corner.png")
 
 # resampling only corner plot
 fig = corner.corner(
@@ -470,3 +483,4 @@ for i, col in enumerate(samples[['chirp_mass', 'mass_ratio', 'EOS']].columns):
 
 fig.suptitle(f"Injection {idx} resampling posterior samples", y=0.99, fontsize=20)
 fig.savefig(f"{OUT_DIR}/inj_{idx}_resampling_corner.png", bbox_inches='tight')
+print(f"Resampling corner plot saved {OUT_DIR}/inj_{idx}_resampling_corner.png")
