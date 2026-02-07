@@ -1,0 +1,54 @@
+21:36 INFO    : Running for label '41', output will be saved to '/home/stu_jamsin/jamsin/semi_anal/41'
+21:36 INFO    : Analysis priors:
+21:36 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=500.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+21:36 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+21:36 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Phi$', unit=None, boundary=None)
+21:36 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+21:36 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+21:36 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+21:36 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+21:36 INFO    : Ebv=0.0
+21:36 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+21:36 INFO    : Analysis likelihood noise evidence: 0.0
+21:37 INFO    : Single likelihood evaluation took 3.525e-01 s
+21:37 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+21:37 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+21:37 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 2048, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x10c306e153c0>>}
+21:37 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+21:37 INFO    : Using temporary file /tmp/tmpyn5cun4q
+21:55 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:02 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:11 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:19 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:28 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:38 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:47 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+22:57 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+23:08 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+23:19 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+23:31 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+23:42 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+23:55 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+00:09 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+00:23 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+00:38 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+00:53 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+01:07 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+01:21 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+01:34 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+01:48 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+01:59 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:08 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:16 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:22 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:23 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:23 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:23 INFO    : Overwriting /home/stu_jamsin/jamsin/semi_anal/41/pm_41/ with /tmp/tmpyn5cun4q/
+02:23 INFO    : Sampling time: 4:46:05.678479
+02:23 INFO    : Summary of results:
+nsamples: 11365
+ln_noise_evidence:  0.000
+ln_evidence: -39.091 +/-  0.066
+ln_bayes_factor: -39.091 +/-  0.066
+
+02:23 INFO    : Writing samples file to /home/stu_jamsin/jamsin/semi_anal/41/41_posterior_samples.dat
