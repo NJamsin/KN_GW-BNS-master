@@ -8,13 +8,22 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from utils import generate_synth_lc
+from utils import generate_synth_lc_v2
 from utils import wind_ej, dyn_ej
+
+##############################################
+# ATTENTION: do not forget to adapt priors !!!
+##############################################
+
+sample_method = 2 # or 2: 1 for 0 based sampling, 2 for timeshift based sampling
 
 # define injection index
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1]) 
 #idx = 1  # example injection index
 # 0th step: base directory
-BASE_DIR = "/home/stu_jamsin/jamsin/condor_synth_0.5t0"  # change as needed
+BASE_DIR = "/home/stu_jamsin/jamsin/test1t0_no_noise_nojitter_alt_meth"  # change as needed
+if len(BASE_DIR) > 60:
+    print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 
 # 1st synth lc 
 synth_data = f"{BASE_DIR}/{idx}/data{idx}.dat"
@@ -49,37 +58,68 @@ else:
     log10_mej_dyn = np.log10(mej_dyn)
     log10_mej_wind = wind_ej(M1=mass_1, M2=mass_2, Mtov=np.max(M_eos), R16=R_16) + np.log10(0.3) # assume 30% of disk mass goes into wind
 
-    model_param = {
-                        "KNphi": np.random.uniform(15,75),
-                        "log10_mej_dyn": log10_mej_dyn,
-                        "log10_mej_wind": log10_mej_wind,
-                        "KNtheta": np.random.uniform(0, 90),
-                        "luminosity_distance": np.random.uniform(10,200),
-                        "timeshift": np.random.uniform(-0.5,0)
-                        }
-    # save model param to csv for reference
-    param_df = pd.DataFrame([{"mass_1": mass_1, "mass_2": mass_2}, model_param])
-    param_df.to_csv(f"{BASE_DIR}/{idx}/true{idx}.csv", index=False)   
+    # sep between the 2 sampling methods
+    if sample_method == 1:
+        model_param = {
+                            "KNphi": np.random.uniform(15,75),
+                            "log10_mej_dyn": log10_mej_dyn,
+                            "log10_mej_wind": log10_mej_wind,
+                            "KNtheta": np.random.uniform(0, 90),
+                            "luminosity_distance": np.random.uniform(10,200),
+                            "timeshift": np.random.uniform(-1.,0)
+                            }
+        # save model param to csv for reference
+        param_df = pd.DataFrame([{"mass_1": mass_1, "mass_2": mass_2}, model_param])
+        param_df.to_csv(f"{BASE_DIR}/{idx}/true{idx}.csv", index=False)   
 
-    # generate sample times
-    sample_times = np.arange(0.1, 10, 0.5) # 10 days, 2 per day cadence
-    for i in range(len(sample_times)):
-        sample_times[i]+= np.random.uniform(-0.2, 0.2)  # add some jitter to sample times
-    filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z'] # filters used for "observation"
-    print("Generating synthetic lightcurve...")
-    data_nmma_svd, trig = generate_synth_lc(
-            model_name='Bu2019lm',
-            model_param=model_param,
-            filters_band=filters_band,
-            sample_times=sample_times,
-            noise_level=0.2,
-            min_error_level=0.03,
-            max_error_level=0.4,
-            trigger_iso='2025-01-01T00:00:00',
-            save=True,
-            filename=f"{BASE_DIR}/{idx}/data{idx}.dat",
-            detection_limit_dict={'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
-    )
+        # generate sample times
+        sample_times = np.arange(0., 15, 0.5) # 10 days, 2 per day cadence
+        #for i in range(len(sample_times)):
+        #    sample_times[i]+= np.random.uniform(-0.2, 0.2)  # add some jitter to sample times
+        filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z'] # filters used for "observation"
+        print("Generating synthetic lightcurve...")
+        data_nmma_svd, trig = generate_synth_lc(
+                model_name='Bu2019lm',
+                model_param=model_param,
+                filters_band=filters_band,
+                sample_times=sample_times,
+                noise_level=0.,
+                min_error_level=0.03,
+                max_error_level=0.4,
+                trigger_iso='2025-01-01T00:00:00',
+                save=True,
+                filename=f"{BASE_DIR}/{idx}/data{idx}.dat",
+                detection_limit_dict={'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
+        )
+    else:
+        model_param = {
+                            "KNphi": np.random.uniform(15,75),
+                            "log10_mej_dyn": log10_mej_dyn,
+                            "log10_mej_wind": log10_mej_wind,
+                            "KNtheta": np.random.uniform(0, 90),
+                            "luminosity_distance": np.random.uniform(10,200),
+                            "timeshift": np.random.uniform(0, 1.)
+                            }
+        # save model param to csv for reference
+        param_df = pd.DataFrame([{"mass_1": mass_1, "mass_2": mass_2}, model_param])
+        param_df.to_csv(f"{BASE_DIR}/{idx}/true{idx}.csv", index=False)   
+        filters_band = ['ps1__g', 'ps1__r', 'ps1__i', 'ps1__z'] # filters used for "observation"
+        print("Generating synthetic lightcurve...")
+        data_nmma_svd, trig = generate_synth_lc_v2(
+                model_name='Bu2019lm',
+                model_param=model_param,
+                filters_band=filters_band,
+                noise_level=0.,
+                min_error_level=0.03,
+                max_error_level=0.4,
+                trigger_iso='2025-01-01T00:00:00',
+                pts_per_day=2,
+                obs_duration=15,
+                jitter=0,
+                save=True,
+                filename=f"{BASE_DIR}/{idx}/data{idx}.dat",
+                detection_limit_dict={'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
+        )
 
 # 1.5th step: ensure GWsamples.dat exists
 gw_samples_file = f"{BASE_DIR}/GWsamples.dat"
@@ -96,7 +136,7 @@ if not os.path.exists(gw_samples_file):
 
     ############# [mass1,    mass2,   DL] adjust as needed
     params_low =  [1., 1., 0.]
-    params_high = [3.,      3.,     500.]
+    params_high = [np.max(M_eos),      np.max(M_eos),     500.]
 
     # 1) create dummy EOS samples with eos_post from nature paper
     EOS_raw = np.arange(0, Neos)  # the gwem_resampling will add one to this
@@ -139,7 +179,7 @@ cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
         "--svd-path", "/home/stu_jamsin/jamsin/NMMA/svdmodels",
         "--outdir", OUT_DIR,
         "--label", f"{idx}",
-        "--prior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm500.prior",
+        "--prior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm200.prior",
         "--nlive", "2048", 
         "--Ebv-max", "0",
         "--filters", "ps1__g,ps1__r,ps1__i,ps1__z",
@@ -168,11 +208,11 @@ else:
     cmd_resamp = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/gwem-resampling",
         "--outdir", resamp_out,
         "--GWsamples", GW_SAMPLES,
-        "--GWprior", "/home/stu_jamsin/jamsin/NMMA/priors/GWBNS2.prior",
+        "--GWprior", "/home/stu_jamsin/jamsin/NMMA/priors/GWBNS.prior",
         "--EMsamples", posterior_file,
         "--EOSpath", "/home/stu_jamsin/jamsin/NMMA/EOS/15nsat_cse_uniform_R14/macro/",
         "--Neos", "5000",
-        "--EMprior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm_GW_500.prior",
+        "--EMprior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm_GW_200.prior",
         "--nlive", "2048"
     ]
     subprocess.run(cmd_resamp, check=True, cwd=BASE_DIR)

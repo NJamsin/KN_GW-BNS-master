@@ -118,7 +118,7 @@ def ejecta_plot_v4(eos_number, model_name='Bu2019lm', model_param={"luminosity_d
     total_mass = fit_masses +  wind_linear
 
     # Setup SVD model
-    svd_path = '/home/liteul/memoir_code/NMMA/svdmodels'
+    svd_path = SVD_PATH
     tmin_svd, tmax_svd, dt_svd = 0.1, 5.0, 0.1
     sample_times_svd = np.arange(tmin_svd, tmax_svd + dt_svd, dt_svd)
     try:
@@ -1369,3 +1369,122 @@ def compare_mass_sets(set1, set2, tol=1e-1):
                 common_pairs.append(mass1)
                 break
     return np.array(common_pairs)
+
+def format_nmma_data_v2(times, mag, errors, filters, trigger_iso = '2025-01-01T00:00:00'):
+    data_dict = {}
+    # format NMMA : ISOTIME, BAND, MAG, MAG_ERR : 2017-08-18T00:00:00.000 ps1::g 17.41000 0.02000
+    # convert svd time to NMMA time format
+    iso_times = []
+    trigger_dt = pd.to_datetime(trigger_iso)
+    trigger_mjd  = trigger_dt.to_julian_date() - 2400000.5  # time of 1st detection -> use it as a filter to remove points before the trigger if timeshift is negative
+    # convert trigger in MJD
+    print("Trigger ISO:", trigger_iso)
+    trigger_dt = pd.to_datetime(trigger_iso)
+    for t in times:
+        iso_dt = trigger_dt + pd.to_timedelta(t, unit='D')
+        iso_str = iso_dt.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3]
+        iso_times.append(iso_str)
+    print("ISO times sample:", iso_times)
+    # construire le format NMMA
+    data_rows = []
+    for filter in filters:
+        for i, t in enumerate(times):
+            data_rows.append([iso_times[i], filter, mag[filter][i], errors[filter][i]])
+    df = pd.DataFrame(data_rows)
+    return df, trigger_mjd
+
+def generate_synth_lc_v2(model_name='Bu2019lm',
+                    model_param={
+                            "KNphi": 30,
+                            "log10_mej_dyn": -2,
+                            "log10_mej_wind": -1,
+                            "inclination_EM": 0.5,
+                            "luminosity_distance": 40,
+                            "timeshift": 0.0
+                        },
+                    filters_band=['ps1__g', 'ps1__r', 'ps1__i'],
+                    noise_level=0.3,
+                    min_error_level=0.1,
+                    max_error_level=0.6,
+                    trigger_iso='2025-01-01T00:00:00',
+                    pts_per_day=2,
+                    obs_duration=15,
+                    jitter=0.1,
+                    save=False,
+                    filename='synthetic_kilonova_svd.dat',
+                    detection_limit_dict=None):
+    """Generate synthetic lightcurves using SVDLightCurveModel.
+    Parameters
+    ----------
+    model_name : str
+        Name of the SVD model to be used.
+    model_param : dict
+        Dictionary of model parameters.
+    filters_band : list
+        List of filters to be used for the lightcurve generation.
+    sample_times : np.ndarray
+        Array of sample times.
+    noise_level : float
+        Standard deviation of the Gaussian noise to be added.
+    min_error_level : float
+        Minimum error level to be added to the magnitudes.
+    max_error_level : float
+        Maximum error level to be added to the magnitudes.
+    trigger_iso : str
+        ISO formatted trigger time.
+    pts_per_day : int
+        Number of observation points per day.
+    obs_duration : int
+        Duration of the observation in days.
+    jitter : float
+        Maximum jitter to be added to the sample times in days.
+    save : bool
+        If True, save the generated data to a file.
+    filename : str
+        Filename to save the generated data if save is True.
+    detection_limit_dict : dict or None
+        Dictionary specifying detection limits for each filter. If None, no detection limits are applied.
+    
+    Returns
+    -------
+    data_nmma_svd : pd.DataFrame
+        DataFrame containing the synthetic lightcurve data in NMMA format.
+    trigger : float
+        Trigger time in MJD.
+    
+    """
+    ts = model_param["timeshift"]
+    print(f"Generating synthetic lightcurve with timeshift = {ts} days")
+    model_param["timeshift"] = 0.0 # we set timeshift to 0 for the generation and we will apply it later to the sample time array 
+    sample_times = np.arange(ts, obs_duration, 1/pts_per_day)
+    for t in range(len(sample_times)):
+        sample_times[t] += np.random.uniform(-jitter, jitter)
+    svd_path = "/home/stu_jamsin/jamsin/NMMA/svdmodels"
+    try:
+        svd_model = SVDLightCurveModel(
+                model=model_name,
+                sample_times=sample_times,
+                svd_path=svd_path,
+                mag_ncoeff=10,
+                lbol_ncoeff=10,
+                filters=filters_band
+        )
+    except Exception as e:
+        print(f"  - {model_name}: error during SVD model creation ->", e)
+    _, mag_svd = svd_model.generate_lightcurve(sample_times, model_param)
+    mag_svd_noisy = add_noise(mag_svd, noise_level=noise_level)
+    mag_svd_errors = add_errors(mag_svd_noisy, max_error_level=max_error_level, min_error_level=min_error_level)
+    mag_svd_noisy_app = abs_to_app_mag(mag_svd_noisy, distance_mpc=model_param["luminosity_distance"])
+    model_param["timeshift"] = ts # we put back the original timeshift value for the formatting function
+    print("Timeshift:", model_param["timeshift"])
+    data_nmma_svd, trigger = format_nmma_data_v2(sample_times, mag_svd_noisy_app, mag_svd_errors, filters_band, trigger_iso=trigger_iso)
+    if detection_limit_dict is not None:
+        # apply detection limits
+        for filter, limit in detection_limit_dict.items():
+            filter_mask = data_nmma_svd[1] == filter # all rows with this filter
+            limit_mask = data_nmma_svd[2] > limit # all rows with mag > limit (mag is an inverted scale)
+            to_remove = filter_mask & limit_mask # combine masks
+            data_nmma_svd = data_nmma_svd[~to_remove]
+    if save:
+        data_nmma_svd.to_csv(filename, sep=' ', index=False, header=False)
+    return data_nmma_svd, trigger
