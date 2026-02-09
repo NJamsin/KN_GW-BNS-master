@@ -9,7 +9,7 @@ import corner
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1])
 #idx = 1  # example injection index
 
-BASE_DIR = f"/home/stu_jamsin/jamsin/grid_test/{idx}"  # change as needed
+BASE_DIR = f"/home/stu_jamsin/jamsin/grid_test2/{idx}"  # change as needed
 if len(BASE_DIR) > 60:
     print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 if not os.path.exists(BASE_DIR):
@@ -28,8 +28,8 @@ times = data[0].unique()
 cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
         "--model", "Bu2019lm",
         "--svd-path", "/home/stu_jamsin/jamsin/NMMA/svdmodels",
-        "--outdir", f"{BASE_DIR}/full",
-        "--label", f"full{idx}",
+        "--outdir", f"{BASE_DIR}/minus0",
+        "--label", f"minus0_{idx}",
         "--prior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm200.prior",
         "--nlive", "128", 
         "--Ebv-max", "0",

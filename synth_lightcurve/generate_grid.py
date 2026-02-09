@@ -9,13 +9,13 @@ from utils import generate_synth_lc_v2
 from utils import wind_ej, dyn_ej
 from scipy.stats import qmc
 
-BASE_DIR = "/home/stu_jamsin/jamsin/grid_test"  # change as needed
+BASE_DIR = "/home/stu_jamsin/jamsin/grid_test2"  # change as needed
 if len(BASE_DIR) > 60:
     print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 if not os.path.exists(BASE_DIR):
     os.makedirs(BASE_DIR)
 
-num_lc = 20 # please put a multiple of 5 here for the plot
+num_lc = 10 # please put a multiple of 5 here for the plot
 
 # define the range lower/upper bounds for each parameter
 param_bounds = {
@@ -61,7 +61,7 @@ for i in range(num_lc):
             min_error_level=0.03,
             max_error_level=0.4,
             trigger_iso='2025-01-01T00:00:00',
-            pts_per_day=2,
+            pts_per_day=4,
             obs_duration=15,
             jitter=0.,
             save=True,
