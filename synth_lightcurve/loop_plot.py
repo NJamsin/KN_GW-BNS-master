@@ -8,6 +8,8 @@ import matplotlib.colors as mcolors
 # DO NOT FORGET TO UPDATE THE DIFF VAR
 ######################################
 
+# !!!!! peut être prbl avec le ts pour les pp plots si la detection limit crée d'office un ts > 0, à vérifier et à corriger si besoin
+
 DIR = f"/home/stu_jamsin/jamsin/grid_4_perday"  # change as needed
 # control shape of plot
 col_num = 5
@@ -31,6 +33,10 @@ norm = mcolors.Normalize(0, len(ts_range)-1)
 fig, axs = plt.subplots(ncols=2*col_num, nrows=row_num, figsize=(15*col_num,5*row_num), gridspec_kw={'width_ratios': [0.333, 0.666]*col_num})
 for idx in range(lc_num):
     BASE_DIR = f"{DIR}/{idx}"
+    data = pd.read_csv(f"{BASE_DIR}/data{idx}.dat", delim_whitespace=True, header=None)
+    data = data.sort_values(by=0, ascending=True).reset_index(drop=True)
+    # stock the time list 
+    times2 = data[0].unique()
     # attribute the left column to timeshift evolution and the right column to lightcurve and set up correctly the axes
     ax = axs[idx // col_num, (idx % col_num) * 2]
     axx = axs[idx // col_num, (idx % col_num) * 2 + 1]
@@ -55,8 +61,11 @@ for idx in range(lc_num):
     axx.invert_yaxis()
     axx.set_xlabel('Time [days]')
     axx.set_ylabel('Magnitude')
-    for i, ts in enumerate(ts_range):
+    for i in range(8):
         samples = pd.read_csv(f"{BASE_DIR}/minus{i}/minus{i}_{idx}_posterior_samples.dat", delim_whitespace=True)
+        # compute the timeshift
+        ts = pd.to_datetime(times2[i]) - pd.to_datetime('2025-01-01T00:00:00.000') # keep the same trigger time as for the original data to see how the timeshift evolves
+        ts = -1 *ts.total_seconds() / (3600*24) # convert to days
         lower = samples['timeshift'].quantile(0.16)
         upper = samples['timeshift'].quantile(0.84)
         median = samples['timeshift'].median()
