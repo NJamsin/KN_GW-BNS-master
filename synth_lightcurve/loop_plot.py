@@ -4,19 +4,23 @@ import matplotlib.pyplot as plt
 import os
 import matplotlib.colors as mcolors
 
-DIR = f"/home/stu_jamsin/jamsin/grid_test2"  # change as needed
-# control shape of plot
-col_num = 1 
-row_num = 10 
+######################################
+# DO NOT FORGET TO UPDATE THE DIFF VAR
+######################################
 
-lc_num = 10 # change as needed (up to the number of injections)
+DIR = f"/home/stu_jamsin/jamsin/grid_4_perday"  # change as needed
+# control shape of plot
+col_num = 5
+row_num = 5 
+
+lc_num = 25 # change as needed (up to the number of injections)
 if lc_num > col_num * row_num:
     print(f"Warning: lc_num ({lc_num}) is greater than the number of subplots ({col_num * row_num}). Consider increasing col_num and/or row_num to accommodate all lightcurves in the plot.")
 if lc_num < col_num * row_num:
     print(f"Note: lc_num ({lc_num}) is less than the number of subplots ({col_num * row_num}). Some subplots will be empty. Consider adjusting col_num and/or row_num to better fit the number of lightcurves.")
 
-ts_max = -1
-loop_size = 4
+ts_max = -2
+loop_size = 8
 ts_range = np.arange(ts_max, 0, -ts_max/loop_size)
 ts_range = list(ts_range) 
 ts_range.append(0) # add the original data with no timeshift 
@@ -45,21 +49,19 @@ for idx in range(lc_num):
         times = pd.to_datetime(band_df[0].values)
         axx.errorbar(times, band_df[2], yerr=band_df[3], fmt='o', label=band, ls='-')
     txt = f"$\\phi$: {model_param['KNphi']:.1f}\n$log_{{10}} M_{{dyn}}$: {model_param['log10_mej_dyn']:.2f}\n$log_{{10}} M_{{wind}}$: {model_param['log10_mej_wind']:.2f}\n$\\theta$: {model_param['KNtheta']:.1f}\n$D_L$: {model_param['luminosity_distance']:.1f} Mpc"
-    axx.text(0.65, 0.99, txt, transform=axx.transAxes, fontsize=12, verticalalignment='top')
+    axx.text(0.7, 0.99, txt, transform=axx.transAxes, fontsize=12, verticalalignment='top')
+    axx.text(0.001, 0.99, f"LC {idx}", transform=axx.transAxes, fontsize=20, verticalalignment='top')
     axx.legend()
     axx.invert_yaxis()
     axx.set_xlabel('Time [days]')
     axx.set_ylabel('Magnitude')
     for i, ts in enumerate(ts_range):
-        if i==0:
-            samples = pd.read_csv(f"{BASE_DIR}/minus{i}/full{idx}_posterior_samples.dat", delim_whitespace=True)
-        else:
-            samples = pd.read_csv(f"{BASE_DIR}/minus{i}/minus{i}_{idx}_posterior_samples.dat", delim_whitespace=True)
+        samples = pd.read_csv(f"{BASE_DIR}/minus{i}/minus{i}_{idx}_posterior_samples.dat", delim_whitespace=True)
         lower = samples['timeshift'].quantile(0.16)
         upper = samples['timeshift'].quantile(0.84)
         median = samples['timeshift'].median()
         ax.errorbar(ts, median, yerr=[[median - lower], [upper - median]], fmt='o', color=cmap(norm(i)), label=f'true ts: {ts} days')
-    ax.plot([-1.25, 0], [-1.25, 0], ls='--', color='red', label='perfect recovery')
+    ax.plot([ts_max-0.25, 0], [ts_max-0.25, 0], ls='--', color='red', label='perfect recovery')
     ax.set_xlabel('Timeshift [days]')
     ax.set_ylabel('Inferred timeshift [days]')
 OUT_DIR = f"{DIR}/plots"
@@ -72,6 +74,8 @@ param_range = [(10,200),(15,75),(0,90),(-3,-1),(-3,-0.5)] # change as needed bas
 
 for ii, param_name, param_label in zip(range(len(param_range)), ['luminosity_distance', 'KNphi', 'KNtheta', 'log10_mej_dyn', 'log10_mej_wind'], ['D_L [Mpc]', '$\\phi$ [deg]', '$\\theta$ [deg]', '$log_{10} M_{dyn}$ [$M_\\odot$]', '$log_{10} M_{wind}$ [$M_\\odot$]']):
     fig, axs = plt.subplots(ncols=2*col_num, nrows=row_num, figsize=(15*col_num,5*row_num), gridspec_kw={'width_ratios': [0.333, 0.666]*col_num})
+    # add fig, ax to do pp plots
+    figg, axis = plt.subplots(figsize=(10,10))
     for idx in range(lc_num):
         BASE_DIR = f"{DIR}/{idx}"
         # attribute the left column to timeshift evolution and the right column to lightcurve and set up correctly the axes
@@ -92,25 +96,30 @@ for ii, param_name, param_label in zip(range(len(param_range)), ['luminosity_dis
             times = pd.to_datetime(band_df[0].values)
             axx.errorbar(times, band_df[2], yerr=band_df[3], fmt='o', label=band, ls='-')
         txt = f"$\\phi$: {model_param['KNphi']:.1f}\n$log_{{10}} M_{{dyn}}$: {model_param['log10_mej_dyn']:.2f}\n$log_{{10}} M_{{wind}}$: {model_param['log10_mej_wind']:.2f}\n$\\theta$: {model_param['KNtheta']:.1f}\n$D_L$: {model_param['luminosity_distance']:.1f} Mpc"
-        axx.text(0.65, 0.99, txt, transform=axx.transAxes, fontsize=12, verticalalignment='top')
+        axx.text(0.7, 0.99, txt, transform=axx.transAxes, fontsize=12, verticalalignment='top')
+        axx.text(0.001, 0.99, f"LC {idx}", transform=axx.transAxes, fontsize=20, verticalalignment='top')
         axx.legend()
         axx.invert_yaxis()
         axx.set_xlabel('Time [days]')
         axx.set_ylabel('Magnitude')
         for i, ts in enumerate(ts_range):
-            if i==0:
-                samples = pd.read_csv(f"{BASE_DIR}/minus{i}/full{idx}_posterior_samples.dat", delim_whitespace=True)
-            else:
-                samples = pd.read_csv(f"{BASE_DIR}/minus{i}/minus{i}_{idx}_posterior_samples.dat", delim_whitespace=True)
+            samples = pd.read_csv(f"{BASE_DIR}/minus{i}/minus{i}_{idx}_posterior_samples.dat", delim_whitespace=True)
             truth = pd.read_csv(f"{BASE_DIR}/true{idx}.csv")
             lower = samples[param_name].quantile(0.16)
             upper = samples[param_name].quantile(0.84)
             median = samples[param_name].median()
-            ax.errorbar(truth[param_name].values[0], median, yerr=[[median - lower], [upper - median]], fmt='o', color=cmap(norm(i)), label=f'true ts: {ts} days')
+            ax.errorbar(truth[param_name].values[0], median, yerr=[[median - lower], [upper - median]], fmt='o', color=cmap(norm(i)))
+            axis.errorbar(truth[param_name].values[0], median, yerr=[[median - lower], [upper - median]], fmt='o', color=cmap(norm(i)))
         ax.plot(param_range[ii], param_range[ii], ls='--', color='red', label='perfect recovery')
         ax.set_xlabel(param_label)
         ax.set_ylabel(f'Inferred {param_label}')
+    axis.plot(param_range[ii], param_range[ii], ls='--', color='red', label='perfect recovery')
+    axis.set_xlabel(f'Injected {param_label}')
+    axis.set_ylabel(f'Inferred {param_label}')
+    axis.set_title(f'Injection-recovery plot for {param_label}')
     OUT_DIR = f"{DIR}/plots"
     os.makedirs(OUT_DIR, exist_ok=True)
-    plt.tight_layout()
-    plt.savefig(f"{OUT_DIR}/{param_name}_evolution.png")
+    fig.tight_layout()
+    fig.savefig(f"{OUT_DIR}/{param_name}_evolution.png")
+    figg.tight_layout()
+    figg.savefig(f"{OUT_DIR}/{param_name}_pp.png")
