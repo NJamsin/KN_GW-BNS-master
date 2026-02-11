@@ -16832,7 +16832,10 @@
     "Ebv"
   ],
   "constraint_parameter_keys": [],
-  "sampling_time": 930.504862,
+  "sampling_time": {
+    "__timedelta__": true,
+    "__total_seconds__": 930.504862
+  },
   "sampler_kwargs": {
     "importance_nested_sampling": false,
     "resume": true,

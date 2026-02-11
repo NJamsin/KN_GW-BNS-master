@@ -29,3 +29,75 @@ ln_evidence: -63.615 +/-  0.177
 ln_bayes_factor: -63.615 +/-  0.177
 
 20:27 INFO    : Writing samples file to /home/stu_jamsin/jamsin/grid_4_perday/3/minus8/minus8_3_posterior_samples.dat
+16:56 INFO    : Running for label 'minus8_3', output will be saved to '/home/stu_jamsin/jamsin/grid_4_perday/3/minus8'
+16:56 INFO    : Analysis priors:
+16:56 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+16:56 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+16:56 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Theta$', unit=None, boundary=None)
+16:56 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+16:56 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+16:56 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+16:56 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+16:56 INFO    : Ebv=0.0
+16:56 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+16:56 INFO    : Analysis likelihood noise evidence: 0.0
+16:56 INFO    : Single likelihood evaluation took 9.684e-02 s
+16:56 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+16:56 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+16:56 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+16:56 WARNING : Using cached result
+16:56 INFO    : Summary of results:
+nsamples: 1298
+ln_noise_evidence:  0.000
+ln_evidence: -63.615 +/-  0.177
+ln_bayes_factor: -63.615 +/-  0.177
+
+16:56 INFO    : Writing samples file to /home/stu_jamsin/jamsin/grid_4_perday/3/minus8/minus8_3_posterior_samples.dat
+17:27 INFO    : Running for label 'minus8_3', output will be saved to '/home/stu_jamsin/jamsin/grid_4_perday/3/minus8'
+17:27 INFO    : Analysis priors:
+17:27 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+17:27 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+17:27 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Theta$', unit=None, boundary=None)
+17:27 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+17:27 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+17:27 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:27 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:27 INFO    : Ebv=0.0
+17:27 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+17:27 INFO    : Analysis likelihood noise evidence: 0.0
+17:27 INFO    : Single likelihood evaluation took 7.208e-02 s
+17:27 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+17:27 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+17:27 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+17:27 WARNING : Using cached result
+17:27 INFO    : Summary of results:
+nsamples: 1298
+ln_noise_evidence:  0.000
+ln_evidence: -63.615 +/-  0.177
+ln_bayes_factor: -63.615 +/-  0.177
+
+17:27 INFO    : Writing samples file to /home/stu_jamsin/jamsin/grid_4_perday/3/minus8/minus8_3_posterior_samples.dat
+17:42 INFO    : Running for label 'minus8_3', output will be saved to '/home/stu_jamsin/jamsin/grid_4_perday/3/minus8'
+17:42 INFO    : Analysis priors:
+17:42 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+17:42 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+17:42 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Theta$', unit=None, boundary=None)
+17:42 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+17:42 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+17:42 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:42 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:42 INFO    : Ebv=0.0
+17:42 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+17:42 INFO    : Analysis likelihood noise evidence: 0.0
+17:43 INFO    : Single likelihood evaluation took 5.991e-02 s
+17:43 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+17:43 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+17:43 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+17:43 WARNING : Using cached result
+17:43 INFO    : Summary of results:
+nsamples: 1298
+ln_noise_evidence:  0.000
+ln_evidence: -63.615 +/-  0.177
+ln_bayes_factor: -63.615 +/-  0.177
+
+17:43 INFO    : Writing samples file to /home/stu_jamsin/jamsin/grid_4_perday/3/minus8/minus8_3_posterior_samples.dat
