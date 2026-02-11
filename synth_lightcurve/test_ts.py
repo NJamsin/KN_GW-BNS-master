@@ -7,9 +7,11 @@ import matplotlib.pyplot as plt
 import corner
 
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1])
-#idx = 1  # example injection index
+#idx = 12  # example injection index
+filters = "ps1__g,ps1__r,ps1__i,ps1__z" # change as needed (keep the same as for the original analysis)
+ADD_UL = True # whether to add UL instead of the removed points
 
-BASE_DIR = f"/home/stu_jamsin/jamsin/grid_test2/{idx}"  # change as needed
+BASE_DIR = f"/home/stu_jamsin/jamsin/grid_lc12_2/{idx}"  # change as needed
 if len(BASE_DIR) > 60:
     print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 if not os.path.exists(BASE_DIR):
@@ -31,10 +33,9 @@ cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
         "--outdir", f"{BASE_DIR}/minus0",
         "--label", f"minus0_{idx}",
         "--prior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm200.prior",
-        "--nlive", "128", 
+        "--nlive", "256", 
         "--Ebv-max", "0",
-        "--filters", "ps1__g,ps1__r,ps1__i,ps1__z",
-        "--remove-nondetections",
+        "--filters", filters,
         "--data", f"{BASE_DIR}/data{idx}.dat",
         "--error-budget", "0.5",
         "--plot", 
@@ -44,11 +45,26 @@ cmd_lc = ["/home/stu_jamsin/.conda/envs/nmma_env/bin/lightcurve-analysis",
 subprocess.run(cmd_lc, check=True, cwd=BASE_DIR) 
 
 # launch lc analysis after repeatedly taking out the first point to see how the timeshift evolves and how it affects the parameter estimation
-for j in range(4):
+for j in range(8): # change the range as needed (up to the number of time points - 1) /!\ update prior bounds if needed
+    if ADD_UL:
+        filt_list = [data[1][i] for i in range(len(data)) if data[0][i] == times[j]]
+        mag_per_filter = {band: data[data[1]==band][2].values for band in data[1].unique()}
+        temp_df = pd.DataFrame()
+        for f in filt_list:
+            dm = mag_per_filter[f][0] - mag_per_filter[f][1]
+            if dm > 0:
+                ul = mag_per_filter[f][0] - 0.5 * dm
+            else:
+                ul = mag_per_filter[f][0] + 0.5 * dm
+            UL = pd.DataFrame([[times[j], f, ul, np.inf]], columns=[0,1,2,3])
+            temp_df = pd.concat([temp_df, UL], ignore_index=True)
     # drop the first time point
     dupl = [True if data[0][i] == times[j] else False for i in range(0, len(data))]
     dupl
     data = data[~pd.Series(dupl)].reset_index(drop=True) # modify the original data for the next iteration  
+    if ADD_UL:
+        # add an UL
+        data = pd.concat([data, temp_df], ignore_index=True)
     data.to_csv(f"{BASE_DIR}/data_minus{j+1}.dat", sep=' ', index=False, header=False)
     # compute the timeshift
     ts = pd.to_datetime(data[0][0]) - pd.to_datetime('2025-01-01T00:00:00.000') # keep the same trigger time as for the original data to see how the timeshift evolves
@@ -60,10 +76,9 @@ for j in range(4):
         "--outdir", f"{BASE_DIR}/minus{j+1}",
         "--label", f"minus{j+1}_{idx}",
         "--prior", "/home/stu_jamsin/jamsin/NMMA/priors/Bu2019lm200.prior",
-        "--nlive", "128", 
+        "--nlive", "256", 
         "--Ebv-max", "0",
-        "--filters", "ps1__g,ps1__r,ps1__i,ps1__z",
-        "--remove-nondetections",
+        "--filters", filters,
         "--data", f"{BASE_DIR}/data_minus{j+1}.dat",
         "--error-budget", "0.5",
         "--plot", 

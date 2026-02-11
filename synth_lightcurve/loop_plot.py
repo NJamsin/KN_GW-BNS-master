@@ -8,8 +8,6 @@ import matplotlib.colors as mcolors
 # DO NOT FORGET TO UPDATE THE DIFF VAR
 ######################################
 
-# !!!!! peut être prbl avec le ts pour les pp plots si la detection limit crée d'office un ts > 0, à vérifier et à corriger si besoin
-
 DIR = f"/home/stu_jamsin/jamsin/grid_4_perday"  # change as needed
 # control shape of plot
 col_num = 5
@@ -21,15 +19,9 @@ if lc_num > col_num * row_num:
 if lc_num < col_num * row_num:
     print(f"Note: lc_num ({lc_num}) is less than the number of subplots ({col_num * row_num}). Some subplots will be empty. Consider adjusting col_num and/or row_num to better fit the number of lightcurves.")
 
-ts_max = -2
-loop_size = 8
-ts_range = np.arange(ts_max, 0, -ts_max/loop_size)
-ts_range = list(ts_range) 
-ts_range.append(0) # add the original data with no timeshift 
-ts_range = ts_range[::-1]  
-print(f"Timeshift values used for the analysis: {ts_range} days")
 cmap = plt.get_cmap('viridis')
-norm = mcolors.Normalize(0, len(ts_range)-1)
+norm = mcolors.Normalize(0, 7) # from 0 to the max number of points removed -1
+ts_max = -2
 fig, axs = plt.subplots(ncols=2*col_num, nrows=row_num, figsize=(15*col_num,5*row_num), gridspec_kw={'width_ratios': [0.333, 0.666]*col_num})
 for idx in range(lc_num):
     BASE_DIR = f"{DIR}/{idx}"
@@ -111,7 +103,7 @@ for ii, param_name, param_label in zip(range(len(param_range)), ['luminosity_dis
         axx.invert_yaxis()
         axx.set_xlabel('Time [days]')
         axx.set_ylabel('Magnitude')
-        for i, ts in enumerate(ts_range):
+        for i in range(8):
             samples = pd.read_csv(f"{BASE_DIR}/minus{i}/minus{i}_{idx}_posterior_samples.dat", delim_whitespace=True)
             truth = pd.read_csv(f"{BASE_DIR}/true{idx}.csv")
             lower = samples[param_name].quantile(0.16)
