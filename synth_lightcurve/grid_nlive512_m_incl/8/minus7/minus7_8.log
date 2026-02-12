@@ -1,0 +1,34 @@
+00:23 INFO    : Running for label 'minus7_8', output will be saved to '/home/stu_jamsin/jamsin/test_v2/8/minus7'
+00:23 INFO    : Analysis priors:
+00:23 INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+00:23 INFO    : KNphi=Uniform(minimum=15.0, maximum=75.0, name='KNphi', latex_label='$\\Phi$', unit=None, boundary=None)
+00:23 INFO    : KNtheta=Uniform(minimum=0.0, maximum=90.0, name='KNtheta', latex_label='$\\Theta$', unit=None, boundary=None)
+00:23 INFO    : inclination_EM=Sine(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+00:23 INFO    : timeshift=Uniform(minimum=-2.0, maximum=0.0, name='timeshift', latex_label='$t_0$', unit=None, boundary=None)
+00:23 INFO    : log10_mej_dyn=Uniform(minimum=-3.0, maximum=-1.0, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+00:23 INFO    : log10_mej_wind=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+00:23 INFO    : Ebv=0.0
+00:23 INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+00:23 INFO    : Analysis likelihood noise evidence: 0.0
+00:24 INFO    : Single likelihood evaluation took 1.569e-01 s
+00:24 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+00:24 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+00:24 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 512, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0xb9f77cddc90>>}
+00:24 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+00:24 INFO    : Using temporary file /tmp/tmpa1sfd9nz
+00:29 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+00:34 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+00:41 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+00:48 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+00:56 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+01:03 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+01:03 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+01:03 INFO    : Overwriting /home/stu_jamsin/jamsin/test_v2/8/minus7/pm_minus7_8/ with /tmp/tmpa1sfd9nz/
+01:03 INFO    : Sampling time: 0:39:03.749303
+01:03 INFO    : Summary of results:
+nsamples: 2404
+ln_noise_evidence:  0.000
+ln_evidence: -57.689 +/-  0.128
+ln_bayes_factor: -57.689 +/-  0.128
+
+01:03 INFO    : Writing samples file to /home/stu_jamsin/jamsin/test_v2/8/minus7/minus7_8_posterior_samples.dat
