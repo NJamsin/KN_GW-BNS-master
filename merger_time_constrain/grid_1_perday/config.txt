@@ -1,0 +1,9 @@
+nlive=512
+
+filters=ps1__g,ps1__r,ps1__z,ps1__i
+
+no noise, no jitter
+
+1 detection per day in all filters
+
+detection limit: {'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
