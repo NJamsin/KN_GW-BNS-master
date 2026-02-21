@@ -1347,7 +1347,7 @@ def ejecta_to_mass(ejecta_dic, dyn_range=(-3, np.log10(5e-3)), wind_range=(np.lo
         return np.array(dyn_masses_in_range), np.array(wind_masses_in_range)
 
 # check consistency between dynamical and wind ejecta mass sets
-def compare_mass_sets(set1, set2, tol=1e-1):
+def compare_mass_sets(set1, set2, tol=1e-2):
     '''Compare two sets of mass pairs and find common pairs within a tolerance.
     Parameters
     ----------
@@ -1389,7 +1389,7 @@ def add_noise_error(mag, noise_level=0.3, max_error_level=0.6):
         errors[filter] = np.array(err)
     return noisy, errors
 
-def format_nmma_data_v2(times, mag, errors, filters, trigger_iso = '2025-01-01T00:00:00'):
+def format_nmma_data_v2(times, mag, errors, filters, trigger_iso = '2025-01-01T00:00:00', timeshift=0):
     data_dict = {}
     # format NMMA : ISOTIME, BAND, MAG, MAG_ERR : 2017-08-18T00:00:00.000 ps1::g 17.41000 0.02000
     # convert svd time to NMMA time format
@@ -1401,6 +1401,9 @@ def format_nmma_data_v2(times, mag, errors, filters, trigger_iso = '2025-01-01T0
     trigger_dt = pd.to_datetime(trigger_iso)
     for t in times:
         iso_dt = trigger_dt + pd.to_timedelta(t, unit='D')
+        if iso_dt.to_julian_date() - 2400000.5 < trigger_mjd - timeshift:
+            iso_times.append('NaN') # if the time is before the trigger, we put NaN to be able to remove it later
+            continue
         iso_str = iso_dt.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3]
         iso_times.append(iso_str)
     print("ISO times sample:", iso_times)
@@ -1408,6 +1411,8 @@ def format_nmma_data_v2(times, mag, errors, filters, trigger_iso = '2025-01-01T0
     data_rows = []
     for filter in filters:
         for i, t in enumerate(times):
+            if iso_times[i] == 'NaN':
+                continue
             data_rows.append([iso_times[i], filter, mag[filter][i], errors[filter][i]])
     df = pd.DataFrame(data_rows)
     return df, trigger_mjd
@@ -1472,8 +1477,10 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
     ts = -1 * model_param["timeshift"]
     print(f"Generating synthetic lightcurve with timeshift = {ts} days")
     model_param["timeshift"] = 0.0 # we set timeshift to 0 for the generation and we will apply it later to the sample time array 
-    sample_times = np.arange(ts, obs_duration, 1/pts_per_day)
+    sample_times = np.arange(0, obs_duration, 1/pts_per_day)
     for t in range(len(sample_times)):
+        if t == 0:
+            continue # we don't want to add jitter to the first point to be sure that we have a point at the trigger time 
         sample_times[t] += np.random.uniform(-jitter, jitter)
     svd_path = "/home/stu_jamsin/jamsin/NMMA/svdmodels"
     try:
@@ -1491,9 +1498,8 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
     mag_svd_noisy, mag_svd_errors = add_noise_error(mag_svd, noise_level=noise_level, max_error_level=max_error_level)
     mag_svd_noisy_app = abs_to_app_mag(mag_svd_noisy, distance_mpc=model_param["luminosity_distance"])
     model_param["timeshift"] = -1 * ts # we put back the original timeshift value for the formatting function
-    print("Timeshift:", model_param["timeshift"])
-    print(filters_band, '\n', mag_svd_noisy_app.keys(), '\n', mag_svd_errors.keys())
-    data_nmma_svd, trigger = format_nmma_data_v2(sample_times, mag_svd_noisy_app, mag_svd_errors, filters_band, trigger_iso=trigger_iso)
+    print("Filters:", filters_band)
+    data_nmma_svd, trigger = format_nmma_data_v2(sample_times, mag_svd_noisy_app, mag_svd_errors, filters_band, trigger_iso=trigger_iso, timeshift=ts)
     if detection_limit_dict is not None:
         # apply detection limits
         for filter, limit in detection_limit_dict.items():
