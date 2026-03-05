@@ -1,9 +1,15 @@
 nlive=512
 
-filters=ps1__g,ps1__r,ps1__z,ps1__i
+sampler=MultiNest
 
-no noise, no jitter
+model='Bu2019lm'
 
-3 detection per day in all filters
+filters=[ps1__g,ps1__r,ps1__z,ps1__i]
+
+noise=0 # Value corresponds to the standard deviation of the Gaussian noise to be added to the model magnitude (noise=0.2 will add a np.random.normal(0, 0.2) to each model point)
+
+jitter=0 # Value corresponds to the maximum jitter (time fluctuation) to be added to the sample times in days (jitter=0.1 will add a np.random.uniform(-0.1, 0.1) to each time stamp in sample times)
+
+cadence=3 # number of detection per day 
 
 detection limit: {'ps1__g':26, 'ps1__r':26, 'ps1__i':26, 'ps1__z':26}
