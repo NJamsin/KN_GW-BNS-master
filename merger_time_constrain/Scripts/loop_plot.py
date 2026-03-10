@@ -7,9 +7,8 @@ import matplotlib.colors as mcolors
 ######################################
 # DO NOT FORGET TO UPDATE THE DIFF VAR
 ######################################
-gpaenvi = False
 
-DIR = f"/home/stu_jamsin/jamsin/grid_Ka_4perday_Buinfer"  # change as needed
+DIR = f"/home/stu_jamsin/jamsin/grid_testFiesta"  # change as needed
 # control shape of plot
 col_num = 5
 row_num = 5 
@@ -49,7 +48,7 @@ for idx in range(lc_num):
     param = pd.read_csv(f"{BASE_DIR}/true{idx}.csv")
     if MODEL == 'Bu2019lm':
         model_param = {
-                    "KNphi": param["KNphi"].values[0],
+                    #"KNphi": param["KNphi"].values[0],
                     "log10_mej_dyn": param["log10_mej_dyn"].values[0],
                     "log10_mej_wind": param["log10_mej_wind"].values[0],
                     "inclination_EM": param["inclination_EM"].values[0],
@@ -194,32 +193,3 @@ for ii, param_name, param_label in zip(range(len(param_range)), param_names, par
     fig.savefig(f"{OUT_DIR}/{param_name}_evolution.png")
     figg.tight_layout()
     figg.savefig(f"{OUT_DIR}/{param_name}_pp.png")
-
-# "inverted" loop to to pp plot per ts 
-if gpaenvi:
-    for ii, param_name, param_label in zip(range(len(param_range)), ['luminosity_distance', 'KNphi', 'KNtheta', 'log10_mej_dyn', 'log10_mej_wind'], ['D_L [Mpc]', '$\\phi$ [deg]', '$\\theta$ [deg]', '$log_{10} M_{dyn}$ [$M_\\odot$]', '$log_{10} M_{wind}$ [$M_\\odot$]']):
-        for idx in range(minus_num):
-            figg, axis = plt.subplots(figsize=(10,10))
-            for i in range(lc_num):
-                BASE_DIR = f"{DIR}/{i}" 
-                SAMPLE_PATH = f"{BASE_DIR}/minus{idx}/minus{idx}_{i}_posterior_samples.dat"
-                if not os.path.exists(SAMPLE_PATH):
-                    print(f"Warning: Posterior samples file {SAMPLE_PATH} does not exist. Skipping this point.")
-                    continue
-                samples = pd.read_csv(SAMPLE_PATH, delimiter=' ')
-                if samples is None or samples.empty:
-                    print(f"Warning: Posterior samples for LC {idx} with minus {i} are missing or empty. Skipping this point.")
-                    continue
-                truth = pd.read_csv(f"{BASE_DIR}/true{i}.csv")
-                lower = samples[param_name].quantile(0.16)
-                upper = samples[param_name].quantile(0.84)
-                median = samples[param_name].median()
-                axis.errorbar(truth[param_name].values[0], median, yerr=[[median - lower], [upper - median]], fmt='o', c='blue')
-            axis.plot(param_range[ii], param_range[ii], ls='--', color='red', label='perfect recovery')
-            axis.set_xlabel(f'Injected {param_label}')
-            axis.set_ylabel(f'Inferred {param_label}')
-            axis.set_title(f'Injection-recovery plot for {param_label}')
-            OUT_DIR = f"{DIR}/plots/minus{idx}"
-            os.makedirs(OUT_DIR, exist_ok=True)
-            figg.tight_layout()
-            figg.savefig(f"{OUT_DIR}/{param_name}_pp.png")

@@ -4,14 +4,16 @@ import matplotlib.pyplot as plt
 import os
 import matplotlib.colors as mcolors
 
-DIR = f"/home/stu_jamsin/jamsin/grid_1_perday_noise"  # change as needed
+DIR = f"/home/stu_jamsin/jamsin/grid_LSST_ZTF_aligned"  # change as needed
 # control shape of plot
 col_num = 5
 row_num = 5 
 
 UL = False # if UL are present in the data
 
-minus_num = 5 # max number of removed points + 1 (to include the full data analysis as well)
+minus_num = 4 # max number of removed points + 1 (to include the full data analysis as well)
+
+SEMI_ANALYTIC = False # whether the resampling was done with the semi-analytic method (if False, assumes gwem resampling was used)
 
 lc_num = 25 # change as needed (up to the number of injections)
 if lc_num > col_num * row_num:
@@ -26,6 +28,9 @@ norm = mcolors.Normalize(0, minus_num-1) # from 0 to the max number of points re
 param_range = [(0.75, 2.25),(0,1),(0,4818),(1,2.3),(1,2.3)] # change as needed based on the prior bounds used for the analysis
 
 for ii, param_name, param_label in zip(range(len(param_range)), ['chirp_mass', 'mass_ratio', 'EOS', 'mass_1', 'mass_2'], ['$\mathcal{M}$', '$q$', '$\mathrm{EOS}$', '$m_1$', '$m_2$']):
+    if SEMI_ANALYTIC:
+        if param_name == 'EOS':
+            continue # No sampling on the EOS for the semi-analytic method, so skip the EOS corner plot
     fig, axs = plt.subplots(ncols=2*col_num, nrows=row_num, figsize=(15*col_num,5*row_num), gridspec_kw={'width_ratios': [0.333, 0.666]*col_num})
     # add fig, ax to do pp plots
     figg, axis = plt.subplots(figsize=(10,10))
@@ -35,7 +40,7 @@ for ii, param_name, param_label in zip(range(len(param_range)), ['chirp_mass', '
         ax = axs[idx // col_num, (idx % col_num) * 2]
         axx = axs[idx // col_num, (idx % col_num) * 2 + 1]
 
-        lc = pd.read_csv(f"{BASE_DIR}/data{idx}.dat", delim_whitespace=True, header=None)
+        lc = pd.read_csv(f"{BASE_DIR}/data{idx}.dat", delimiter=' ', header=None)
         param = pd.read_csv(f"{BASE_DIR}/true{idx}.csv")
         model_param = {
                     "KNphi": param["KNphi"].values[0],
@@ -58,12 +63,27 @@ for ii, param_name, param_label in zip(range(len(param_range)), ['chirp_mass', '
         axx.set_xlabel('Time [days]')
         axx.set_ylabel('Magnitude')
         for i in range(minus_num): 
-            samples = pd.read_csv(f"{BASE_DIR}/minus{i}/resamp/posterior_samples.dat", delim_whitespace=True)
+            if SEMI_ANALYTIC:
+                SAMPLE_PATH = f"{BASE_DIR}/minus{i}/recovered_masses{idx}.csv"
+                if not os.path.exists(SAMPLE_PATH):
+                    print(f"Warning: Posterior samples file {SAMPLE_PATH} does not exist. Skipping this point.")
+                    continue
+                samples = pd.read_csv(SAMPLE_PATH, delimiter=',')
+            else:
+                SAMPLE_PATH = f"{BASE_DIR}/minus{i}/resamp/posterior_samples.dat"
+                if not os.path.exists(SAMPLE_PATH):
+                    print(f"Warning: Posterior samples file {SAMPLE_PATH} does not exist. Skipping this point.")
+                    continue
+                samples = pd.read_csv(SAMPLE_PATH, delimiter=' ')
+            if samples is None or samples.empty:
+                print(f"Warning: Posterior samples for LC {idx} with minus {i} are missing or empty. Skipping this point.")
+                continue
             truth = pd.read_csv(f"{BASE_DIR}/true{idx}.csv")
             m1 = truth['mass_1'].values[0]
             m2 = truth['mass_2'].values[0]
-            samples['mass_1'] = samples['chirp_mass'] * (samples['mass_ratio']**(-3/5)) * ((1 + samples['mass_ratio'])**(1/5))
-            samples['mass_2'] = samples['chirp_mass'] * (samples['mass_ratio']**(2/5)) * ((1 + samples['mass_ratio'])**(1/5))
+            if not SEMI_ANALYTIC:
+                samples['mass_1'] = samples['chirp_mass'] * (samples['mass_ratio']**(-3/5)) * ((1 + samples['mass_ratio'])**(1/5))
+                samples['mass_2'] = samples['chirp_mass'] * (samples['mass_ratio']**(2/5)) * ((1 + samples['mass_ratio'])**(1/5))
             true_q = m2 / m1
             true_chirp = (m1 * m2)**(3/5) / (m1 + m2)**(1/5)
             truths_list = [true_chirp, true_q, 4818, m1, m2] # adjust as needed for the true EOS index

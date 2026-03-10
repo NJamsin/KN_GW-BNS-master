@@ -6,16 +6,16 @@ import matplotlib.pyplot as plt
 from utils import generate_synth_lc_v2
 
 # BASE_DIR
-BASE_DIR = f"/home/stu_jamsin/jamsin/grid_1_perday_noise"  # change as needed
+BASE_DIR = f"/home/stu_jamsin/jamsin/grid_LSST_only"  # change as needed
 
-OUT_DIR = f"/home/stu_jamsin/jamsin/grid_1_perday_noise_add_filt"  # change as needed
+OUT_DIR = f"/home/stu_jamsin/jamsin/grid_LSST_ZTF_aligned"  # change as needed
 if len(OUT_DIR) > 60:
     print("Warning: OUT_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 if not os.path.exists(OUT_DIR):
     os.makedirs(OUT_DIR)
 
 # ADD filter 
-filt = ["2massj"] 
+filt = ["ztfr", "ztfg", "ztfi"] # change as needed 
 
 # loop over the synth lc to load and rewrites the file
 num_lc = 25 # change as needed (up to the number of injections)
@@ -39,12 +39,13 @@ for idx in range(num_lc):
                     noise_level=0.2,
                     max_error_level=0.4,
                     trigger_iso='2025-01-01T00:00:00',
-                    pts_per_day=1,
+                    pts_per_day=0.5,
                     obs_duration=15,
                     filters_band=filt,
                     jitter=0.,
+                    delay=0,
                     save=False,
-                    detection_limit_dict={'2massj': 26}) # change as needed based on the detection limit for the filter you want to add)
+                    detection_limit_dict={'ztfr': 20.6, 'ztfg': 20.8, 'ztfi': 19.9}) # change as needed based on the detection limit for the filter you want to add)
     # merge the new lc with the original one and save the new file
     new_lc = pd.concat([lc, df], ignore_index=True)
     OUT_FILE = f"{OUT_DIR}/{idx}/data{idx}.dat"

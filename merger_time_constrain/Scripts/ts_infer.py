@@ -7,14 +7,14 @@ import corner
 import gc
 import sys
 
-#idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1])
-idx = 10  # example injection index
+idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1])
+#idx = 10  # example injection index
 ADD_UL = False # whether to add UL instead of the removed points
 minus_pts = 8 # max number of removed points (update as needed, up to the number of time points - 1)
 
 MODEL = 'Bu2019lm' # change as needed
 
-BASE_DIR = f"/home/stu_jamsin/jamsin/grid_Ka_4perday_Buinfer/{idx}"  # change as needed
+BASE_DIR = f"/home/stu_jamsin/jamsin/grid_testFiesta/{idx}"  # change as needed
 if len(BASE_DIR) > 60:
     print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 if not os.path.exists(BASE_DIR):
@@ -36,7 +36,7 @@ def save_corner_plot(samples, truth_row, ts, out_path, title, model=MODEL):
                     truth_row['log10_mej'].values[0], truth_row['log10_vej'].values[0], truth_row['log10_Xlan'].values[0], -1*ts]
 
     # limit to 32 bit float to save memory
-    plot_data = samples[cols].astype(np.float32).values
+    plot_data = samples[cols].astype(np.float32)
 
     fig = corner.corner(
         plot_data,
@@ -99,7 +99,10 @@ subprocess.run(cmd_lc, check=True, cwd=BASE_DIR)
 samples = pd.read_csv(f"{BASE_DIR}/minus0/minus0_{idx}_posterior_samples.dat", delimiter=' ', dtype=DTYPE_FLOAT)
 ts = pd.to_datetime(times[0]) - pd.to_datetime('2025-01-01T00:00:00.000') # keep the same trigger time as for the original data to see how the timeshift evolves
 ts = ts.total_seconds() / (3600*24) # convert to days
-save_corner_plot(samples, truth, ts, f"{BASE_DIR}/minus0/corner_minus0_{idx}.png", "Corner plot for analysis with full data")
+try:
+    save_corner_plot(samples, truth, ts, f"{BASE_DIR}/minus0/corner_minus0_{idx}.png", "Corner plot for analysis with full data")
+except Exception as e:
+    print(f"Error occurred while saving corner plot: {e}")
 del samples, cmd_lc
 gc.collect()
 
@@ -145,6 +148,9 @@ for j in range(minus_pts): # change the range as needed (up to the number of tim
     subprocess.run(cmd_lc_ts, check=True, cwd=BASE_DIR)
     # corner plot for the analysis with modified data
     samples = pd.read_csv(f"{BASE_DIR}/minus{j+1}/minus{j+1}_{idx}_posterior_samples.dat", delimiter=' ', dtype=DTYPE_FLOAT)
-    save_corner_plot(samples, truth, ts, f"{BASE_DIR}/minus{j+1}/corner_minus{j+1}_{idx}.png", f"Corner plot for analysis with data minus {j+1} point(s)")
+    try:
+        save_corner_plot(samples, truth, ts, f"{BASE_DIR}/minus{j+1}/corner_minus{j+1}_{idx}.png", f"Corner plot for analysis with data minus {j+1} point(s)")
+    except Exception as e:
+        print(f"Error occurred while saving corner plot: {e}")
     del samples, cmd_lc_ts
     gc.collect()

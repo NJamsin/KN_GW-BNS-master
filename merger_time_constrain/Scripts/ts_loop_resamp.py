@@ -10,17 +10,17 @@ import bilby
 idx = int(sys.argv[1]) # change as needed (can be adapted for condor if needed) int(sys.argv[1])
 #idx = 0 # for test
 
-BASE_DIR = f"/home/stu_jamsin/jamsin/grid_2_perday_noise"  # change as needed
+BASE_DIR = f"/home/stu_jamsin/jamsin/grid_LSST_ZTF_shift"  # change as needed
 if len(BASE_DIR) > 60:
     print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
 if not os.path.exists(BASE_DIR):
     os.makedirs(BASE_DIR)
 
-num_points = 9 # max number of removed points + 1 (to include the full data analysis as well)
+num_points = 4 # max number of removed points + 1 (to include the full data analysis as well)
 
 
-# 1st create GW samples
-gw_samples_file = f"{BASE_DIR}/GWsamples.dat"
+# 1st create GW samples (see https://github.com/nuclear-multimessenger-astronomy/nmma/blob/main/example_files/tools/gwem_resampling/gwsamples_generation.py for ref)
+gw_samples_file = f"{BASE_DIR}/GWsamples.dat" 
 if not os.path.exists(gw_samples_file):
     # Create GWsamples.dat if it does not exist (reuse code from gwsamples_generation.py)
 
@@ -32,7 +32,7 @@ if not os.path.exists(gw_samples_file):
     nparams = 3
 
     ############# [mass1,    mass2,   DL] adjust as needed
-    params_low =  [1., 1., 1.]
+    params_low =  [1., 1., 10.]
     params_high = [2.25,      2.25,     200.]
 
     # 1) create dummy EOS samples with eos_post from nature paper

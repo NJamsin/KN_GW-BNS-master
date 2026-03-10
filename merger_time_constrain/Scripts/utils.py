@@ -1432,6 +1432,7 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
                     trigger_iso='2025-01-01T00:00:00',
                     pts_per_day=2,
                     obs_duration=15,
+                    delay = 0,
                     jitter=0.1,
                     save=False,
                     filename='synthetic_kilonova_svd.dat',
@@ -1457,6 +1458,8 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
         Number of observation points per day.
     obs_duration : int
         Duration of the observation in days.
+    delay : float
+        Delay in days to be added to the sample times (positive delay means that the first point will be after the trigger time). (Additional delay to the timeshift parameter in model_param). (Here to combine LSST + ZTF sampling)
     jitter : float
         Maximum jitter to be added to the sample times in days.
     save : bool
@@ -1477,7 +1480,7 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
     ts = -1 * model_param["timeshift"]
     print(f"Generating synthetic lightcurve with timeshift = {ts} days")
     model_param["timeshift"] = 0.0 # we set timeshift to 0 for the generation and we will apply it later to the sample time array 
-    sample_times = np.arange(0, obs_duration, 1/pts_per_day)
+    sample_times = np.arange(delay, obs_duration, 1/pts_per_day)
     for t in range(len(sample_times)):
         if t == 0:
             continue # we don't want to add jitter to the first point to be sure that we have a point at the trigger time 
