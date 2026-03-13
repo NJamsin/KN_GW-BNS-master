@@ -1,0 +1,18 @@
+executable = /home/stu_jamsin/jamsin/PYCBC/splitwindow/run_split_search.sh
+universe   = vanilla
+
+# Pass the three variables from the text file to the bash script
+arguments  = "$(bank) $(start) $(end) $(tt)"
+
+# Ensure logs don't overwrite each other + change path (I went for absolute path just to be sure)
+output     = /home/stu_jamsin/jamsin/PYCBC/splitwindow/logs/search_$(bank)_$(start).out
+error      = /home/stu_jamsin/jamsin/PYCBC/splitwindow/logs/search_$(bank)_$(start).err
+log        = /home/stu_jamsin/jamsin/PYCBC/splitwindow/logs/search_cluster.log
+
+# Request resources (adjust these according to your cluster's limits)
+request_cpus   = 1
+request_memory = 2GB
+request_disk   = 4GB
+
+# Queue a job for every line in the text file we generated
+queue bank, start, end from /home/stu_jamsin/jamsin/PYCBC/splitwindow/job_arguments.txt
