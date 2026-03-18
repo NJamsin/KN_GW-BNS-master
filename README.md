@@ -1,6 +1,9 @@
 # Pseudo Package made for my master thesis
 Contains a unique (for now) command line ``gw-setup-pipeline`` that performs coherent GW search based on data extracted from KNe.
 ***
+## Intallation
+Simply clone the repo, make sure to change your active directory to the cloned repo and execute
+``pip install -e .``
 ## Documentation
 ### ``gw-setup-pipeline``
 ``gw-setup-pipeline`` has one *OBLIGATORY* argument, the path to the ``.yaml`` config file (examples of config files are provided in the ``example_file`` directory).
