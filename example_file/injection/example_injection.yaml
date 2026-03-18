@@ -1,0 +1,25 @@
+Directory:
+  BASE_DIR: test_injection # Update this to your desired base directory for the run !!! ideally use one directory per run to avoid confusion
+  run_name: inj # A unique name for this run, used for naming outputs and logs
+
+KN_data:
+  first_detection: '2020-01-07T00:00:00.000' # Time of the first detection in ISOT format !!! should be a str !!!!! make sure that the detector are actually taking data at this time, otherwise the pipeline won't find any data to analyze and will fail
+  ra: 3.4461587900190143 # Right Ascension in radians
+  dec: -0.4080838827694336 # Declination in radians
+  EM_post_file: 'master_package/example_file/injection/post_samples.dat' # Path to the EM posterior samples file as given by NMMA's lightcurve-analysis (should work for other as long as the file as a timeshift column)
+  RESAMP_post_file: 'master_package/example_file/injection/resamp_posterior_samples.dat' # Path to the RESAMP posterior samples file as given by NMMA's gwem-resampling (should work for other files as long as it has a 'chirp_mass' and 'mass_ratio' column)
+
+GW_search:
+  num_splits: 10 # Number of splits for the template bank
+  window_size: 3600 # Size of the max time window in seconds
+
+Injection: # only taken if --injection=True is passed as an argument to the command-line gw-setup-pipeline
+  mass1: 1.9 # value taken from the truth file of the injection
+  mass2: 1.16
+  distance: 29.623      # Distance in Megaparsecs (Mpc)
+  ra: 3.446           # Right Ascension (radians) ideally the same as the one in the KN_data section, but can be different for testing purposes
+  dec: -0.408         # Declination (radians)
+  polarization: 0.0   # Polarization angle
+  approximant: 'IMRPhenomD' # Waveform approximant to use for the injection
+  # How many seconds after the start of your (global) search window should the merger happen?
+  time_offset: 5000.0 # make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
