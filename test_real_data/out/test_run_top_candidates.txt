@@ -1,0 +1,5 @@
+1. Rank Stat: 23.5968 | Coherent SNR: 30.3779 | Time: 1187008882.4287 | File: test_runtriggers_bank1_1187008379-1187010126.hdf
+2. Rank Stat: 17.1425 | Coherent SNR: 28.7760 | Time: 1187008882.4292 | File: test_runtriggers_bank1_1187008379-1187010126.hdf
+3. Rank Stat: 15.7879 | Coherent SNR: 28.6877 | Time: 1187008882.4282 | File: test_runtriggers_bank1_1187008379-1187010126.hdf
+4. Rank Stat: 10.6420 | Coherent SNR: 24.9914 | Time: 1187008882.4299 | File: test_runtriggers_bank1_1187008379-1187010126.hdf
+5. Rank Stat: 9.8961 | Coherent SNR: 24.2601 | Time: 1187008882.4280 | File: test_runtriggers_bank1_1187008379-1187010126.hdf

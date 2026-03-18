@@ -1,0 +1,1911 @@
+/home/stu_jamsin/.conda/envs/fiesta/lib/python3.12/site-packages/pycbc/types/optparse.py:562: UserWarning: Angle units not specified for 3.4461587900190143, assuming radians
+  warnings.warn(
+/home/stu_jamsin/.conda/envs/fiesta/lib/python3.12/site-packages/pycbc/types/optparse.py:562: UserWarning: Angle units not specified for -0.4080838827694336, assuming radians
+  warnings.warn(
+2026-03-18T12:35:07.156+01:00 INFO : Reading Frames
+2026-03-18T12:35:11.051+01:00 INFO : Highpass Filtering
+2026-03-18T12:35:11.342+01:00 INFO : Resampling data
+2026-03-18T12:35:11.354+01:00 INFO : Converting to float32
+/home/stu_jamsin/.conda/envs/fiesta/lib/python3.12/site-packages/pycbc/types/array.py:390: RuntimeWarning: divide by zero encountered in divide
+  return self._data.__rtruediv__(other)
+2026-03-18T12:35:13.234+01:00 INFO : Autogating at 1187009116.135
+2026-03-18T12:35:13.234+01:00 INFO : Highpass Filtering
+2026-03-18T12:35:13.481+01:00 INFO : Remove Padding
+2026-03-18T12:35:13.482+01:00 INFO : Reading Frames
+2026-03-18T12:35:17.353+01:00 INFO : Highpass Filtering
+2026-03-18T12:35:17.619+01:00 INFO : Resampling data
+2026-03-18T12:35:17.629+01:00 INFO : Converting to float32
+2026-03-18T12:35:19.465+01:00 INFO : Autogating at 1187008881.382
+2026-03-18T12:35:19.466+01:00 INFO : Highpass Filtering
+2026-03-18T12:35:19.707+01:00 INFO : Remove Padding
+2026-03-18T12:35:19.707+01:00 INFO : Running with CPU support: 1 threads
+2026-03-18T12:35:19.707+01:00 INFO : Making frequency-domain data segments
+2026-03-18T12:35:19.974+01:00 INFO : Associating PSDs to them
+2026-03-18T12:35:21.992+01:00 INFO : Determining time slide shifts and time delays
+2026-03-18T12:35:22.438+01:00 INFO : Setting up MatchedFilterControl at each IFO
+2026-03-18T12:35:22.452+01:00 INFO : Initializing signal-based vetoes: power, bank, and auto
+2026-03-18T12:35:22.452+01:00 INFO : Overwhitening frequency-domain data segments
+2026-03-18T12:35:22.471+01:00 INFO : Setting up event manager
+2026-03-18T12:35:22.472+01:00 INFO : Read in template bank
+2026-03-18T12:35:22.485+01:00 INFO : Full template bank size: 75
+2026-03-18T12:35:22.485+01:00 INFO : Calculating antenna pattern functions at every sky position
+2026-03-18T12:35:22.491+01:00 INFO : Starting the filtering...
+2026-03-18T12:35:22.491+01:00 INFO : 0: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:22.537+01:00 INFO : Analyzing template 1/75, segment 1/8
+2026-03-18T12:35:22.568+01:00 INFO : 240 points above threshold
+2026-03-18T12:35:22.603+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:22.609+01:00 INFO : Analyzing template 1/75, segment 2/8
+2026-03-18T12:35:22.633+01:00 INFO : 374 points above threshold
+2026-03-18T12:35:22.665+01:00 INFO : 519 points above threshold
+2026-03-18T12:35:22.669+01:00 INFO : Analyzing template 1/75, segment 3/8
+2026-03-18T12:35:22.691+01:00 INFO : 514 points above threshold
+2026-03-18T12:35:22.718+01:00 INFO : 687 points above threshold
+2026-03-18T12:35:22.776+01:00 INFO : Analyzing template 1/75, segment 4/8
+2026-03-18T12:35:22.797+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:22.824+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:22.827+01:00 INFO : Analyzing template 1/75, segment 5/8
+2026-03-18T12:35:22.848+01:00 INFO : 386 points above threshold
+2026-03-18T12:35:22.879+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:22.883+01:00 INFO : Analyzing template 1/75, segment 6/8
+2026-03-18T12:35:22.912+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:22.943+01:00 INFO : 239 points above threshold
+2026-03-18T12:35:22.947+01:00 INFO : Analyzing template 1/75, segment 7/8
+2026-03-18T12:35:22.980+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:23.009+01:00 INFO : 454 points above threshold
+2026-03-18T12:35:23.017+01:00 INFO : Analyzing template 1/75, segment 8/8
+2026-03-18T12:35:23.042+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:23.068+01:00 INFO : 312 points above threshold
+2026-03-18T12:35:23.071+01:00 INFO : 1: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:23.113+01:00 INFO : Analyzing template 2/75, segment 1/8
+2026-03-18T12:35:23.134+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:23.163+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:23.179+01:00 INFO : Analyzing template 2/75, segment 2/8
+2026-03-18T12:35:23.205+01:00 INFO : 385 points above threshold
+2026-03-18T12:35:23.242+01:00 INFO : 542 points above threshold
+2026-03-18T12:35:23.250+01:00 INFO : Analyzing template 2/75, segment 3/8
+2026-03-18T12:35:23.278+01:00 INFO : 518 points above threshold
+2026-03-18T12:35:23.308+01:00 INFO : 726 points above threshold
+2026-03-18T12:35:23.355+01:00 INFO : Analyzing template 2/75, segment 4/8
+2026-03-18T12:35:23.376+01:00 INFO : 271 points above threshold
+2026-03-18T12:35:23.404+01:00 INFO : 254 points above threshold
+2026-03-18T12:35:23.406+01:00 INFO : Analyzing template 2/75, segment 5/8
+2026-03-18T12:35:23.428+01:00 INFO : 385 points above threshold
+2026-03-18T12:35:23.455+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:23.458+01:00 INFO : Analyzing template 2/75, segment 6/8
+2026-03-18T12:35:23.487+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:23.518+01:00 INFO : 260 points above threshold
+2026-03-18T12:35:23.521+01:00 INFO : Analyzing template 2/75, segment 7/8
+2026-03-18T12:35:23.550+01:00 INFO : 340 points above threshold
+2026-03-18T12:35:23.592+01:00 INFO : 408 points above threshold
+2026-03-18T12:35:23.597+01:00 INFO : Analyzing template 2/75, segment 8/8
+2026-03-18T12:35:23.623+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:23.652+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:23.656+01:00 INFO : 2: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:23.695+01:00 INFO : Analyzing template 3/75, segment 1/8
+2026-03-18T12:35:23.716+01:00 INFO : 302 points above threshold
+2026-03-18T12:35:23.742+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:23.745+01:00 INFO : Analyzing template 3/75, segment 2/8
+2026-03-18T12:35:23.769+01:00 INFO : 370 points above threshold
+2026-03-18T12:35:23.801+01:00 INFO : 558 points above threshold
+2026-03-18T12:35:23.815+01:00 INFO : Analyzing template 3/75, segment 3/8
+2026-03-18T12:35:23.843+01:00 INFO : 533 points above threshold
+2026-03-18T12:35:23.880+01:00 INFO : 754 points above threshold
+2026-03-18T12:35:23.928+01:00 INFO : Analyzing template 3/75, segment 4/8
+2026-03-18T12:35:23.950+01:00 INFO : 243 points above threshold
+2026-03-18T12:35:23.977+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:23.980+01:00 INFO : Analyzing template 3/75, segment 5/8
+2026-03-18T12:35:24.001+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:24.028+01:00 INFO : 281 points above threshold
+2026-03-18T12:35:24.031+01:00 INFO : Analyzing template 3/75, segment 6/8
+2026-03-18T12:35:24.053+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:24.084+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:24.087+01:00 INFO : Analyzing template 3/75, segment 7/8
+2026-03-18T12:35:24.116+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:24.150+01:00 INFO : 370 points above threshold
+2026-03-18T12:35:24.155+01:00 INFO : Analyzing template 3/75, segment 8/8
+2026-03-18T12:35:24.188+01:00 INFO : 355 points above threshold
+2026-03-18T12:35:24.222+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:24.226+01:00 INFO : 3: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:24.267+01:00 INFO : Analyzing template 4/75, segment 1/8
+2026-03-18T12:35:24.288+01:00 INFO : 318 points above threshold
+2026-03-18T12:35:24.314+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:24.327+01:00 INFO : Analyzing template 4/75, segment 2/8
+2026-03-18T12:35:24.348+01:00 INFO : 341 points above threshold
+2026-03-18T12:35:24.378+01:00 INFO : 541 points above threshold
+2026-03-18T12:35:24.381+01:00 INFO : Analyzing template 4/75, segment 3/8
+2026-03-18T12:35:24.407+01:00 INFO : 494 points above threshold
+2026-03-18T12:35:24.435+01:00 INFO : 773 points above threshold
+2026-03-18T12:35:24.480+01:00 INFO : Analyzing template 4/75, segment 4/8
+2026-03-18T12:35:24.504+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:24.532+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:24.536+01:00 INFO : Analyzing template 4/75, segment 5/8
+2026-03-18T12:35:24.559+01:00 INFO : 407 points above threshold
+2026-03-18T12:35:24.586+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:24.588+01:00 INFO : Analyzing template 4/75, segment 6/8
+2026-03-18T12:35:24.610+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:24.638+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:24.640+01:00 INFO : Analyzing template 4/75, segment 7/8
+2026-03-18T12:35:24.662+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:24.692+01:00 INFO : 387 points above threshold
+2026-03-18T12:35:24.696+01:00 INFO : Analyzing template 4/75, segment 8/8
+2026-03-18T12:35:24.723+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:24.754+01:00 INFO : 342 points above threshold
+2026-03-18T12:35:24.758+01:00 INFO : 4: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:24.801+01:00 INFO : Analyzing template 5/75, segment 1/8
+2026-03-18T12:35:24.830+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:24.862+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:24.866+01:00 INFO : Analyzing template 5/75, segment 2/8
+2026-03-18T12:35:24.887+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:24.914+01:00 INFO : 525 points above threshold
+2026-03-18T12:35:24.917+01:00 INFO : Analyzing template 5/75, segment 3/8
+2026-03-18T12:35:24.938+01:00 INFO : 500 points above threshold
+2026-03-18T12:35:24.965+01:00 INFO : 783 points above threshold
+2026-03-18T12:35:25.013+01:00 INFO : Analyzing template 5/75, segment 4/8
+2026-03-18T12:35:25.037+01:00 INFO : 288 points above threshold
+2026-03-18T12:35:25.065+01:00 INFO : 246 points above threshold
+2026-03-18T12:35:25.069+01:00 INFO : Analyzing template 5/75, segment 5/8
+2026-03-18T12:35:25.099+01:00 INFO : 405 points above threshold
+2026-03-18T12:35:25.129+01:00 INFO : 335 points above threshold
+2026-03-18T12:35:25.131+01:00 INFO : Analyzing template 5/75, segment 6/8
+2026-03-18T12:35:25.154+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:25.183+01:00 INFO : 356 points above threshold
+2026-03-18T12:35:25.185+01:00 INFO : Analyzing template 5/75, segment 7/8
+2026-03-18T12:35:25.207+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:25.234+01:00 INFO : 497 points above threshold
+2026-03-18T12:35:25.237+01:00 INFO : Analyzing template 5/75, segment 8/8
+2026-03-18T12:35:25.258+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:25.288+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:25.291+01:00 INFO : 5: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:25.334+01:00 INFO : Analyzing template 6/75, segment 1/8
+2026-03-18T12:35:25.360+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:25.394+01:00 INFO : 368 points above threshold
+2026-03-18T12:35:25.398+01:00 INFO : Analyzing template 6/75, segment 2/8
+2026-03-18T12:35:25.430+01:00 INFO : 344 points above threshold
+2026-03-18T12:35:25.464+01:00 INFO : 551 points above threshold
+2026-03-18T12:35:25.469+01:00 INFO : Analyzing template 6/75, segment 3/8
+2026-03-18T12:35:25.492+01:00 INFO : 522 points above threshold
+2026-03-18T12:35:25.519+01:00 INFO : 837 points above threshold
+2026-03-18T12:35:25.569+01:00 INFO : Analyzing template 6/75, segment 4/8
+2026-03-18T12:35:25.593+01:00 INFO : 368 points above threshold
+2026-03-18T12:35:25.623+01:00 INFO : 260 points above threshold
+2026-03-18T12:35:25.626+01:00 INFO : Analyzing template 6/75, segment 5/8
+2026-03-18T12:35:25.649+01:00 INFO : 405 points above threshold
+2026-03-18T12:35:25.677+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:25.681+01:00 INFO : Analyzing template 6/75, segment 6/8
+2026-03-18T12:35:25.707+01:00 INFO : 288 points above threshold
+2026-03-18T12:35:25.736+01:00 INFO : 387 points above threshold
+2026-03-18T12:35:25.739+01:00 INFO : Analyzing template 6/75, segment 7/8
+2026-03-18T12:35:25.761+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:25.789+01:00 INFO : 461 points above threshold
+2026-03-18T12:35:25.792+01:00 INFO : Analyzing template 6/75, segment 8/8
+2026-03-18T12:35:25.814+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:25.841+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:25.844+01:00 INFO : 6: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:25.884+01:00 INFO : Analyzing template 7/75, segment 1/8
+2026-03-18T12:35:25.911+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:25.939+01:00 INFO : 412 points above threshold
+2026-03-18T12:35:25.943+01:00 INFO : Analyzing template 7/75, segment 2/8
+2026-03-18T12:35:25.967+01:00 INFO : 364 points above threshold
+2026-03-18T12:35:26.001+01:00 INFO : 531 points above threshold
+2026-03-18T12:35:26.005+01:00 INFO : Analyzing template 7/75, segment 3/8
+2026-03-18T12:35:26.035+01:00 INFO : 475 points above threshold
+2026-03-18T12:35:26.065+01:00 INFO : 842 points above threshold
+2026-03-18T12:35:26.114+01:00 INFO : Analyzing template 7/75, segment 4/8
+2026-03-18T12:35:26.136+01:00 INFO : 383 points above threshold
+2026-03-18T12:35:26.165+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:26.168+01:00 INFO : Analyzing template 7/75, segment 5/8
+2026-03-18T12:35:26.191+01:00 INFO : 356 points above threshold
+2026-03-18T12:35:26.222+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:26.225+01:00 INFO : Analyzing template 7/75, segment 6/8
+2026-03-18T12:35:26.246+01:00 INFO : 252 points above threshold
+2026-03-18T12:35:26.274+01:00 INFO : 352 points above threshold
+2026-03-18T12:35:26.277+01:00 INFO : Analyzing template 7/75, segment 7/8
+2026-03-18T12:35:26.305+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:26.334+01:00 INFO : 486 points above threshold
+2026-03-18T12:35:26.339+01:00 INFO : Analyzing template 7/75, segment 8/8
+2026-03-18T12:35:26.361+01:00 INFO : 266 points above threshold
+2026-03-18T12:35:26.391+01:00 INFO : 371 points above threshold
+2026-03-18T12:35:26.395+01:00 INFO : 7: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:26.433+01:00 INFO : Analyzing template 8/75, segment 1/8
+2026-03-18T12:35:26.455+01:00 INFO : 362 points above threshold
+2026-03-18T12:35:26.482+01:00 INFO : 453 points above threshold
+2026-03-18T12:35:26.486+01:00 INFO : Analyzing template 8/75, segment 2/8
+2026-03-18T12:35:26.511+01:00 INFO : 368 points above threshold
+2026-03-18T12:35:26.543+01:00 INFO : 572 points above threshold
+2026-03-18T12:35:26.545+01:00 INFO : Analyzing template 8/75, segment 3/8
+2026-03-18T12:35:26.568+01:00 INFO : 486 points above threshold
+2026-03-18T12:35:26.599+01:00 INFO : 796 points above threshold
+2026-03-18T12:35:26.649+01:00 INFO : Analyzing template 8/75, segment 4/8
+2026-03-18T12:35:26.677+01:00 INFO : 370 points above threshold
+2026-03-18T12:35:26.705+01:00 INFO : 201 points above threshold
+2026-03-18T12:35:26.708+01:00 INFO : Analyzing template 8/75, segment 5/8
+2026-03-18T12:35:26.730+01:00 INFO : 379 points above threshold
+2026-03-18T12:35:26.760+01:00 INFO : 313 points above threshold
+2026-03-18T12:35:26.763+01:00 INFO : Analyzing template 8/75, segment 6/8
+2026-03-18T12:35:26.788+01:00 INFO : 281 points above threshold
+2026-03-18T12:35:26.820+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:26.823+01:00 INFO : Analyzing template 8/75, segment 7/8
+2026-03-18T12:35:26.845+01:00 INFO : 338 points above threshold
+2026-03-18T12:35:26.873+01:00 INFO : 536 points above threshold
+2026-03-18T12:35:26.876+01:00 INFO : Analyzing template 8/75, segment 8/8
+2026-03-18T12:35:26.901+01:00 INFO : 244 points above threshold
+2026-03-18T12:35:26.931+01:00 INFO : 366 points above threshold
+2026-03-18T12:35:26.935+01:00 INFO : 8: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:26.976+01:00 INFO : Analyzing template 9/75, segment 1/8
+2026-03-18T12:35:26.997+01:00 INFO : 383 points above threshold
+2026-03-18T12:35:27.025+01:00 INFO : 425 points above threshold
+2026-03-18T12:35:27.028+01:00 INFO : Analyzing template 9/75, segment 2/8
+2026-03-18T12:35:27.050+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:27.081+01:00 INFO : 574 points above threshold
+2026-03-18T12:35:27.083+01:00 INFO : Analyzing template 9/75, segment 3/8
+2026-03-18T12:35:27.109+01:00 INFO : 472 points above threshold
+2026-03-18T12:35:27.140+01:00 INFO : 808 points above threshold
+2026-03-18T12:35:27.187+01:00 INFO : Analyzing template 9/75, segment 4/8
+2026-03-18T12:35:27.213+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:27.245+01:00 INFO : 250 points above threshold
+2026-03-18T12:35:27.249+01:00 INFO : Analyzing template 9/75, segment 5/8
+2026-03-18T12:35:27.273+01:00 INFO : 380 points above threshold
+2026-03-18T12:35:27.301+01:00 INFO : 370 points above threshold
+2026-03-18T12:35:27.304+01:00 INFO : Analyzing template 9/75, segment 6/8
+2026-03-18T12:35:27.326+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:27.355+01:00 INFO : 276 points above threshold
+2026-03-18T12:35:27.358+01:00 INFO : Analyzing template 9/75, segment 7/8
+2026-03-18T12:35:27.382+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:27.412+01:00 INFO : 490 points above threshold
+2026-03-18T12:35:27.416+01:00 INFO : Analyzing template 9/75, segment 8/8
+2026-03-18T12:35:27.445+01:00 INFO : 236 points above threshold
+2026-03-18T12:35:27.475+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:27.479+01:00 INFO : 9: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:27.519+01:00 INFO : Analyzing template 10/75, segment 1/8
+2026-03-18T12:35:27.546+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:27.574+01:00 INFO : 402 points above threshold
+2026-03-18T12:35:27.579+01:00 INFO : Analyzing template 10/75, segment 2/8
+2026-03-18T12:35:27.601+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:27.629+01:00 INFO : 527 points above threshold
+2026-03-18T12:35:27.632+01:00 INFO : Analyzing template 10/75, segment 3/8
+2026-03-18T12:35:27.654+01:00 INFO : 486 points above threshold
+2026-03-18T12:35:27.681+01:00 INFO : 887 points above threshold
+2026-03-18T12:35:27.733+01:00 INFO : Analyzing template 10/75, segment 4/8
+2026-03-18T12:35:27.760+01:00 INFO : 340 points above threshold
+2026-03-18T12:35:27.790+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:27.793+01:00 INFO : Analyzing template 10/75, segment 5/8
+2026-03-18T12:35:27.818+01:00 INFO : 407 points above threshold
+2026-03-18T12:35:27.851+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:27.856+01:00 INFO : Analyzing template 10/75, segment 6/8
+2026-03-18T12:35:27.880+01:00 INFO : 321 points above threshold
+2026-03-18T12:35:27.913+01:00 INFO : 259 points above threshold
+2026-03-18T12:35:27.916+01:00 INFO : Analyzing template 10/75, segment 7/8
+2026-03-18T12:35:27.938+01:00 INFO : 314 points above threshold
+2026-03-18T12:35:27.967+01:00 INFO : 418 points above threshold
+2026-03-18T12:35:27.971+01:00 INFO : Analyzing template 10/75, segment 8/8
+2026-03-18T12:35:27.994+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:28.023+01:00 INFO : 221 points above threshold
+2026-03-18T12:35:28.027+01:00 INFO : 10: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:28.063+01:00 INFO : Analyzing template 11/75, segment 1/8
+2026-03-18T12:35:28.084+01:00 INFO : 288 points above threshold
+2026-03-18T12:35:28.113+01:00 INFO : 314 points above threshold
+2026-03-18T12:35:28.115+01:00 INFO : Analyzing template 11/75, segment 2/8
+2026-03-18T12:35:28.139+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:28.167+01:00 INFO : 507 points above threshold
+2026-03-18T12:35:28.171+01:00 INFO : Analyzing template 11/75, segment 3/8
+2026-03-18T12:35:28.195+01:00 INFO : 460 points above threshold
+2026-03-18T12:35:28.222+01:00 INFO : 912 points above threshold
+2026-03-18T12:35:28.272+01:00 INFO : Analyzing template 11/75, segment 4/8
+2026-03-18T12:35:28.295+01:00 INFO : 367 points above threshold
+2026-03-18T12:35:28.330+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:28.334+01:00 INFO : Analyzing template 11/75, segment 5/8
+2026-03-18T12:35:28.364+01:00 INFO : 410 points above threshold
+2026-03-18T12:35:28.396+01:00 INFO : 361 points above threshold
+2026-03-18T12:35:28.400+01:00 INFO : Analyzing template 11/75, segment 6/8
+2026-03-18T12:35:28.426+01:00 INFO : 306 points above threshold
+2026-03-18T12:35:28.464+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:28.468+01:00 INFO : Analyzing template 11/75, segment 7/8
+2026-03-18T12:35:28.493+01:00 INFO : 308 points above threshold
+2026-03-18T12:35:28.527+01:00 INFO : 389 points above threshold
+2026-03-18T12:35:28.530+01:00 INFO : Analyzing template 11/75, segment 8/8
+2026-03-18T12:35:28.552+01:00 INFO : 243 points above threshold
+2026-03-18T12:35:28.582+01:00 INFO : 228 points above threshold
+2026-03-18T12:35:28.586+01:00 INFO : 11: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:28.621+01:00 INFO : Analyzing template 12/75, segment 1/8
+2026-03-18T12:35:28.651+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:28.681+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:28.684+01:00 INFO : Analyzing template 12/75, segment 2/8
+2026-03-18T12:35:28.708+01:00 INFO : 321 points above threshold
+2026-03-18T12:35:28.736+01:00 INFO : 458 points above threshold
+2026-03-18T12:35:28.739+01:00 INFO : Analyzing template 12/75, segment 3/8
+2026-03-18T12:35:28.761+01:00 INFO : 418 points above threshold
+2026-03-18T12:35:28.792+01:00 INFO : 826 points above threshold
+2026-03-18T12:35:28.833+01:00 INFO : Analyzing template 12/75, segment 4/8
+2026-03-18T12:35:28.858+01:00 INFO : 373 points above threshold
+2026-03-18T12:35:28.887+01:00 INFO : 231 points above threshold
+2026-03-18T12:35:28.890+01:00 INFO : Analyzing template 12/75, segment 5/8
+2026-03-18T12:35:28.916+01:00 INFO : 389 points above threshold
+2026-03-18T12:35:28.953+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:28.957+01:00 INFO : Analyzing template 12/75, segment 6/8
+2026-03-18T12:35:28.987+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:29.016+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:29.019+01:00 INFO : Analyzing template 12/75, segment 7/8
+2026-03-18T12:35:29.043+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:29.072+01:00 INFO : 372 points above threshold
+2026-03-18T12:35:29.076+01:00 INFO : Analyzing template 12/75, segment 8/8
+2026-03-18T12:35:29.101+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:29.132+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:29.136+01:00 INFO : 12: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:29.172+01:00 INFO : Analyzing template 13/75, segment 1/8
+2026-03-18T12:35:29.197+01:00 INFO : 284 points above threshold
+2026-03-18T12:35:29.224+01:00 INFO : 365 points above threshold
+2026-03-18T12:35:29.227+01:00 INFO : Analyzing template 13/75, segment 2/8
+2026-03-18T12:35:29.253+01:00 INFO : 302 points above threshold
+2026-03-18T12:35:29.282+01:00 INFO : 493 points above threshold
+2026-03-18T12:35:29.285+01:00 INFO : Analyzing template 13/75, segment 3/8
+2026-03-18T12:35:29.307+01:00 INFO : 439 points above threshold
+2026-03-18T12:35:29.334+01:00 INFO : 856 points above threshold
+2026-03-18T12:35:29.372+01:00 INFO : Analyzing template 13/75, segment 4/8
+2026-03-18T12:35:29.397+01:00 INFO : 362 points above threshold
+2026-03-18T12:35:29.428+01:00 INFO : 245 points above threshold
+2026-03-18T12:35:29.432+01:00 INFO : Analyzing template 13/75, segment 5/8
+2026-03-18T12:35:29.459+01:00 INFO : 352 points above threshold
+2026-03-18T12:35:29.494+01:00 INFO : 366 points above threshold
+2026-03-18T12:35:29.497+01:00 INFO : Analyzing template 13/75, segment 6/8
+2026-03-18T12:35:29.528+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:29.564+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:29.569+01:00 INFO : Analyzing template 13/75, segment 7/8
+2026-03-18T12:35:29.594+01:00 INFO : 328 points above threshold
+2026-03-18T12:35:29.630+01:00 INFO : 441 points above threshold
+2026-03-18T12:35:29.634+01:00 INFO : Analyzing template 13/75, segment 8/8
+2026-03-18T12:35:29.660+01:00 INFO : 288 points above threshold
+2026-03-18T12:35:29.689+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:29.692+01:00 INFO : 13: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:29.728+01:00 INFO : Analyzing template 14/75, segment 1/8
+2026-03-18T12:35:29.752+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:29.784+01:00 INFO : 410 points above threshold
+2026-03-18T12:35:29.787+01:00 INFO : Analyzing template 14/75, segment 2/8
+2026-03-18T12:35:29.817+01:00 INFO : 306 points above threshold
+2026-03-18T12:35:29.848+01:00 INFO : 511 points above threshold
+2026-03-18T12:35:29.851+01:00 INFO : Analyzing template 14/75, segment 3/8
+2026-03-18T12:35:29.879+01:00 INFO : 435 points above threshold
+2026-03-18T12:35:29.911+01:00 INFO : 825 points above threshold
+2026-03-18T12:35:29.948+01:00 INFO : Analyzing template 14/75, segment 4/8
+2026-03-18T12:35:29.971+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:30.000+01:00 INFO : 246 points above threshold
+2026-03-18T12:35:30.003+01:00 INFO : Analyzing template 14/75, segment 5/8
+2026-03-18T12:35:30.027+01:00 INFO : 338 points above threshold
+2026-03-18T12:35:30.055+01:00 INFO : 370 points above threshold
+2026-03-18T12:35:30.058+01:00 INFO : Analyzing template 14/75, segment 6/8
+2026-03-18T12:35:30.083+01:00 INFO : 254 points above threshold
+2026-03-18T12:35:30.113+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:30.117+01:00 INFO : Analyzing template 14/75, segment 7/8
+2026-03-18T12:35:30.146+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:30.176+01:00 INFO : 444 points above threshold
+2026-03-18T12:35:30.180+01:00 INFO : Analyzing template 14/75, segment 8/8
+2026-03-18T12:35:30.207+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:30.240+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:30.243+01:00 INFO : 14: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:30.281+01:00 INFO : Analyzing template 15/75, segment 1/8
+2026-03-18T12:35:30.305+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:30.333+01:00 INFO : 448 points above threshold
+2026-03-18T12:35:30.337+01:00 INFO : Analyzing template 15/75, segment 2/8
+2026-03-18T12:35:30.360+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:30.390+01:00 INFO : 511 points above threshold
+2026-03-18T12:35:30.406+01:00 INFO : Analyzing template 15/75, segment 3/8
+2026-03-18T12:35:30.434+01:00 INFO : 476 points above threshold
+2026-03-18T12:35:30.464+01:00 INFO : 801 points above threshold
+2026-03-18T12:35:30.499+01:00 INFO : Analyzing template 15/75, segment 4/8
+2026-03-18T12:35:30.523+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:30.552+01:00 INFO : 256 points above threshold
+2026-03-18T12:35:30.554+01:00 INFO : Analyzing template 15/75, segment 5/8
+2026-03-18T12:35:30.578+01:00 INFO : 305 points above threshold
+2026-03-18T12:35:30.608+01:00 INFO : 349 points above threshold
+2026-03-18T12:35:30.611+01:00 INFO : Analyzing template 15/75, segment 6/8
+2026-03-18T12:35:30.636+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:30.665+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:30.668+01:00 INFO : Analyzing template 15/75, segment 7/8
+2026-03-18T12:35:30.691+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:30.723+01:00 INFO : 405 points above threshold
+2026-03-18T12:35:30.728+01:00 INFO : Analyzing template 15/75, segment 8/8
+2026-03-18T12:35:30.751+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:30.783+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:30.787+01:00 INFO : 15: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:30.824+01:00 INFO : Analyzing template 16/75, segment 1/8
+2026-03-18T12:35:30.849+01:00 INFO : 246 points above threshold
+2026-03-18T12:35:30.878+01:00 INFO : 414 points above threshold
+2026-03-18T12:35:30.881+01:00 INFO : Analyzing template 16/75, segment 2/8
+2026-03-18T12:35:30.907+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:30.934+01:00 INFO : 525 points above threshold
+2026-03-18T12:35:30.938+01:00 INFO : Analyzing template 16/75, segment 3/8
+2026-03-18T12:35:30.962+01:00 INFO : 447 points above threshold
+2026-03-18T12:35:30.991+01:00 INFO : 828 points above threshold
+2026-03-18T12:35:31.033+01:00 INFO : Analyzing template 16/75, segment 4/8
+2026-03-18T12:35:31.063+01:00 INFO : 278 points above threshold
+2026-03-18T12:35:31.095+01:00 INFO : 298 points above threshold
+2026-03-18T12:35:31.099+01:00 INFO : Analyzing template 16/75, segment 5/8
+2026-03-18T12:35:31.123+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:31.150+01:00 INFO : 260 points above threshold
+2026-03-18T12:35:31.153+01:00 INFO : Analyzing template 16/75, segment 6/8
+2026-03-18T12:35:31.177+01:00 INFO : 313 points above threshold
+2026-03-18T12:35:31.204+01:00 INFO : 314 points above threshold
+2026-03-18T12:35:31.207+01:00 INFO : Analyzing template 16/75, segment 7/8
+2026-03-18T12:35:31.231+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:31.261+01:00 INFO : 408 points above threshold
+2026-03-18T12:35:31.264+01:00 INFO : Analyzing template 16/75, segment 8/8
+2026-03-18T12:35:31.288+01:00 INFO : 293 points above threshold
+2026-03-18T12:35:31.318+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:31.322+01:00 INFO : 16: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:31.361+01:00 INFO : Analyzing template 17/75, segment 1/8
+2026-03-18T12:35:31.387+01:00 INFO : 253 points above threshold
+2026-03-18T12:35:31.425+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:31.428+01:00 INFO : Analyzing template 17/75, segment 2/8
+2026-03-18T12:35:31.453+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:31.485+01:00 INFO : 533 points above threshold
+2026-03-18T12:35:31.487+01:00 INFO : Analyzing template 17/75, segment 3/8
+2026-03-18T12:35:31.515+01:00 INFO : 473 points above threshold
+2026-03-18T12:35:31.543+01:00 INFO : 799 points above threshold
+2026-03-18T12:35:31.582+01:00 INFO : Analyzing template 17/75, segment 4/8
+2026-03-18T12:35:31.607+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:31.638+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:31.641+01:00 INFO : Analyzing template 17/75, segment 5/8
+2026-03-18T12:35:31.671+01:00 INFO : 333 points above threshold
+2026-03-18T12:35:31.701+01:00 INFO : 259 points above threshold
+2026-03-18T12:35:31.707+01:00 INFO : Analyzing template 17/75, segment 6/8
+2026-03-18T12:35:31.731+01:00 INFO : 349 points above threshold
+2026-03-18T12:35:31.759+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:31.762+01:00 INFO : Analyzing template 17/75, segment 7/8
+2026-03-18T12:35:31.785+01:00 INFO : 250 points above threshold
+2026-03-18T12:35:31.815+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:31.818+01:00 INFO : Analyzing template 17/75, segment 8/8
+2026-03-18T12:35:31.841+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:31.870+01:00 INFO : 342 points above threshold
+2026-03-18T12:35:31.873+01:00 INFO : 17: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:31.908+01:00 INFO : Analyzing template 18/75, segment 1/8
+2026-03-18T12:35:31.934+01:00 INFO : 248 points above threshold
+2026-03-18T12:35:31.965+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:31.968+01:00 INFO : Analyzing template 18/75, segment 2/8
+2026-03-18T12:35:31.995+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:32.030+01:00 INFO : 527 points above threshold
+2026-03-18T12:35:32.034+01:00 INFO : Analyzing template 18/75, segment 3/8
+2026-03-18T12:35:32.059+01:00 INFO : 480 points above threshold
+2026-03-18T12:35:32.091+01:00 INFO : 732 points above threshold
+2026-03-18T12:35:32.136+01:00 INFO : Analyzing template 18/75, segment 4/8
+2026-03-18T12:35:32.158+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:32.188+01:00 INFO : 254 points above threshold
+2026-03-18T12:35:32.190+01:00 INFO : Analyzing template 18/75, segment 5/8
+2026-03-18T12:35:32.215+01:00 INFO : 358 points above threshold
+2026-03-18T12:35:32.245+01:00 INFO : 342 points above threshold
+2026-03-18T12:35:32.249+01:00 INFO : Analyzing template 18/75, segment 6/8
+2026-03-18T12:35:32.274+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:32.304+01:00 INFO : 371 points above threshold
+2026-03-18T12:35:32.306+01:00 INFO : Analyzing template 18/75, segment 7/8
+2026-03-18T12:35:32.331+01:00 INFO : 283 points above threshold
+2026-03-18T12:35:32.360+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:32.368+01:00 INFO : Analyzing template 18/75, segment 8/8
+2026-03-18T12:35:32.391+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:32.422+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:32.425+01:00 INFO : 18: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:32.467+01:00 INFO : Analyzing template 19/75, segment 1/8
+2026-03-18T12:35:32.493+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:32.522+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:32.526+01:00 INFO : Analyzing template 19/75, segment 2/8
+2026-03-18T12:35:32.551+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:32.583+01:00 INFO : 439 points above threshold
+2026-03-18T12:35:32.586+01:00 INFO : Analyzing template 19/75, segment 3/8
+2026-03-18T12:35:32.614+01:00 INFO : 507 points above threshold
+2026-03-18T12:35:32.648+01:00 INFO : 754 points above threshold
+2026-03-18T12:35:32.681+01:00 INFO : Analyzing template 19/75, segment 4/8
+2026-03-18T12:35:32.706+01:00 INFO : 278 points above threshold
+2026-03-18T12:35:32.736+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:32.741+01:00 INFO : Analyzing template 19/75, segment 5/8
+2026-03-18T12:35:32.765+01:00 INFO : 384 points above threshold
+2026-03-18T12:35:32.793+01:00 INFO : 365 points above threshold
+2026-03-18T12:35:32.796+01:00 INFO : Analyzing template 19/75, segment 6/8
+2026-03-18T12:35:32.820+01:00 INFO : 373 points above threshold
+2026-03-18T12:35:32.849+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:32.851+01:00 INFO : Analyzing template 19/75, segment 7/8
+2026-03-18T12:35:32.876+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:32.908+01:00 INFO : 291 points above threshold
+2026-03-18T12:35:32.912+01:00 INFO : Analyzing template 19/75, segment 8/8
+2026-03-18T12:35:32.935+01:00 INFO : 372 points above threshold
+2026-03-18T12:35:32.965+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:32.970+01:00 INFO : 19: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:33.010+01:00 INFO : Analyzing template 20/75, segment 1/8
+2026-03-18T12:35:33.035+01:00 INFO : 214 points above threshold
+2026-03-18T12:35:33.064+01:00 INFO : 379 points above threshold
+2026-03-18T12:35:33.067+01:00 INFO : Analyzing template 20/75, segment 2/8
+2026-03-18T12:35:33.090+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:33.118+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:33.121+01:00 INFO : Analyzing template 20/75, segment 3/8
+2026-03-18T12:35:33.147+01:00 INFO : 539 points above threshold
+2026-03-18T12:35:33.177+01:00 INFO : 778 points above threshold
+2026-03-18T12:35:33.201+01:00 INFO : Analyzing template 20/75, segment 4/8
+2026-03-18T12:35:33.229+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:33.259+01:00 INFO : 263 points above threshold
+2026-03-18T12:35:33.265+01:00 INFO : Analyzing template 20/75, segment 5/8
+2026-03-18T12:35:33.292+01:00 INFO : 358 points above threshold
+2026-03-18T12:35:33.324+01:00 INFO : 400 points above threshold
+2026-03-18T12:35:33.327+01:00 INFO : Analyzing template 20/75, segment 6/8
+2026-03-18T12:35:33.351+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:33.381+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:33.384+01:00 INFO : Analyzing template 20/75, segment 7/8
+2026-03-18T12:35:33.408+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:33.439+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:33.442+01:00 INFO : Analyzing template 20/75, segment 8/8
+2026-03-18T12:35:33.467+01:00 INFO : 343 points above threshold
+2026-03-18T12:35:33.494+01:00 INFO : 322 points above threshold
+2026-03-18T12:35:33.511+01:00 INFO : 20: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:33.552+01:00 INFO : Analyzing template 21/75, segment 1/8
+2026-03-18T12:35:33.577+01:00 INFO : 217 points above threshold
+2026-03-18T12:35:33.607+01:00 INFO : 368 points above threshold
+2026-03-18T12:35:33.611+01:00 INFO : Analyzing template 21/75, segment 2/8
+2026-03-18T12:35:33.636+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:33.665+01:00 INFO : 436 points above threshold
+2026-03-18T12:35:33.668+01:00 INFO : Analyzing template 21/75, segment 3/8
+2026-03-18T12:35:33.692+01:00 INFO : 575 points above threshold
+2026-03-18T12:35:33.723+01:00 INFO : 818 points above threshold
+2026-03-18T12:35:33.747+01:00 INFO : Analyzing template 21/75, segment 4/8
+2026-03-18T12:35:33.771+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:33.804+01:00 INFO : 224 points above threshold
+2026-03-18T12:35:33.807+01:00 INFO : Analyzing template 21/75, segment 5/8
+2026-03-18T12:35:33.833+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:33.865+01:00 INFO : 333 points above threshold
+2026-03-18T12:35:33.868+01:00 INFO : Analyzing template 21/75, segment 6/8
+2026-03-18T12:35:33.894+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:33.928+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:33.936+01:00 INFO : Analyzing template 21/75, segment 7/8
+2026-03-18T12:35:33.960+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:33.992+01:00 INFO : 496 points above threshold
+2026-03-18T12:35:33.995+01:00 INFO : Analyzing template 21/75, segment 8/8
+2026-03-18T12:35:34.019+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:34.049+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:34.052+01:00 INFO : 21: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:34.094+01:00 INFO : Analyzing template 22/75, segment 1/8
+2026-03-18T12:35:34.118+01:00 INFO : 222 points above threshold
+2026-03-18T12:35:34.149+01:00 INFO : 370 points above threshold
+2026-03-18T12:35:34.152+01:00 INFO : Analyzing template 22/75, segment 2/8
+2026-03-18T12:35:34.174+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:34.204+01:00 INFO : 428 points above threshold
+2026-03-18T12:35:34.207+01:00 INFO : Analyzing template 22/75, segment 3/8
+2026-03-18T12:35:34.235+01:00 INFO : 536 points above threshold
+2026-03-18T12:35:34.263+01:00 INFO : 801 points above threshold
+2026-03-18T12:35:34.290+01:00 INFO : Analyzing template 22/75, segment 4/8
+2026-03-18T12:35:34.313+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:34.346+01:00 INFO : 256 points above threshold
+2026-03-18T12:35:34.349+01:00 INFO : Analyzing template 22/75, segment 5/8
+2026-03-18T12:35:34.373+01:00 INFO : 342 points above threshold
+2026-03-18T12:35:34.405+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:34.409+01:00 INFO : Analyzing template 22/75, segment 6/8
+2026-03-18T12:35:34.433+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:34.467+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:34.473+01:00 INFO : Analyzing template 22/75, segment 7/8
+2026-03-18T12:35:34.497+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:34.529+01:00 INFO : 503 points above threshold
+2026-03-18T12:35:34.532+01:00 INFO : Analyzing template 22/75, segment 8/8
+2026-03-18T12:35:34.558+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:34.588+01:00 INFO : 335 points above threshold
+2026-03-18T12:35:34.592+01:00 INFO : 22: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:34.631+01:00 INFO : Analyzing template 23/75, segment 1/8
+2026-03-18T12:35:34.654+01:00 INFO : 237 points above threshold
+2026-03-18T12:35:34.683+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:34.685+01:00 INFO : Analyzing template 23/75, segment 2/8
+2026-03-18T12:35:34.707+01:00 INFO : 302 points above threshold
+2026-03-18T12:35:34.738+01:00 INFO : 460 points above threshold
+2026-03-18T12:35:34.741+01:00 INFO : Analyzing template 23/75, segment 3/8
+2026-03-18T12:35:34.767+01:00 INFO : 509 points above threshold
+2026-03-18T12:35:34.795+01:00 INFO : 761 points above threshold
+2026-03-18T12:35:34.826+01:00 INFO : Analyzing template 23/75, segment 4/8
+2026-03-18T12:35:34.852+01:00 INFO : 321 points above threshold
+2026-03-18T12:35:34.880+01:00 INFO : 245 points above threshold
+2026-03-18T12:35:34.884+01:00 INFO : Analyzing template 23/75, segment 5/8
+2026-03-18T12:35:34.909+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:34.937+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:34.944+01:00 INFO : Analyzing template 23/75, segment 6/8
+2026-03-18T12:35:34.970+01:00 INFO : 322 points above threshold
+2026-03-18T12:35:35.001+01:00 INFO : 321 points above threshold
+2026-03-18T12:35:35.004+01:00 INFO : Analyzing template 23/75, segment 7/8
+2026-03-18T12:35:35.029+01:00 INFO : 291 points above threshold
+2026-03-18T12:35:35.065+01:00 INFO : 560 points above threshold
+2026-03-18T12:35:35.069+01:00 INFO : Analyzing template 23/75, segment 8/8
+2026-03-18T12:35:35.095+01:00 INFO : 236 points above threshold
+2026-03-18T12:35:35.129+01:00 INFO : 374 points above threshold
+2026-03-18T12:35:35.133+01:00 INFO : 23: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:35.177+01:00 INFO : Analyzing template 24/75, segment 1/8
+2026-03-18T12:35:35.201+01:00 INFO : 259 points above threshold
+2026-03-18T12:35:35.233+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:35.237+01:00 INFO : Analyzing template 24/75, segment 2/8
+2026-03-18T12:35:35.261+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:35.290+01:00 INFO : 443 points above threshold
+2026-03-18T12:35:35.292+01:00 INFO : Analyzing template 24/75, segment 3/8
+2026-03-18T12:35:35.315+01:00 INFO : 529 points above threshold
+2026-03-18T12:35:35.344+01:00 INFO : 761 points above threshold
+2026-03-18T12:35:35.383+01:00 INFO : Analyzing template 24/75, segment 4/8
+2026-03-18T12:35:35.408+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:35.439+01:00 INFO : 235 points above threshold
+2026-03-18T12:35:35.442+01:00 INFO : Analyzing template 24/75, segment 5/8
+2026-03-18T12:35:35.470+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:35.498+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:35.501+01:00 INFO : Analyzing template 24/75, segment 6/8
+2026-03-18T12:35:35.524+01:00 INFO : 293 points above threshold
+2026-03-18T12:35:35.554+01:00 INFO : 327 points above threshold
+2026-03-18T12:35:35.557+01:00 INFO : Analyzing template 24/75, segment 7/8
+2026-03-18T12:35:35.583+01:00 INFO : 267 points above threshold
+2026-03-18T12:35:35.614+01:00 INFO : 549 points above threshold
+2026-03-18T12:35:35.618+01:00 INFO : Analyzing template 24/75, segment 8/8
+2026-03-18T12:35:35.643+01:00 INFO : 206 points above threshold
+2026-03-18T12:35:35.676+01:00 INFO : 415 points above threshold
+2026-03-18T12:35:35.680+01:00 INFO : 24: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:35.723+01:00 INFO : Analyzing template 25/75, segment 1/8
+2026-03-18T12:35:35.750+01:00 INFO : 252 points above threshold
+2026-03-18T12:35:35.780+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:35.783+01:00 INFO : Analyzing template 25/75, segment 2/8
+2026-03-18T12:35:35.809+01:00 INFO : 374 points above threshold
+2026-03-18T12:35:35.841+01:00 INFO : 348 points above threshold
+2026-03-18T12:35:35.844+01:00 INFO : Analyzing template 25/75, segment 3/8
+2026-03-18T12:35:35.868+01:00 INFO : 536 points above threshold
+2026-03-18T12:35:35.896+01:00 INFO : 786 points above threshold
+2026-03-18T12:35:35.933+01:00 INFO : Analyzing template 25/75, segment 4/8
+2026-03-18T12:35:35.958+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:35.987+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:35.990+01:00 INFO : Analyzing template 25/75, segment 5/8
+2026-03-18T12:35:36.015+01:00 INFO : 372 points above threshold
+2026-03-18T12:35:36.046+01:00 INFO : 333 points above threshold
+2026-03-18T12:35:36.049+01:00 INFO : Analyzing template 25/75, segment 6/8
+2026-03-18T12:35:36.074+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:36.104+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:36.107+01:00 INFO : Analyzing template 25/75, segment 7/8
+2026-03-18T12:35:36.131+01:00 INFO : 293 points above threshold
+2026-03-18T12:35:36.159+01:00 INFO : 552 points above threshold
+2026-03-18T12:35:36.163+01:00 INFO : Analyzing template 25/75, segment 8/8
+2026-03-18T12:35:36.186+01:00 INFO : 182 points above threshold
+2026-03-18T12:35:36.215+01:00 INFO : 403 points above threshold
+2026-03-18T12:35:36.218+01:00 INFO : 25: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:36.260+01:00 INFO : Analyzing template 26/75, segment 1/8
+2026-03-18T12:35:36.287+01:00 INFO : 245 points above threshold
+2026-03-18T12:35:36.321+01:00 INFO : 325 points above threshold
+2026-03-18T12:35:36.325+01:00 INFO : Analyzing template 26/75, segment 2/8
+2026-03-18T12:35:36.349+01:00 INFO : 423 points above threshold
+2026-03-18T12:35:36.379+01:00 INFO : 355 points above threshold
+2026-03-18T12:35:36.382+01:00 INFO : Analyzing template 26/75, segment 3/8
+2026-03-18T12:35:36.405+01:00 INFO : 555 points above threshold
+2026-03-18T12:35:36.434+01:00 INFO : 831 points above threshold
+2026-03-18T12:35:36.468+01:00 INFO : Analyzing template 26/75, segment 4/8
+2026-03-18T12:35:36.490+01:00 INFO : 278 points above threshold
+2026-03-18T12:35:36.518+01:00 INFO : 194 points above threshold
+2026-03-18T12:35:36.521+01:00 INFO : Analyzing template 26/75, segment 5/8
+2026-03-18T12:35:36.545+01:00 INFO : 399 points above threshold
+2026-03-18T12:35:36.571+01:00 INFO : 330 points above threshold
+2026-03-18T12:35:36.573+01:00 INFO : Analyzing template 26/75, segment 6/8
+2026-03-18T12:35:36.597+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:36.626+01:00 INFO : 306 points above threshold
+2026-03-18T12:35:36.629+01:00 INFO : Analyzing template 26/75, segment 7/8
+2026-03-18T12:35:36.651+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:36.679+01:00 INFO : 545 points above threshold
+2026-03-18T12:35:36.682+01:00 INFO : Analyzing template 26/75, segment 8/8
+2026-03-18T12:35:36.705+01:00 INFO : 175 points above threshold
+2026-03-18T12:35:36.732+01:00 INFO : 374 points above threshold
+2026-03-18T12:35:36.736+01:00 INFO : 26: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:36.776+01:00 INFO : Analyzing template 27/75, segment 1/8
+2026-03-18T12:35:36.799+01:00 INFO : 253 points above threshold
+2026-03-18T12:35:36.827+01:00 INFO : 387 points above threshold
+2026-03-18T12:35:36.830+01:00 INFO : Analyzing template 27/75, segment 2/8
+2026-03-18T12:35:36.853+01:00 INFO : 425 points above threshold
+2026-03-18T12:35:36.881+01:00 INFO : 425 points above threshold
+2026-03-18T12:35:36.884+01:00 INFO : Analyzing template 27/75, segment 3/8
+2026-03-18T12:35:36.906+01:00 INFO : 584 points above threshold
+2026-03-18T12:35:36.934+01:00 INFO : 796 points above threshold
+2026-03-18T12:35:36.963+01:00 INFO : Analyzing template 27/75, segment 4/8
+2026-03-18T12:35:36.986+01:00 INFO : 269 points above threshold
+2026-03-18T12:35:37.013+01:00 INFO : 214 points above threshold
+2026-03-18T12:35:37.016+01:00 INFO : Analyzing template 27/75, segment 5/8
+2026-03-18T12:35:37.038+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:37.069+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:37.077+01:00 INFO : Analyzing template 27/75, segment 6/8
+2026-03-18T12:35:37.098+01:00 INFO : 265 points above threshold
+2026-03-18T12:35:37.126+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:37.129+01:00 INFO : Analyzing template 27/75, segment 7/8
+2026-03-18T12:35:37.151+01:00 INFO : 281 points above threshold
+2026-03-18T12:35:37.179+01:00 INFO : 571 points above threshold
+2026-03-18T12:35:37.182+01:00 INFO : Analyzing template 27/75, segment 8/8
+2026-03-18T12:35:37.205+01:00 INFO : 204 points above threshold
+2026-03-18T12:35:37.233+01:00 INFO : 402 points above threshold
+2026-03-18T12:35:37.237+01:00 INFO : 27: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:37.279+01:00 INFO : Analyzing template 28/75, segment 1/8
+2026-03-18T12:35:37.301+01:00 INFO : 255 points above threshold
+2026-03-18T12:35:37.328+01:00 INFO : 378 points above threshold
+2026-03-18T12:35:37.331+01:00 INFO : Analyzing template 28/75, segment 2/8
+2026-03-18T12:35:37.353+01:00 INFO : 439 points above threshold
+2026-03-18T12:35:37.383+01:00 INFO : 430 points above threshold
+2026-03-18T12:35:37.387+01:00 INFO : Analyzing template 28/75, segment 3/8
+2026-03-18T12:35:37.409+01:00 INFO : 527 points above threshold
+2026-03-18T12:35:37.439+01:00 INFO : 864 points above threshold
+2026-03-18T12:35:37.474+01:00 INFO : Analyzing template 28/75, segment 4/8
+2026-03-18T12:35:37.496+01:00 INFO : 274 points above threshold
+2026-03-18T12:35:37.523+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:37.526+01:00 INFO : Analyzing template 28/75, segment 5/8
+2026-03-18T12:35:37.547+01:00 INFO : 322 points above threshold
+2026-03-18T12:35:37.575+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:37.582+01:00 INFO : Analyzing template 28/75, segment 6/8
+2026-03-18T12:35:37.605+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:37.634+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:37.637+01:00 INFO : Analyzing template 28/75, segment 7/8
+2026-03-18T12:35:37.661+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:37.689+01:00 INFO : 550 points above threshold
+2026-03-18T12:35:37.696+01:00 INFO : Analyzing template 28/75, segment 8/8
+2026-03-18T12:35:37.718+01:00 INFO : 195 points above threshold
+2026-03-18T12:35:37.745+01:00 INFO : 334 points above threshold
+2026-03-18T12:35:37.749+01:00 INFO : 28: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:37.788+01:00 INFO : Analyzing template 29/75, segment 1/8
+2026-03-18T12:35:37.811+01:00 INFO : 215 points above threshold
+2026-03-18T12:35:37.839+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:37.841+01:00 INFO : Analyzing template 29/75, segment 2/8
+2026-03-18T12:35:37.863+01:00 INFO : 417 points above threshold
+2026-03-18T12:35:37.891+01:00 INFO : 464 points above threshold
+2026-03-18T12:35:37.894+01:00 INFO : Analyzing template 29/75, segment 3/8
+2026-03-18T12:35:37.917+01:00 INFO : 432 points above threshold
+2026-03-18T12:35:37.947+01:00 INFO : 878 points above threshold
+2026-03-18T12:35:37.980+01:00 INFO : Analyzing template 29/75, segment 4/8
+2026-03-18T12:35:38.003+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:38.031+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:38.034+01:00 INFO : Analyzing template 29/75, segment 5/8
+2026-03-18T12:35:38.055+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:38.085+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:38.089+01:00 INFO : Analyzing template 29/75, segment 6/8
+2026-03-18T12:35:38.112+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:38.140+01:00 INFO : 328 points above threshold
+2026-03-18T12:35:38.143+01:00 INFO : Analyzing template 29/75, segment 7/8
+2026-03-18T12:35:38.166+01:00 INFO : 274 points above threshold
+2026-03-18T12:35:38.193+01:00 INFO : 544 points above threshold
+2026-03-18T12:35:38.196+01:00 INFO : Analyzing template 29/75, segment 8/8
+2026-03-18T12:35:38.221+01:00 INFO : 212 points above threshold
+2026-03-18T12:35:38.249+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:38.253+01:00 INFO : 29: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:38.293+01:00 INFO : Analyzing template 30/75, segment 1/8
+2026-03-18T12:35:38.315+01:00 INFO : 223 points above threshold
+2026-03-18T12:35:38.342+01:00 INFO : 377 points above threshold
+2026-03-18T12:35:38.344+01:00 INFO : Analyzing template 30/75, segment 2/8
+2026-03-18T12:35:38.366+01:00 INFO : 401 points above threshold
+2026-03-18T12:35:38.394+01:00 INFO : 465 points above threshold
+2026-03-18T12:35:38.396+01:00 INFO : Analyzing template 30/75, segment 3/8
+2026-03-18T12:35:38.418+01:00 INFO : 373 points above threshold
+2026-03-18T12:35:38.447+01:00 INFO : 877 points above threshold
+2026-03-18T12:35:38.476+01:00 INFO : Analyzing template 30/75, segment 4/8
+2026-03-18T12:35:38.502+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:38.529+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:38.532+01:00 INFO : Analyzing template 30/75, segment 5/8
+2026-03-18T12:35:38.555+01:00 INFO : 354 points above threshold
+2026-03-18T12:35:38.584+01:00 INFO : 318 points above threshold
+2026-03-18T12:35:38.587+01:00 INFO : Analyzing template 30/75, segment 6/8
+2026-03-18T12:35:38.610+01:00 INFO : 235 points above threshold
+2026-03-18T12:35:38.638+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:38.640+01:00 INFO : Analyzing template 30/75, segment 7/8
+2026-03-18T12:35:38.662+01:00 INFO : 277 points above threshold
+2026-03-18T12:35:38.690+01:00 INFO : 450 points above threshold
+2026-03-18T12:35:38.694+01:00 INFO : Analyzing template 30/75, segment 8/8
+2026-03-18T12:35:38.718+01:00 INFO : 203 points above threshold
+2026-03-18T12:35:38.745+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:38.748+01:00 INFO : 30: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:38.788+01:00 INFO : Analyzing template 31/75, segment 1/8
+2026-03-18T12:35:38.810+01:00 INFO : 244 points above threshold
+2026-03-18T12:35:38.840+01:00 INFO : 389 points above threshold
+2026-03-18T12:35:38.844+01:00 INFO : Analyzing template 31/75, segment 2/8
+2026-03-18T12:35:38.865+01:00 INFO : 397 points above threshold
+2026-03-18T12:35:38.892+01:00 INFO : 463 points above threshold
+2026-03-18T12:35:38.895+01:00 INFO : Analyzing template 31/75, segment 3/8
+2026-03-18T12:35:38.917+01:00 INFO : 440 points above threshold
+2026-03-18T12:35:38.944+01:00 INFO : 833 points above threshold
+2026-03-18T12:35:38.975+01:00 INFO : Analyzing template 31/75, segment 4/8
+2026-03-18T12:35:38.998+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:39.024+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:39.026+01:00 INFO : Analyzing template 31/75, segment 5/8
+2026-03-18T12:35:39.049+01:00 INFO : 384 points above threshold
+2026-03-18T12:35:39.075+01:00 INFO : 361 points above threshold
+2026-03-18T12:35:39.078+01:00 INFO : Analyzing template 31/75, segment 6/8
+2026-03-18T12:35:39.101+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:39.128+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:39.131+01:00 INFO : Analyzing template 31/75, segment 7/8
+2026-03-18T12:35:39.154+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:39.185+01:00 INFO : 440 points above threshold
+2026-03-18T12:35:39.188+01:00 INFO : Analyzing template 31/75, segment 8/8
+2026-03-18T12:35:39.210+01:00 INFO : 188 points above threshold
+2026-03-18T12:35:39.239+01:00 INFO : 404 points above threshold
+2026-03-18T12:35:39.243+01:00 INFO : 31: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:39.279+01:00 INFO : Analyzing template 32/75, segment 1/8
+2026-03-18T12:35:39.301+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:39.328+01:00 INFO : 382 points above threshold
+2026-03-18T12:35:39.332+01:00 INFO : Analyzing template 32/75, segment 2/8
+2026-03-18T12:35:39.355+01:00 INFO : 340 points above threshold
+2026-03-18T12:35:39.381+01:00 INFO : 474 points above threshold
+2026-03-18T12:35:39.384+01:00 INFO : Analyzing template 32/75, segment 3/8
+2026-03-18T12:35:39.407+01:00 INFO : 536 points above threshold
+2026-03-18T12:35:39.436+01:00 INFO : 825 points above threshold
+2026-03-18T12:35:39.469+01:00 INFO : Analyzing template 32/75, segment 4/8
+2026-03-18T12:35:39.491+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:39.518+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:39.522+01:00 INFO : Analyzing template 32/75, segment 5/8
+2026-03-18T12:35:39.543+01:00 INFO : 366 points above threshold
+2026-03-18T12:35:39.570+01:00 INFO : 357 points above threshold
+2026-03-18T12:35:39.573+01:00 INFO : Analyzing template 32/75, segment 6/8
+2026-03-18T12:35:39.594+01:00 INFO : 222 points above threshold
+2026-03-18T12:35:39.621+01:00 INFO : 251 points above threshold
+2026-03-18T12:35:39.623+01:00 INFO : Analyzing template 32/75, segment 7/8
+2026-03-18T12:35:39.645+01:00 INFO : 269 points above threshold
+2026-03-18T12:35:39.673+01:00 INFO : 447 points above threshold
+2026-03-18T12:35:39.675+01:00 INFO : Analyzing template 32/75, segment 8/8
+2026-03-18T12:35:39.697+01:00 INFO : 192 points above threshold
+2026-03-18T12:35:39.726+01:00 INFO : 466 points above threshold
+2026-03-18T12:35:39.730+01:00 INFO : 32: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:39.765+01:00 INFO : Analyzing template 33/75, segment 1/8
+2026-03-18T12:35:39.788+01:00 INFO : 244 points above threshold
+2026-03-18T12:35:39.816+01:00 INFO : 386 points above threshold
+2026-03-18T12:35:39.819+01:00 INFO : Analyzing template 33/75, segment 2/8
+2026-03-18T12:35:39.840+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:39.868+01:00 INFO : 419 points above threshold
+2026-03-18T12:35:39.883+01:00 INFO : Analyzing template 33/75, segment 3/8
+2026-03-18T12:35:39.904+01:00 INFO : 522 points above threshold
+2026-03-18T12:35:39.932+01:00 INFO : 740 points above threshold
+2026-03-18T12:35:39.960+01:00 INFO : Analyzing template 33/75, segment 4/8
+2026-03-18T12:35:39.982+01:00 INFO : 258 points above threshold
+2026-03-18T12:35:40.009+01:00 INFO : 252 points above threshold
+2026-03-18T12:35:40.013+01:00 INFO : Analyzing template 33/75, segment 5/8
+2026-03-18T12:35:40.034+01:00 INFO : 333 points above threshold
+2026-03-18T12:35:40.061+01:00 INFO : 344 points above threshold
+2026-03-18T12:35:40.064+01:00 INFO : Analyzing template 33/75, segment 6/8
+2026-03-18T12:35:40.084+01:00 INFO : 206 points above threshold
+2026-03-18T12:35:40.112+01:00 INFO : 194 points above threshold
+2026-03-18T12:35:40.115+01:00 INFO : Analyzing template 33/75, segment 7/8
+2026-03-18T12:35:40.135+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:40.161+01:00 INFO : 505 points above threshold
+2026-03-18T12:35:40.164+01:00 INFO : Analyzing template 33/75, segment 8/8
+2026-03-18T12:35:40.185+01:00 INFO : 199 points above threshold
+2026-03-18T12:35:40.210+01:00 INFO : 415 points above threshold
+2026-03-18T12:35:40.213+01:00 INFO : 33: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:40.248+01:00 INFO : Analyzing template 34/75, segment 1/8
+2026-03-18T12:35:40.268+01:00 INFO : 261 points above threshold
+2026-03-18T12:35:40.293+01:00 INFO : 396 points above threshold
+2026-03-18T12:35:40.296+01:00 INFO : Analyzing template 34/75, segment 2/8
+2026-03-18T12:35:40.317+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:40.342+01:00 INFO : 377 points above threshold
+2026-03-18T12:35:40.354+01:00 INFO : Analyzing template 34/75, segment 3/8
+2026-03-18T12:35:40.375+01:00 INFO : 475 points above threshold
+2026-03-18T12:35:40.400+01:00 INFO : 737 points above threshold
+2026-03-18T12:35:40.424+01:00 INFO : Analyzing template 34/75, segment 4/8
+2026-03-18T12:35:40.443+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:40.469+01:00 INFO : 263 points above threshold
+2026-03-18T12:35:40.471+01:00 INFO : Analyzing template 34/75, segment 5/8
+2026-03-18T12:35:40.491+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:40.517+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:40.519+01:00 INFO : Analyzing template 34/75, segment 6/8
+2026-03-18T12:35:40.539+01:00 INFO : 222 points above threshold
+2026-03-18T12:35:40.565+01:00 INFO : 226 points above threshold
+2026-03-18T12:35:40.567+01:00 INFO : Analyzing template 34/75, segment 7/8
+2026-03-18T12:35:40.587+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:40.612+01:00 INFO : 547 points above threshold
+2026-03-18T12:35:40.615+01:00 INFO : Analyzing template 34/75, segment 8/8
+2026-03-18T12:35:40.635+01:00 INFO : 156 points above threshold
+2026-03-18T12:35:40.660+01:00 INFO : 401 points above threshold
+2026-03-18T12:35:40.663+01:00 INFO : 34: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:40.697+01:00 INFO : Analyzing template 35/75, segment 1/8
+2026-03-18T12:35:40.717+01:00 INFO : 266 points above threshold
+2026-03-18T12:35:40.742+01:00 INFO : 348 points above threshold
+2026-03-18T12:35:40.744+01:00 INFO : Analyzing template 35/75, segment 2/8
+2026-03-18T12:35:40.764+01:00 INFO : 343 points above threshold
+2026-03-18T12:35:40.789+01:00 INFO : 428 points above threshold
+2026-03-18T12:35:40.792+01:00 INFO : Analyzing template 35/75, segment 3/8
+2026-03-18T12:35:40.811+01:00 INFO : 488 points above threshold
+2026-03-18T12:35:40.836+01:00 INFO : 726 points above threshold
+2026-03-18T12:35:40.861+01:00 INFO : Analyzing template 35/75, segment 4/8
+2026-03-18T12:35:40.881+01:00 INFO : 229 points above threshold
+2026-03-18T12:35:40.905+01:00 INFO : 265 points above threshold
+2026-03-18T12:35:40.908+01:00 INFO : Analyzing template 35/75, segment 5/8
+2026-03-18T12:35:40.928+01:00 INFO : 334 points above threshold
+2026-03-18T12:35:40.953+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:40.956+01:00 INFO : Analyzing template 35/75, segment 6/8
+2026-03-18T12:35:40.976+01:00 INFO : 222 points above threshold
+2026-03-18T12:35:41.001+01:00 INFO : 314 points above threshold
+2026-03-18T12:35:41.004+01:00 INFO : Analyzing template 35/75, segment 7/8
+2026-03-18T12:35:41.024+01:00 INFO : 343 points above threshold
+2026-03-18T12:35:41.050+01:00 INFO : 524 points above threshold
+2026-03-18T12:35:41.053+01:00 INFO : Analyzing template 35/75, segment 8/8
+2026-03-18T12:35:41.073+01:00 INFO : 186 points above threshold
+2026-03-18T12:35:41.099+01:00 INFO : 364 points above threshold
+2026-03-18T12:35:41.103+01:00 INFO : 35: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:41.138+01:00 INFO : Analyzing template 36/75, segment 1/8
+2026-03-18T12:35:41.159+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:41.187+01:00 INFO : 392 points above threshold
+2026-03-18T12:35:41.189+01:00 INFO : Analyzing template 36/75, segment 2/8
+2026-03-18T12:35:41.209+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:41.234+01:00 INFO : 444 points above threshold
+2026-03-18T12:35:41.236+01:00 INFO : Analyzing template 36/75, segment 3/8
+2026-03-18T12:35:41.256+01:00 INFO : 521 points above threshold
+2026-03-18T12:35:41.281+01:00 INFO : 721 points above threshold
+2026-03-18T12:35:41.309+01:00 INFO : Analyzing template 36/75, segment 4/8
+2026-03-18T12:35:41.336+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:41.366+01:00 INFO : 267 points above threshold
+2026-03-18T12:35:41.369+01:00 INFO : Analyzing template 36/75, segment 5/8
+2026-03-18T12:35:41.394+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:41.426+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:41.429+01:00 INFO : Analyzing template 36/75, segment 6/8
+2026-03-18T12:35:41.450+01:00 INFO : 243 points above threshold
+2026-03-18T12:35:41.477+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:41.480+01:00 INFO : Analyzing template 36/75, segment 7/8
+2026-03-18T12:35:41.501+01:00 INFO : 358 points above threshold
+2026-03-18T12:35:41.528+01:00 INFO : 544 points above threshold
+2026-03-18T12:35:41.532+01:00 INFO : Analyzing template 36/75, segment 8/8
+2026-03-18T12:35:41.553+01:00 INFO : 209 points above threshold
+2026-03-18T12:35:41.580+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:41.594+01:00 INFO : 36: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:41.632+01:00 INFO : Analyzing template 37/75, segment 1/8
+2026-03-18T12:35:41.657+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:41.687+01:00 INFO : 378 points above threshold
+2026-03-18T12:35:41.702+01:00 INFO : Analyzing template 37/75, segment 2/8
+2026-03-18T12:35:41.730+01:00 INFO : 358 points above threshold
+2026-03-18T12:35:41.758+01:00 INFO : 420 points above threshold
+2026-03-18T12:35:41.764+01:00 INFO : Analyzing template 37/75, segment 3/8
+2026-03-18T12:35:41.789+01:00 INFO : 521 points above threshold
+2026-03-18T12:35:41.817+01:00 INFO : 675 points above threshold
+2026-03-18T12:35:41.838+01:00 INFO : Analyzing template 37/75, segment 4/8
+2026-03-18T12:35:41.859+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:41.886+01:00 INFO : 212 points above threshold
+2026-03-18T12:35:41.889+01:00 INFO : Analyzing template 37/75, segment 5/8
+2026-03-18T12:35:41.912+01:00 INFO : 322 points above threshold
+2026-03-18T12:35:41.944+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:41.947+01:00 INFO : Analyzing template 37/75, segment 6/8
+2026-03-18T12:35:41.974+01:00 INFO : 258 points above threshold
+2026-03-18T12:35:42.002+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:42.006+01:00 INFO : Analyzing template 37/75, segment 7/8
+2026-03-18T12:35:42.030+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:42.058+01:00 INFO : 553 points above threshold
+2026-03-18T12:35:42.061+01:00 INFO : Analyzing template 37/75, segment 8/8
+2026-03-18T12:35:42.084+01:00 INFO : 190 points above threshold
+2026-03-18T12:35:42.110+01:00 INFO : 383 points above threshold
+2026-03-18T12:35:42.115+01:00 INFO : 37: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:42.153+01:00 INFO : Analyzing template 38/75, segment 1/8
+2026-03-18T12:35:42.175+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:42.203+01:00 INFO : 420 points above threshold
+2026-03-18T12:35:42.206+01:00 INFO : Analyzing template 38/75, segment 2/8
+2026-03-18T12:35:42.229+01:00 INFO : 305 points above threshold
+2026-03-18T12:35:42.258+01:00 INFO : 450 points above threshold
+2026-03-18T12:35:42.261+01:00 INFO : Analyzing template 38/75, segment 3/8
+2026-03-18T12:35:42.288+01:00 INFO : 485 points above threshold
+2026-03-18T12:35:42.318+01:00 INFO : 660 points above threshold
+2026-03-18T12:35:42.348+01:00 INFO : Analyzing template 38/75, segment 4/8
+2026-03-18T12:35:42.374+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:42.406+01:00 INFO : 247 points above threshold
+2026-03-18T12:35:42.409+01:00 INFO : Analyzing template 38/75, segment 5/8
+2026-03-18T12:35:42.430+01:00 INFO : 344 points above threshold
+2026-03-18T12:35:42.456+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:42.459+01:00 INFO : Analyzing template 38/75, segment 6/8
+2026-03-18T12:35:42.480+01:00 INFO : 280 points above threshold
+2026-03-18T12:35:42.507+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:42.510+01:00 INFO : Analyzing template 38/75, segment 7/8
+2026-03-18T12:35:42.533+01:00 INFO : 270 points above threshold
+2026-03-18T12:35:42.562+01:00 INFO : 515 points above threshold
+2026-03-18T12:35:42.566+01:00 INFO : Analyzing template 38/75, segment 8/8
+2026-03-18T12:35:42.592+01:00 INFO : 207 points above threshold
+2026-03-18T12:35:42.622+01:00 INFO : 388 points above threshold
+2026-03-18T12:35:42.625+01:00 INFO : 38: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:42.664+01:00 INFO : Analyzing template 39/75, segment 1/8
+2026-03-18T12:35:42.688+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:42.715+01:00 INFO : 325 points above threshold
+2026-03-18T12:35:42.717+01:00 INFO : Analyzing template 39/75, segment 2/8
+2026-03-18T12:35:42.739+01:00 INFO : 355 points above threshold
+2026-03-18T12:35:42.765+01:00 INFO : 386 points above threshold
+2026-03-18T12:35:42.768+01:00 INFO : Analyzing template 39/75, segment 3/8
+2026-03-18T12:35:42.790+01:00 INFO : 449 points above threshold
+2026-03-18T12:35:42.818+01:00 INFO : 678 points above threshold
+2026-03-18T12:35:42.848+01:00 INFO : Analyzing template 39/75, segment 4/8
+2026-03-18T12:35:42.871+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:42.901+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:42.905+01:00 INFO : Analyzing template 39/75, segment 5/8
+2026-03-18T12:35:42.933+01:00 INFO : 397 points above threshold
+2026-03-18T12:35:42.963+01:00 INFO : 352 points above threshold
+2026-03-18T12:35:42.966+01:00 INFO : Analyzing template 39/75, segment 6/8
+2026-03-18T12:35:42.993+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:43.022+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:43.025+01:00 INFO : Analyzing template 39/75, segment 7/8
+2026-03-18T12:35:43.047+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:43.074+01:00 INFO : 477 points above threshold
+2026-03-18T12:35:43.077+01:00 INFO : Analyzing template 39/75, segment 8/8
+2026-03-18T12:35:43.101+01:00 INFO : 203 points above threshold
+2026-03-18T12:35:43.130+01:00 INFO : 400 points above threshold
+2026-03-18T12:35:43.134+01:00 INFO : 39: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:43.169+01:00 INFO : Analyzing template 40/75, segment 1/8
+2026-03-18T12:35:43.192+01:00 INFO : 351 points above threshold
+2026-03-18T12:35:43.222+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:43.226+01:00 INFO : Analyzing template 40/75, segment 2/8
+2026-03-18T12:35:43.248+01:00 INFO : 327 points above threshold
+2026-03-18T12:35:43.275+01:00 INFO : 351 points above threshold
+2026-03-18T12:35:43.277+01:00 INFO : Analyzing template 40/75, segment 3/8
+2026-03-18T12:35:43.300+01:00 INFO : 451 points above threshold
+2026-03-18T12:35:43.327+01:00 INFO : 700 points above threshold
+2026-03-18T12:35:43.361+01:00 INFO : Analyzing template 40/75, segment 4/8
+2026-03-18T12:35:43.383+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:43.409+01:00 INFO : 255 points above threshold
+2026-03-18T12:35:43.412+01:00 INFO : Analyzing template 40/75, segment 5/8
+2026-03-18T12:35:43.436+01:00 INFO : 400 points above threshold
+2026-03-18T12:35:43.466+01:00 INFO : 399 points above threshold
+2026-03-18T12:35:43.468+01:00 INFO : Analyzing template 40/75, segment 6/8
+2026-03-18T12:35:43.492+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:43.524+01:00 INFO : 271 points above threshold
+2026-03-18T12:35:43.527+01:00 INFO : Analyzing template 40/75, segment 7/8
+2026-03-18T12:35:43.553+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:43.584+01:00 INFO : 421 points above threshold
+2026-03-18T12:35:43.588+01:00 INFO : Analyzing template 40/75, segment 8/8
+2026-03-18T12:35:43.611+01:00 INFO : 211 points above threshold
+2026-03-18T12:35:43.641+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:43.654+01:00 INFO : 40: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:43.689+01:00 INFO : Analyzing template 41/75, segment 1/8
+2026-03-18T12:35:43.713+01:00 INFO : 359 points above threshold
+2026-03-18T12:35:43.744+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:43.747+01:00 INFO : Analyzing template 41/75, segment 2/8
+2026-03-18T12:35:43.769+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:43.797+01:00 INFO : 379 points above threshold
+2026-03-18T12:35:43.801+01:00 INFO : Analyzing template 41/75, segment 3/8
+2026-03-18T12:35:43.825+01:00 INFO : 410 points above threshold
+2026-03-18T12:35:43.852+01:00 INFO : 664 points above threshold
+2026-03-18T12:35:43.885+01:00 INFO : Analyzing template 41/75, segment 4/8
+2026-03-18T12:35:43.907+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:43.938+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:43.940+01:00 INFO : Analyzing template 41/75, segment 5/8
+2026-03-18T12:35:43.961+01:00 INFO : 395 points above threshold
+2026-03-18T12:35:43.989+01:00 INFO : 387 points above threshold
+2026-03-18T12:35:43.992+01:00 INFO : Analyzing template 41/75, segment 6/8
+2026-03-18T12:35:44.015+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:44.045+01:00 INFO : 269 points above threshold
+2026-03-18T12:35:44.048+01:00 INFO : Analyzing template 41/75, segment 7/8
+2026-03-18T12:35:44.071+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:44.100+01:00 INFO : 361 points above threshold
+2026-03-18T12:35:44.104+01:00 INFO : Analyzing template 41/75, segment 8/8
+2026-03-18T12:35:44.129+01:00 INFO : 220 points above threshold
+2026-03-18T12:35:44.161+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:44.165+01:00 INFO : 41: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:44.203+01:00 INFO : Analyzing template 42/75, segment 1/8
+2026-03-18T12:35:44.226+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:44.253+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:44.256+01:00 INFO : Analyzing template 42/75, segment 2/8
+2026-03-18T12:35:44.278+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:44.310+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:44.313+01:00 INFO : Analyzing template 42/75, segment 3/8
+2026-03-18T12:35:44.337+01:00 INFO : 403 points above threshold
+2026-03-18T12:35:44.366+01:00 INFO : 628 points above threshold
+2026-03-18T12:35:44.391+01:00 INFO : Analyzing template 42/75, segment 4/8
+2026-03-18T12:35:44.415+01:00 INFO : 339 points above threshold
+2026-03-18T12:35:44.444+01:00 INFO : 213 points above threshold
+2026-03-18T12:35:44.447+01:00 INFO : Analyzing template 42/75, segment 5/8
+2026-03-18T12:35:44.469+01:00 INFO : 403 points above threshold
+2026-03-18T12:35:44.496+01:00 INFO : 302 points above threshold
+2026-03-18T12:35:44.499+01:00 INFO : Analyzing template 42/75, segment 6/8
+2026-03-18T12:35:44.521+01:00 INFO : 261 points above threshold
+2026-03-18T12:35:44.549+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:44.552+01:00 INFO : Analyzing template 42/75, segment 7/8
+2026-03-18T12:35:44.574+01:00 INFO : 302 points above threshold
+2026-03-18T12:35:44.601+01:00 INFO : 446 points above threshold
+2026-03-18T12:35:44.604+01:00 INFO : Analyzing template 42/75, segment 8/8
+2026-03-18T12:35:44.627+01:00 INFO : 208 points above threshold
+2026-03-18T12:35:44.655+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:44.660+01:00 INFO : 42: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:44.695+01:00 INFO : Analyzing template 43/75, segment 1/8
+2026-03-18T12:35:44.719+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:44.748+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:44.752+01:00 INFO : Analyzing template 43/75, segment 2/8
+2026-03-18T12:35:44.777+01:00 INFO : 269 points above threshold
+2026-03-18T12:35:44.805+01:00 INFO : 405 points above threshold
+2026-03-18T12:35:44.808+01:00 INFO : Analyzing template 43/75, segment 3/8
+2026-03-18T12:35:44.831+01:00 INFO : 373 points above threshold
+2026-03-18T12:35:44.858+01:00 INFO : 537 points above threshold
+2026-03-18T12:35:44.883+01:00 INFO : Analyzing template 43/75, segment 4/8
+2026-03-18T12:35:44.907+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:44.939+01:00 INFO : 204 points above threshold
+2026-03-18T12:35:44.943+01:00 INFO : Analyzing template 43/75, segment 5/8
+2026-03-18T12:35:44.967+01:00 INFO : 388 points above threshold
+2026-03-18T12:35:44.996+01:00 INFO : 328 points above threshold
+2026-03-18T12:35:44.999+01:00 INFO : Analyzing template 43/75, segment 6/8
+2026-03-18T12:35:45.020+01:00 INFO : 247 points above threshold
+2026-03-18T12:35:45.047+01:00 INFO : 325 points above threshold
+2026-03-18T12:35:45.050+01:00 INFO : Analyzing template 43/75, segment 7/8
+2026-03-18T12:35:45.074+01:00 INFO : 291 points above threshold
+2026-03-18T12:35:45.101+01:00 INFO : 432 points above threshold
+2026-03-18T12:35:45.104+01:00 INFO : Analyzing template 43/75, segment 8/8
+2026-03-18T12:35:45.127+01:00 INFO : 184 points above threshold
+2026-03-18T12:35:45.154+01:00 INFO : 246 points above threshold
+2026-03-18T12:35:45.157+01:00 INFO : 43: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:45.193+01:00 INFO : Analyzing template 44/75, segment 1/8
+2026-03-18T12:35:45.216+01:00 INFO : 322 points above threshold
+2026-03-18T12:35:45.246+01:00 INFO : 321 points above threshold
+2026-03-18T12:35:45.248+01:00 INFO : Analyzing template 44/75, segment 2/8
+2026-03-18T12:35:45.271+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:45.300+01:00 INFO : 383 points above threshold
+2026-03-18T12:35:45.303+01:00 INFO : Analyzing template 44/75, segment 3/8
+2026-03-18T12:35:45.326+01:00 INFO : 395 points above threshold
+2026-03-18T12:35:45.357+01:00 INFO : 530 points above threshold
+2026-03-18T12:35:45.386+01:00 INFO : Analyzing template 44/75, segment 4/8
+2026-03-18T12:35:45.409+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:45.438+01:00 INFO : 226 points above threshold
+2026-03-18T12:35:45.441+01:00 INFO : Analyzing template 44/75, segment 5/8
+2026-03-18T12:35:45.464+01:00 INFO : 446 points above threshold
+2026-03-18T12:35:45.493+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:45.496+01:00 INFO : Analyzing template 44/75, segment 6/8
+2026-03-18T12:35:45.520+01:00 INFO : 270 points above threshold
+2026-03-18T12:35:45.550+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:45.553+01:00 INFO : Analyzing template 44/75, segment 7/8
+2026-03-18T12:35:45.577+01:00 INFO : 260 points above threshold
+2026-03-18T12:35:45.606+01:00 INFO : 475 points above threshold
+2026-03-18T12:35:45.609+01:00 INFO : Analyzing template 44/75, segment 8/8
+2026-03-18T12:35:45.632+01:00 INFO : 186 points above threshold
+2026-03-18T12:35:45.659+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:45.662+01:00 INFO : 44: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:45.698+01:00 INFO : Analyzing template 45/75, segment 1/8
+2026-03-18T12:35:45.722+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:45.749+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:45.752+01:00 INFO : Analyzing template 45/75, segment 2/8
+2026-03-18T12:35:45.776+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:45.802+01:00 INFO : 415 points above threshold
+2026-03-18T12:35:45.805+01:00 INFO : Analyzing template 45/75, segment 3/8
+2026-03-18T12:35:45.828+01:00 INFO : 407 points above threshold
+2026-03-18T12:35:45.857+01:00 INFO : 584 points above threshold
+2026-03-18T12:35:45.885+01:00 INFO : Analyzing template 45/75, segment 4/8
+2026-03-18T12:35:45.909+01:00 INFO : 388 points above threshold
+2026-03-18T12:35:45.937+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:45.941+01:00 INFO : Analyzing template 45/75, segment 5/8
+2026-03-18T12:35:45.965+01:00 INFO : 462 points above threshold
+2026-03-18T12:35:45.993+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:45.998+01:00 INFO : Analyzing template 45/75, segment 6/8
+2026-03-18T12:35:46.020+01:00 INFO : 278 points above threshold
+2026-03-18T12:35:46.047+01:00 INFO : 303 points above threshold
+2026-03-18T12:35:46.050+01:00 INFO : Analyzing template 45/75, segment 7/8
+2026-03-18T12:35:46.075+01:00 INFO : 256 points above threshold
+2026-03-18T12:35:46.105+01:00 INFO : 516 points above threshold
+2026-03-18T12:35:46.108+01:00 INFO : Analyzing template 45/75, segment 8/8
+2026-03-18T12:35:46.132+01:00 INFO : 210 points above threshold
+2026-03-18T12:35:46.160+01:00 INFO : 381 points above threshold
+2026-03-18T12:35:46.163+01:00 INFO : 45: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:46.199+01:00 INFO : Analyzing template 46/75, segment 1/8
+2026-03-18T12:35:46.224+01:00 INFO : 298 points above threshold
+2026-03-18T12:35:46.251+01:00 INFO : 312 points above threshold
+2026-03-18T12:35:46.254+01:00 INFO : Analyzing template 46/75, segment 2/8
+2026-03-18T12:35:46.276+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:46.305+01:00 INFO : 447 points above threshold
+2026-03-18T12:35:46.308+01:00 INFO : Analyzing template 46/75, segment 3/8
+2026-03-18T12:35:46.330+01:00 INFO : 411 points above threshold
+2026-03-18T12:35:46.357+01:00 INFO : 645 points above threshold
+2026-03-18T12:35:46.390+01:00 INFO : Analyzing template 46/75, segment 4/8
+2026-03-18T12:35:46.414+01:00 INFO : 393 points above threshold
+2026-03-18T12:35:46.441+01:00 INFO : 254 points above threshold
+2026-03-18T12:35:46.444+01:00 INFO : Analyzing template 46/75, segment 5/8
+2026-03-18T12:35:46.469+01:00 INFO : 389 points above threshold
+2026-03-18T12:35:46.496+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:46.499+01:00 INFO : Analyzing template 46/75, segment 6/8
+2026-03-18T12:35:46.522+01:00 INFO : 261 points above threshold
+2026-03-18T12:35:46.553+01:00 INFO : 367 points above threshold
+2026-03-18T12:35:46.556+01:00 INFO : Analyzing template 46/75, segment 7/8
+2026-03-18T12:35:46.579+01:00 INFO : 265 points above threshold
+2026-03-18T12:35:46.607+01:00 INFO : 518 points above threshold
+2026-03-18T12:35:46.610+01:00 INFO : Analyzing template 46/75, segment 8/8
+2026-03-18T12:35:46.632+01:00 INFO : 207 points above threshold
+2026-03-18T12:35:46.658+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:46.662+01:00 INFO : 46: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:46.697+01:00 INFO : Analyzing template 47/75, segment 1/8
+2026-03-18T12:35:46.722+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:46.750+01:00 INFO : 288 points above threshold
+2026-03-18T12:35:46.753+01:00 INFO : Analyzing template 47/75, segment 2/8
+2026-03-18T12:35:46.774+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:46.803+01:00 INFO : 476 points above threshold
+2026-03-18T12:35:46.806+01:00 INFO : Analyzing template 47/75, segment 3/8
+2026-03-18T12:35:46.830+01:00 INFO : 388 points above threshold
+2026-03-18T12:35:46.857+01:00 INFO : 645 points above threshold
+2026-03-18T12:35:46.888+01:00 INFO : Analyzing template 47/75, segment 4/8
+2026-03-18T12:35:46.910+01:00 INFO : 363 points above threshold
+2026-03-18T12:35:46.937+01:00 INFO : 209 points above threshold
+2026-03-18T12:35:46.940+01:00 INFO : Analyzing template 47/75, segment 5/8
+2026-03-18T12:35:46.963+01:00 INFO : 361 points above threshold
+2026-03-18T12:35:46.991+01:00 INFO : 328 points above threshold
+2026-03-18T12:35:46.993+01:00 INFO : Analyzing template 47/75, segment 6/8
+2026-03-18T12:35:47.017+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:47.048+01:00 INFO : 369 points above threshold
+2026-03-18T12:35:47.051+01:00 INFO : Analyzing template 47/75, segment 7/8
+2026-03-18T12:35:47.076+01:00 INFO : 256 points above threshold
+2026-03-18T12:35:47.107+01:00 INFO : 457 points above threshold
+2026-03-18T12:35:47.110+01:00 INFO : Analyzing template 47/75, segment 8/8
+2026-03-18T12:35:47.136+01:00 INFO : 184 points above threshold
+2026-03-18T12:35:47.164+01:00 INFO : 308 points above threshold
+2026-03-18T12:35:47.169+01:00 INFO : 47: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:47.203+01:00 INFO : Analyzing template 48/75, segment 1/8
+2026-03-18T12:35:47.226+01:00 INFO : 245 points above threshold
+2026-03-18T12:35:47.252+01:00 INFO : 277 points above threshold
+2026-03-18T12:35:47.256+01:00 INFO : Analyzing template 48/75, segment 2/8
+2026-03-18T12:35:47.279+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:47.309+01:00 INFO : 448 points above threshold
+2026-03-18T12:35:47.312+01:00 INFO : Analyzing template 48/75, segment 3/8
+2026-03-18T12:35:47.336+01:00 INFO : 421 points above threshold
+2026-03-18T12:35:47.364+01:00 INFO : 599 points above threshold
+2026-03-18T12:35:47.389+01:00 INFO : Analyzing template 48/75, segment 4/8
+2026-03-18T12:35:47.412+01:00 INFO : 354 points above threshold
+2026-03-18T12:35:47.440+01:00 INFO : 241 points above threshold
+2026-03-18T12:35:47.443+01:00 INFO : Analyzing template 48/75, segment 5/8
+2026-03-18T12:35:47.465+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:47.493+01:00 INFO : 388 points above threshold
+2026-03-18T12:35:47.496+01:00 INFO : Analyzing template 48/75, segment 6/8
+2026-03-18T12:35:47.519+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:47.546+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:47.549+01:00 INFO : Analyzing template 48/75, segment 7/8
+2026-03-18T12:35:47.571+01:00 INFO : 263 points above threshold
+2026-03-18T12:35:47.599+01:00 INFO : 368 points above threshold
+2026-03-18T12:35:47.602+01:00 INFO : Analyzing template 48/75, segment 8/8
+2026-03-18T12:35:47.625+01:00 INFO : 217 points above threshold
+2026-03-18T12:35:47.654+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:47.658+01:00 INFO : 48: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:47.693+01:00 INFO : Analyzing template 49/75, segment 1/8
+2026-03-18T12:35:47.718+01:00 INFO : 252 points above threshold
+2026-03-18T12:35:47.745+01:00 INFO : 312 points above threshold
+2026-03-18T12:35:47.748+01:00 INFO : Analyzing template 49/75, segment 2/8
+2026-03-18T12:35:47.770+01:00 INFO : 330 points above threshold
+2026-03-18T12:35:47.800+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:47.803+01:00 INFO : Analyzing template 49/75, segment 3/8
+2026-03-18T12:35:47.826+01:00 INFO : 435 points above threshold
+2026-03-18T12:35:47.852+01:00 INFO : 583 points above threshold
+2026-03-18T12:35:47.874+01:00 INFO : Analyzing template 49/75, segment 4/8
+2026-03-18T12:35:47.896+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:47.926+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:47.929+01:00 INFO : Analyzing template 49/75, segment 5/8
+2026-03-18T12:35:47.952+01:00 INFO : 377 points above threshold
+2026-03-18T12:35:47.979+01:00 INFO : 339 points above threshold
+2026-03-18T12:35:47.982+01:00 INFO : Analyzing template 49/75, segment 6/8
+2026-03-18T12:35:48.007+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:48.037+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:48.040+01:00 INFO : Analyzing template 49/75, segment 7/8
+2026-03-18T12:35:48.062+01:00 INFO : 255 points above threshold
+2026-03-18T12:35:48.090+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:48.094+01:00 INFO : Analyzing template 49/75, segment 8/8
+2026-03-18T12:35:48.116+01:00 INFO : 199 points above threshold
+2026-03-18T12:35:48.143+01:00 INFO : 339 points above threshold
+2026-03-18T12:35:48.146+01:00 INFO : 49: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:48.183+01:00 INFO : Analyzing template 50/75, segment 1/8
+2026-03-18T12:35:48.206+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:48.235+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:48.238+01:00 INFO : Analyzing template 50/75, segment 2/8
+2026-03-18T12:35:48.260+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:48.289+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:48.292+01:00 INFO : Analyzing template 50/75, segment 3/8
+2026-03-18T12:35:48.319+01:00 INFO : 438 points above threshold
+2026-03-18T12:35:48.346+01:00 INFO : 582 points above threshold
+2026-03-18T12:35:48.370+01:00 INFO : Analyzing template 50/75, segment 4/8
+2026-03-18T12:35:48.394+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:48.421+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:48.424+01:00 INFO : Analyzing template 50/75, segment 5/8
+2026-03-18T12:35:48.446+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:48.474+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:48.477+01:00 INFO : Analyzing template 50/75, segment 6/8
+2026-03-18T12:35:48.499+01:00 INFO : 298 points above threshold
+2026-03-18T12:35:48.527+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:48.530+01:00 INFO : Analyzing template 50/75, segment 7/8
+2026-03-18T12:35:48.552+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:48.582+01:00 INFO : 376 points above threshold
+2026-03-18T12:35:48.586+01:00 INFO : Analyzing template 50/75, segment 8/8
+2026-03-18T12:35:48.608+01:00 INFO : 210 points above threshold
+2026-03-18T12:35:48.637+01:00 INFO : 384 points above threshold
+2026-03-18T12:35:48.640+01:00 INFO : 50: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:48.679+01:00 INFO : Analyzing template 51/75, segment 1/8
+2026-03-18T12:35:48.701+01:00 INFO : 333 points above threshold
+2026-03-18T12:35:48.728+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:48.731+01:00 INFO : Analyzing template 51/75, segment 2/8
+2026-03-18T12:35:48.754+01:00 INFO : 270 points above threshold
+2026-03-18T12:35:48.782+01:00 INFO : 372 points above threshold
+2026-03-18T12:35:48.784+01:00 INFO : Analyzing template 51/75, segment 3/8
+2026-03-18T12:35:48.808+01:00 INFO : 434 points above threshold
+2026-03-18T12:35:48.836+01:00 INFO : 555 points above threshold
+2026-03-18T12:35:48.864+01:00 INFO : Analyzing template 51/75, segment 4/8
+2026-03-18T12:35:48.887+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:48.918+01:00 INFO : 238 points above threshold
+2026-03-18T12:35:48.921+01:00 INFO : Analyzing template 51/75, segment 5/8
+2026-03-18T12:35:48.945+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:48.972+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:48.976+01:00 INFO : Analyzing template 51/75, segment 6/8
+2026-03-18T12:35:48.999+01:00 INFO : 261 points above threshold
+2026-03-18T12:35:49.025+01:00 INFO : 318 points above threshold
+2026-03-18T12:35:49.028+01:00 INFO : Analyzing template 51/75, segment 7/8
+2026-03-18T12:35:49.050+01:00 INFO : 270 points above threshold
+2026-03-18T12:35:49.081+01:00 INFO : 401 points above threshold
+2026-03-18T12:35:49.084+01:00 INFO : Analyzing template 51/75, segment 8/8
+2026-03-18T12:35:49.107+01:00 INFO : 208 points above threshold
+2026-03-18T12:35:49.135+01:00 INFO : 390 points above threshold
+2026-03-18T12:35:49.139+01:00 INFO : 51: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:49.177+01:00 INFO : Analyzing template 52/75, segment 1/8
+2026-03-18T12:35:49.201+01:00 INFO : 372 points above threshold
+2026-03-18T12:35:49.232+01:00 INFO : 342 points above threshold
+2026-03-18T12:35:49.234+01:00 INFO : Analyzing template 52/75, segment 2/8
+2026-03-18T12:35:49.257+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:49.284+01:00 INFO : 445 points above threshold
+2026-03-18T12:35:49.287+01:00 INFO : Analyzing template 52/75, segment 3/8
+2026-03-18T12:35:49.309+01:00 INFO : 441 points above threshold
+2026-03-18T12:35:49.336+01:00 INFO : 512 points above threshold
+2026-03-18T12:35:49.365+01:00 INFO : Analyzing template 52/75, segment 4/8
+2026-03-18T12:35:49.387+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:49.415+01:00 INFO : 242 points above threshold
+2026-03-18T12:35:49.419+01:00 INFO : Analyzing template 52/75, segment 5/8
+2026-03-18T12:35:49.443+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:49.470+01:00 INFO : 311 points above threshold
+2026-03-18T12:35:49.474+01:00 INFO : Analyzing template 52/75, segment 6/8
+2026-03-18T12:35:49.497+01:00 INFO : 234 points above threshold
+2026-03-18T12:35:49.527+01:00 INFO : 355 points above threshold
+2026-03-18T12:35:49.530+01:00 INFO : Analyzing template 52/75, segment 7/8
+2026-03-18T12:35:49.554+01:00 INFO : 271 points above threshold
+2026-03-18T12:35:49.582+01:00 INFO : 442 points above threshold
+2026-03-18T12:35:49.585+01:00 INFO : Analyzing template 52/75, segment 8/8
+2026-03-18T12:35:49.609+01:00 INFO : 226 points above threshold
+2026-03-18T12:35:49.635+01:00 INFO : 373 points above threshold
+2026-03-18T12:35:49.638+01:00 INFO : 52: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:49.677+01:00 INFO : Analyzing template 53/75, segment 1/8
+2026-03-18T12:35:49.700+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:49.731+01:00 INFO : 358 points above threshold
+2026-03-18T12:35:49.733+01:00 INFO : Analyzing template 53/75, segment 2/8
+2026-03-18T12:35:49.756+01:00 INFO : 280 points above threshold
+2026-03-18T12:35:49.784+01:00 INFO : 396 points above threshold
+2026-03-18T12:35:49.787+01:00 INFO : Analyzing template 53/75, segment 3/8
+2026-03-18T12:35:49.811+01:00 INFO : 436 points above threshold
+2026-03-18T12:35:49.840+01:00 INFO : 564 points above threshold
+2026-03-18T12:35:49.863+01:00 INFO : Analyzing template 53/75, segment 4/8
+2026-03-18T12:35:49.885+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:49.912+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:49.914+01:00 INFO : Analyzing template 53/75, segment 5/8
+2026-03-18T12:35:49.935+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:49.965+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:49.968+01:00 INFO : Analyzing template 53/75, segment 6/8
+2026-03-18T12:35:49.990+01:00 INFO : 240 points above threshold
+2026-03-18T12:35:50.018+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:50.021+01:00 INFO : Analyzing template 53/75, segment 7/8
+2026-03-18T12:35:50.047+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:50.074+01:00 INFO : 529 points above threshold
+2026-03-18T12:35:50.078+01:00 INFO : Analyzing template 53/75, segment 8/8
+2026-03-18T12:35:50.105+01:00 INFO : 251 points above threshold
+2026-03-18T12:35:50.134+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:50.138+01:00 INFO : 53: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:50.180+01:00 INFO : Analyzing template 54/75, segment 1/8
+2026-03-18T12:35:50.201+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:50.228+01:00 INFO : 410 points above threshold
+2026-03-18T12:35:50.231+01:00 INFO : Analyzing template 54/75, segment 2/8
+2026-03-18T12:35:50.254+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:50.284+01:00 INFO : 362 points above threshold
+2026-03-18T12:35:50.286+01:00 INFO : Analyzing template 54/75, segment 3/8
+2026-03-18T12:35:50.310+01:00 INFO : 483 points above threshold
+2026-03-18T12:35:50.338+01:00 INFO : 574 points above threshold
+2026-03-18T12:35:50.361+01:00 INFO : Analyzing template 54/75, segment 4/8
+2026-03-18T12:35:50.384+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:50.412+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:50.416+01:00 INFO : Analyzing template 54/75, segment 5/8
+2026-03-18T12:35:50.439+01:00 INFO : 281 points above threshold
+2026-03-18T12:35:50.469+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:50.471+01:00 INFO : Analyzing template 54/75, segment 6/8
+2026-03-18T12:35:50.494+01:00 INFO : 252 points above threshold
+2026-03-18T12:35:50.522+01:00 INFO : 308 points above threshold
+2026-03-18T12:35:50.524+01:00 INFO : Analyzing template 54/75, segment 7/8
+2026-03-18T12:35:50.546+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:50.572+01:00 INFO : 546 points above threshold
+2026-03-18T12:35:50.575+01:00 INFO : Analyzing template 54/75, segment 8/8
+2026-03-18T12:35:50.595+01:00 INFO : 247 points above threshold
+2026-03-18T12:35:50.622+01:00 INFO : 312 points above threshold
+2026-03-18T12:35:50.625+01:00 INFO : 54: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:50.666+01:00 INFO : Analyzing template 55/75, segment 1/8
+2026-03-18T12:35:50.689+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:50.717+01:00 INFO : 392 points above threshold
+2026-03-18T12:35:50.722+01:00 INFO : Analyzing template 55/75, segment 2/8
+2026-03-18T12:35:50.746+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:50.775+01:00 INFO : 389 points above threshold
+2026-03-18T12:35:50.779+01:00 INFO : Analyzing template 55/75, segment 3/8
+2026-03-18T12:35:50.802+01:00 INFO : 472 points above threshold
+2026-03-18T12:35:50.831+01:00 INFO : 525 points above threshold
+2026-03-18T12:35:50.847+01:00 INFO : Analyzing template 55/75, segment 4/8
+2026-03-18T12:35:50.868+01:00 INFO : 261 points above threshold
+2026-03-18T12:35:50.895+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:50.897+01:00 INFO : Analyzing template 55/75, segment 5/8
+2026-03-18T12:35:50.919+01:00 INFO : 239 points above threshold
+2026-03-18T12:35:50.946+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:50.949+01:00 INFO : Analyzing template 55/75, segment 6/8
+2026-03-18T12:35:50.971+01:00 INFO : 277 points above threshold
+2026-03-18T12:35:50.998+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:51.001+01:00 INFO : Analyzing template 55/75, segment 7/8
+2026-03-18T12:35:51.026+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:51.053+01:00 INFO : 519 points above threshold
+2026-03-18T12:35:51.056+01:00 INFO : Analyzing template 55/75, segment 8/8
+2026-03-18T12:35:51.077+01:00 INFO : 244 points above threshold
+2026-03-18T12:35:51.104+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:51.107+01:00 INFO : 55: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:51.147+01:00 INFO : Analyzing template 56/75, segment 1/8
+2026-03-18T12:35:51.169+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:51.195+01:00 INFO : 431 points above threshold
+2026-03-18T12:35:51.198+01:00 INFO : Analyzing template 56/75, segment 2/8
+2026-03-18T12:35:51.219+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:51.247+01:00 INFO : 387 points above threshold
+2026-03-18T12:35:51.250+01:00 INFO : Analyzing template 56/75, segment 3/8
+2026-03-18T12:35:51.273+01:00 INFO : 487 points above threshold
+2026-03-18T12:35:51.302+01:00 INFO : 497 points above threshold
+2026-03-18T12:35:51.317+01:00 INFO : Analyzing template 56/75, segment 4/8
+2026-03-18T12:35:51.340+01:00 INFO : 268 points above threshold
+2026-03-18T12:35:51.369+01:00 INFO : 277 points above threshold
+2026-03-18T12:35:51.372+01:00 INFO : Analyzing template 56/75, segment 5/8
+2026-03-18T12:35:51.392+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:51.419+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:51.421+01:00 INFO : Analyzing template 56/75, segment 6/8
+2026-03-18T12:35:51.443+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:51.469+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:51.471+01:00 INFO : Analyzing template 56/75, segment 7/8
+2026-03-18T12:35:51.492+01:00 INFO : 313 points above threshold
+2026-03-18T12:35:51.519+01:00 INFO : 572 points above threshold
+2026-03-18T12:35:51.523+01:00 INFO : Analyzing template 56/75, segment 8/8
+2026-03-18T12:35:51.547+01:00 INFO : 260 points above threshold
+2026-03-18T12:35:51.573+01:00 INFO : 416 points above threshold
+2026-03-18T12:35:51.576+01:00 INFO : 56: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:51.617+01:00 INFO : Analyzing template 57/75, segment 1/8
+2026-03-18T12:35:51.638+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:51.665+01:00 INFO : 441 points above threshold
+2026-03-18T12:35:51.668+01:00 INFO : Analyzing template 57/75, segment 2/8
+2026-03-18T12:35:51.689+01:00 INFO : 357 points above threshold
+2026-03-18T12:35:51.715+01:00 INFO : 434 points above threshold
+2026-03-18T12:35:51.718+01:00 INFO : Analyzing template 57/75, segment 3/8
+2026-03-18T12:35:51.738+01:00 INFO : 510 points above threshold
+2026-03-18T12:35:51.764+01:00 INFO : 511 points above threshold
+2026-03-18T12:35:51.777+01:00 INFO : Analyzing template 57/75, segment 4/8
+2026-03-18T12:35:51.798+01:00 INFO : 261 points above threshold
+2026-03-18T12:35:51.824+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:51.827+01:00 INFO : Analyzing template 57/75, segment 5/8
+2026-03-18T12:35:51.851+01:00 INFO : 263 points above threshold
+2026-03-18T12:35:51.879+01:00 INFO : 338 points above threshold
+2026-03-18T12:35:51.882+01:00 INFO : Analyzing template 57/75, segment 6/8
+2026-03-18T12:35:51.906+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:51.934+01:00 INFO : 356 points above threshold
+2026-03-18T12:35:51.937+01:00 INFO : Analyzing template 57/75, segment 7/8
+2026-03-18T12:35:51.959+01:00 INFO : 351 points above threshold
+2026-03-18T12:35:51.986+01:00 INFO : 605 points above threshold
+2026-03-18T12:35:51.989+01:00 INFO : Analyzing template 57/75, segment 8/8
+2026-03-18T12:35:52.010+01:00 INFO : 256 points above threshold
+2026-03-18T12:35:52.036+01:00 INFO : 343 points above threshold
+2026-03-18T12:35:52.038+01:00 INFO : 57: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:52.079+01:00 INFO : Analyzing template 58/75, segment 1/8
+2026-03-18T12:35:52.100+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:52.126+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:52.130+01:00 INFO : Analyzing template 58/75, segment 2/8
+2026-03-18T12:35:52.151+01:00 INFO : 377 points above threshold
+2026-03-18T12:35:52.181+01:00 INFO : 534 points above threshold
+2026-03-18T12:35:52.184+01:00 INFO : Analyzing template 58/75, segment 3/8
+2026-03-18T12:35:52.206+01:00 INFO : 479 points above threshold
+2026-03-18T12:35:52.233+01:00 INFO : 591 points above threshold
+2026-03-18T12:35:52.250+01:00 INFO : Analyzing template 58/75, segment 4/8
+2026-03-18T12:35:52.270+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:52.296+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:52.299+01:00 INFO : Analyzing template 58/75, segment 5/8
+2026-03-18T12:35:52.320+01:00 INFO : 270 points above threshold
+2026-03-18T12:35:52.346+01:00 INFO : 318 points above threshold
+2026-03-18T12:35:52.348+01:00 INFO : Analyzing template 58/75, segment 6/8
+2026-03-18T12:35:52.369+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:52.395+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:52.398+01:00 INFO : Analyzing template 58/75, segment 7/8
+2026-03-18T12:35:52.420+01:00 INFO : 345 points above threshold
+2026-03-18T12:35:52.448+01:00 INFO : 553 points above threshold
+2026-03-18T12:35:52.451+01:00 INFO : Analyzing template 58/75, segment 8/8
+2026-03-18T12:35:52.473+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:52.501+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:52.504+01:00 INFO : 58: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:52.543+01:00 INFO : Analyzing template 59/75, segment 1/8
+2026-03-18T12:35:52.565+01:00 INFO : 298 points above threshold
+2026-03-18T12:35:52.593+01:00 INFO : 309 points above threshold
+2026-03-18T12:35:52.596+01:00 INFO : Analyzing template 59/75, segment 2/8
+2026-03-18T12:35:52.616+01:00 INFO : 357 points above threshold
+2026-03-18T12:35:52.642+01:00 INFO : 598 points above threshold
+2026-03-18T12:35:52.644+01:00 INFO : Analyzing template 59/75, segment 3/8
+2026-03-18T12:35:52.664+01:00 INFO : 462 points above threshold
+2026-03-18T12:35:52.690+01:00 INFO : 593 points above threshold
+2026-03-18T12:35:52.712+01:00 INFO : Analyzing template 59/75, segment 4/8
+2026-03-18T12:35:52.734+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:52.762+01:00 INFO : 231 points above threshold
+2026-03-18T12:35:52.765+01:00 INFO : Analyzing template 59/75, segment 5/8
+2026-03-18T12:35:52.788+01:00 INFO : 298 points above threshold
+2026-03-18T12:35:52.814+01:00 INFO : 349 points above threshold
+2026-03-18T12:35:52.817+01:00 INFO : Analyzing template 59/75, segment 6/8
+2026-03-18T12:35:52.838+01:00 INFO : 256 points above threshold
+2026-03-18T12:35:52.864+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:52.867+01:00 INFO : Analyzing template 59/75, segment 7/8
+2026-03-18T12:35:52.888+01:00 INFO : 318 points above threshold
+2026-03-18T12:35:52.914+01:00 INFO : 458 points above threshold
+2026-03-18T12:35:52.917+01:00 INFO : Analyzing template 59/75, segment 8/8
+2026-03-18T12:35:52.938+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:52.963+01:00 INFO : 293 points above threshold
+2026-03-18T12:35:52.967+01:00 INFO : 59: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:53.007+01:00 INFO : Analyzing template 60/75, segment 1/8
+2026-03-18T12:35:53.030+01:00 INFO : 295 points above threshold
+2026-03-18T12:35:53.059+01:00 INFO : 278 points above threshold
+2026-03-18T12:35:53.062+01:00 INFO : Analyzing template 60/75, segment 2/8
+2026-03-18T12:35:53.084+01:00 INFO : 340 points above threshold
+2026-03-18T12:35:53.111+01:00 INFO : 546 points above threshold
+2026-03-18T12:35:53.115+01:00 INFO : Analyzing template 60/75, segment 3/8
+2026-03-18T12:35:53.136+01:00 INFO : 401 points above threshold
+2026-03-18T12:35:53.164+01:00 INFO : 609 points above threshold
+2026-03-18T12:35:53.182+01:00 INFO : Analyzing template 60/75, segment 4/8
+2026-03-18T12:35:53.203+01:00 INFO : 294 points above threshold
+2026-03-18T12:35:53.229+01:00 INFO : 283 points above threshold
+2026-03-18T12:35:53.231+01:00 INFO : Analyzing template 60/75, segment 5/8
+2026-03-18T12:35:53.251+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:53.278+01:00 INFO : 416 points above threshold
+2026-03-18T12:35:53.281+01:00 INFO : Analyzing template 60/75, segment 6/8
+2026-03-18T12:35:53.302+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:53.328+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:53.331+01:00 INFO : Analyzing template 60/75, segment 7/8
+2026-03-18T12:35:53.352+01:00 INFO : 254 points above threshold
+2026-03-18T12:35:53.378+01:00 INFO : 464 points above threshold
+2026-03-18T12:35:53.382+01:00 INFO : Analyzing template 60/75, segment 8/8
+2026-03-18T12:35:53.402+01:00 INFO : 314 points above threshold
+2026-03-18T12:35:53.428+01:00 INFO : 318 points above threshold
+2026-03-18T12:35:53.432+01:00 INFO : 60: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:53.471+01:00 INFO : Analyzing template 61/75, segment 1/8
+2026-03-18T12:35:53.491+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:53.517+01:00 INFO : 258 points above threshold
+2026-03-18T12:35:53.519+01:00 INFO : Analyzing template 61/75, segment 2/8
+2026-03-18T12:35:53.540+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:53.565+01:00 INFO : 452 points above threshold
+2026-03-18T12:35:53.568+01:00 INFO : Analyzing template 61/75, segment 3/8
+2026-03-18T12:35:53.589+01:00 INFO : 408 points above threshold
+2026-03-18T12:35:53.615+01:00 INFO : 561 points above threshold
+2026-03-18T12:35:53.634+01:00 INFO : Analyzing template 61/75, segment 4/8
+2026-03-18T12:35:53.655+01:00 INFO : 289 points above threshold
+2026-03-18T12:35:53.682+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:53.685+01:00 INFO : Analyzing template 61/75, segment 5/8
+2026-03-18T12:35:53.705+01:00 INFO : 247 points above threshold
+2026-03-18T12:35:53.731+01:00 INFO : 393 points above threshold
+2026-03-18T12:35:53.734+01:00 INFO : Analyzing template 61/75, segment 6/8
+2026-03-18T12:35:53.754+01:00 INFO : 247 points above threshold
+2026-03-18T12:35:53.779+01:00 INFO : 323 points above threshold
+2026-03-18T12:35:53.781+01:00 INFO : Analyzing template 61/75, segment 7/8
+2026-03-18T12:35:53.801+01:00 INFO : 266 points above threshold
+2026-03-18T12:35:53.825+01:00 INFO : 489 points above threshold
+2026-03-18T12:35:53.828+01:00 INFO : Analyzing template 61/75, segment 8/8
+2026-03-18T12:35:53.848+01:00 INFO : 342 points above threshold
+2026-03-18T12:35:53.873+01:00 INFO : 355 points above threshold
+2026-03-18T12:35:53.876+01:00 INFO : 61: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:53.916+01:00 INFO : Analyzing template 62/75, segment 1/8
+2026-03-18T12:35:53.936+01:00 INFO : 323 points above threshold
+2026-03-18T12:35:53.962+01:00 INFO : 268 points above threshold
+2026-03-18T12:35:53.964+01:00 INFO : Analyzing template 62/75, segment 2/8
+2026-03-18T12:35:53.983+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:54.009+01:00 INFO : 490 points above threshold
+2026-03-18T12:35:54.011+01:00 INFO : Analyzing template 62/75, segment 3/8
+2026-03-18T12:35:54.030+01:00 INFO : 380 points above threshold
+2026-03-18T12:35:54.056+01:00 INFO : 516 points above threshold
+2026-03-18T12:35:54.068+01:00 INFO : Analyzing template 62/75, segment 4/8
+2026-03-18T12:35:54.089+01:00 INFO : 266 points above threshold
+2026-03-18T12:35:54.113+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:54.116+01:00 INFO : Analyzing template 62/75, segment 5/8
+2026-03-18T12:35:54.135+01:00 INFO : 243 points above threshold
+2026-03-18T12:35:54.161+01:00 INFO : 336 points above threshold
+2026-03-18T12:35:54.163+01:00 INFO : Analyzing template 62/75, segment 6/8
+2026-03-18T12:35:54.183+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:54.208+01:00 INFO : 366 points above threshold
+2026-03-18T12:35:54.210+01:00 INFO : Analyzing template 62/75, segment 7/8
+2026-03-18T12:35:54.231+01:00 INFO : 257 points above threshold
+2026-03-18T12:35:54.256+01:00 INFO : 490 points above threshold
+2026-03-18T12:35:54.259+01:00 INFO : Analyzing template 62/75, segment 8/8
+2026-03-18T12:35:54.280+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:54.305+01:00 INFO : 384 points above threshold
+2026-03-18T12:35:54.308+01:00 INFO : 62: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:54.344+01:00 INFO : Analyzing template 63/75, segment 1/8
+2026-03-18T12:35:54.364+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:54.389+01:00 INFO : 268 points above threshold
+2026-03-18T12:35:54.392+01:00 INFO : Analyzing template 63/75, segment 2/8
+2026-03-18T12:35:54.411+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:54.436+01:00 INFO : 406 points above threshold
+2026-03-18T12:35:54.439+01:00 INFO : Analyzing template 63/75, segment 3/8
+2026-03-18T12:35:54.458+01:00 INFO : 371 points above threshold
+2026-03-18T12:35:54.483+01:00 INFO : 478 points above threshold
+2026-03-18T12:35:54.499+01:00 INFO : Analyzing template 63/75, segment 4/8
+2026-03-18T12:35:54.518+01:00 INFO : 305 points above threshold
+2026-03-18T12:35:54.543+01:00 INFO : 291 points above threshold
+2026-03-18T12:35:54.546+01:00 INFO : Analyzing template 63/75, segment 5/8
+2026-03-18T12:35:54.565+01:00 INFO : 251 points above threshold
+2026-03-18T12:35:54.590+01:00 INFO : 382 points above threshold
+2026-03-18T12:35:54.593+01:00 INFO : Analyzing template 63/75, segment 6/8
+2026-03-18T12:35:54.612+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:54.637+01:00 INFO : 346 points above threshold
+2026-03-18T12:35:54.639+01:00 INFO : Analyzing template 63/75, segment 7/8
+2026-03-18T12:35:54.658+01:00 INFO : 262 points above threshold
+2026-03-18T12:35:54.683+01:00 INFO : 478 points above threshold
+2026-03-18T12:35:54.686+01:00 INFO : Analyzing template 63/75, segment 8/8
+2026-03-18T12:35:54.705+01:00 INFO : 293 points above threshold
+2026-03-18T12:35:54.730+01:00 INFO : 338 points above threshold
+2026-03-18T12:35:54.733+01:00 INFO : 63: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:54.773+01:00 INFO : Analyzing template 64/75, segment 1/8
+2026-03-18T12:35:54.793+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:54.818+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:54.821+01:00 INFO : Analyzing template 64/75, segment 2/8
+2026-03-18T12:35:54.840+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:54.865+01:00 INFO : 399 points above threshold
+2026-03-18T12:35:54.868+01:00 INFO : Analyzing template 64/75, segment 3/8
+2026-03-18T12:35:54.887+01:00 INFO : 381 points above threshold
+2026-03-18T12:35:54.912+01:00 INFO : 504 points above threshold
+2026-03-18T12:35:54.928+01:00 INFO : Analyzing template 64/75, segment 4/8
+2026-03-18T12:35:54.947+01:00 INFO : 322 points above threshold
+2026-03-18T12:35:54.972+01:00 INFO : 235 points above threshold
+2026-03-18T12:35:54.975+01:00 INFO : Analyzing template 64/75, segment 5/8
+2026-03-18T12:35:54.994+01:00 INFO : 264 points above threshold
+2026-03-18T12:35:55.019+01:00 INFO : 385 points above threshold
+2026-03-18T12:35:55.021+01:00 INFO : Analyzing template 64/75, segment 6/8
+2026-03-18T12:35:55.040+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:55.065+01:00 INFO : 312 points above threshold
+2026-03-18T12:35:55.068+01:00 INFO : Analyzing template 64/75, segment 7/8
+2026-03-18T12:35:55.087+01:00 INFO : 234 points above threshold
+2026-03-18T12:35:55.112+01:00 INFO : 418 points above threshold
+2026-03-18T12:35:55.119+01:00 INFO : Analyzing template 64/75, segment 8/8
+2026-03-18T12:35:55.138+01:00 INFO : 227 points above threshold
+2026-03-18T12:35:55.163+01:00 INFO : 305 points above threshold
+2026-03-18T12:35:55.165+01:00 INFO : 64: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:55.199+01:00 INFO : Analyzing template 65/75, segment 1/8
+2026-03-18T12:35:55.218+01:00 INFO : 333 points above threshold
+2026-03-18T12:35:55.242+01:00 INFO : 302 points above threshold
+2026-03-18T12:35:55.254+01:00 INFO : Analyzing template 65/75, segment 2/8
+2026-03-18T12:35:55.273+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:55.298+01:00 INFO : 460 points above threshold
+2026-03-18T12:35:55.300+01:00 INFO : Analyzing template 65/75, segment 3/8
+2026-03-18T12:35:55.319+01:00 INFO : 371 points above threshold
+2026-03-18T12:35:55.344+01:00 INFO : 495 points above threshold
+2026-03-18T12:35:55.349+01:00 INFO : Analyzing template 65/75, segment 4/8
+2026-03-18T12:35:55.369+01:00 INFO : 330 points above threshold
+2026-03-18T12:35:55.394+01:00 INFO : 248 points above threshold
+2026-03-18T12:35:55.396+01:00 INFO : Analyzing template 65/75, segment 5/8
+2026-03-18T12:35:55.415+01:00 INFO : 274 points above threshold
+2026-03-18T12:35:55.440+01:00 INFO : 313 points above threshold
+2026-03-18T12:35:55.443+01:00 INFO : Analyzing template 65/75, segment 6/8
+2026-03-18T12:35:55.462+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:55.486+01:00 INFO : 315 points above threshold
+2026-03-18T12:35:55.488+01:00 INFO : Analyzing template 65/75, segment 7/8
+2026-03-18T12:35:55.508+01:00 INFO : 265 points above threshold
+2026-03-18T12:35:55.532+01:00 INFO : 422 points above threshold
+2026-03-18T12:35:55.538+01:00 INFO : Analyzing template 65/75, segment 8/8
+2026-03-18T12:35:55.557+01:00 INFO : 238 points above threshold
+2026-03-18T12:35:55.582+01:00 INFO : 276 points above threshold
+2026-03-18T12:35:55.585+01:00 INFO : 65: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:55.618+01:00 INFO : Analyzing template 66/75, segment 1/8
+2026-03-18T12:35:55.637+01:00 INFO : 358 points above threshold
+2026-03-18T12:35:55.662+01:00 INFO : 383 points above threshold
+2026-03-18T12:35:55.673+01:00 INFO : Analyzing template 66/75, segment 2/8
+2026-03-18T12:35:55.692+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:55.717+01:00 INFO : 389 points above threshold
+2026-03-18T12:35:55.719+01:00 INFO : Analyzing template 66/75, segment 3/8
+2026-03-18T12:35:55.738+01:00 INFO : 368 points above threshold
+2026-03-18T12:35:55.762+01:00 INFO : 496 points above threshold
+2026-03-18T12:35:55.764+01:00 INFO : Analyzing template 66/75, segment 4/8
+2026-03-18T12:35:55.784+01:00 INFO : 317 points above threshold
+2026-03-18T12:35:55.809+01:00 INFO : 242 points above threshold
+2026-03-18T12:35:55.812+01:00 INFO : Analyzing template 66/75, segment 5/8
+2026-03-18T12:35:55.831+01:00 INFO : 297 points above threshold
+2026-03-18T12:35:55.856+01:00 INFO : 262 points above threshold
+2026-03-18T12:35:55.858+01:00 INFO : Analyzing template 66/75, segment 6/8
+2026-03-18T12:35:55.877+01:00 INFO : 272 points above threshold
+2026-03-18T12:35:55.901+01:00 INFO : 356 points above threshold
+2026-03-18T12:35:55.904+01:00 INFO : Analyzing template 66/75, segment 7/8
+2026-03-18T12:35:55.923+01:00 INFO : 293 points above threshold
+2026-03-18T12:35:55.948+01:00 INFO : 412 points above threshold
+2026-03-18T12:35:55.954+01:00 INFO : Analyzing template 66/75, segment 8/8
+2026-03-18T12:35:55.973+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:55.997+01:00 INFO : 351 points above threshold
+2026-03-18T12:35:56.000+01:00 INFO : 66: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:56.033+01:00 INFO : Analyzing template 67/75, segment 1/8
+2026-03-18T12:35:56.052+01:00 INFO : 385 points above threshold
+2026-03-18T12:35:56.077+01:00 INFO : 363 points above threshold
+2026-03-18T12:35:56.079+01:00 INFO : Analyzing template 67/75, segment 2/8
+2026-03-18T12:35:56.098+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:56.122+01:00 INFO : 408 points above threshold
+2026-03-18T12:35:56.124+01:00 INFO : Analyzing template 67/75, segment 3/8
+2026-03-18T12:35:56.143+01:00 INFO : 411 points above threshold
+2026-03-18T12:35:56.168+01:00 INFO : 414 points above threshold
+2026-03-18T12:35:56.170+01:00 INFO : Analyzing template 67/75, segment 4/8
+2026-03-18T12:35:56.189+01:00 INFO : 328 points above threshold
+2026-03-18T12:35:56.214+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:56.216+01:00 INFO : Analyzing template 67/75, segment 5/8
+2026-03-18T12:35:56.235+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:56.259+01:00 INFO : 263 points above threshold
+2026-03-18T12:35:56.261+01:00 INFO : Analyzing template 67/75, segment 6/8
+2026-03-18T12:35:56.280+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:56.304+01:00 INFO : 321 points above threshold
+2026-03-18T12:35:56.315+01:00 INFO : Analyzing template 67/75, segment 7/8
+2026-03-18T12:35:56.335+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:56.359+01:00 INFO : 413 points above threshold
+2026-03-18T12:35:56.361+01:00 INFO : Analyzing template 67/75, segment 8/8
+2026-03-18T12:35:56.380+01:00 INFO : 228 points above threshold
+2026-03-18T12:35:56.405+01:00 INFO : 391 points above threshold
+2026-03-18T12:35:56.407+01:00 INFO : 67: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:56.440+01:00 INFO : Analyzing template 68/75, segment 1/8
+2026-03-18T12:35:56.460+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:56.485+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:56.487+01:00 INFO : Analyzing template 68/75, segment 2/8
+2026-03-18T12:35:56.506+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:56.531+01:00 INFO : 376 points above threshold
+2026-03-18T12:35:56.533+01:00 INFO : Analyzing template 68/75, segment 3/8
+2026-03-18T12:35:56.552+01:00 INFO : 419 points above threshold
+2026-03-18T12:35:56.576+01:00 INFO : 349 points above threshold
+2026-03-18T12:35:56.578+01:00 INFO : Analyzing template 68/75, segment 4/8
+2026-03-18T12:35:56.597+01:00 INFO : 329 points above threshold
+2026-03-18T12:35:56.622+01:00 INFO : 283 points above threshold
+2026-03-18T12:35:56.624+01:00 INFO : Analyzing template 68/75, segment 5/8
+2026-03-18T12:35:56.643+01:00 INFO : 340 points above threshold
+2026-03-18T12:35:56.667+01:00 INFO : 281 points above threshold
+2026-03-18T12:35:56.678+01:00 INFO : Analyzing template 68/75, segment 6/8
+2026-03-18T12:35:56.697+01:00 INFO : 222 points above threshold
+2026-03-18T12:35:56.721+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:56.724+01:00 INFO : Analyzing template 68/75, segment 7/8
+2026-03-18T12:35:56.743+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:56.767+01:00 INFO : 451 points above threshold
+2026-03-18T12:35:56.770+01:00 INFO : Analyzing template 68/75, segment 8/8
+2026-03-18T12:35:56.789+01:00 INFO : 211 points above threshold
+2026-03-18T12:35:56.813+01:00 INFO : 431 points above threshold
+2026-03-18T12:35:56.816+01:00 INFO : 68: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:56.849+01:00 INFO : Analyzing template 69/75, segment 1/8
+2026-03-18T12:35:56.868+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:56.893+01:00 INFO : 301 points above threshold
+2026-03-18T12:35:56.895+01:00 INFO : Analyzing template 69/75, segment 2/8
+2026-03-18T12:35:56.914+01:00 INFO : 280 points above threshold
+2026-03-18T12:35:56.939+01:00 INFO : 349 points above threshold
+2026-03-18T12:35:56.941+01:00 INFO : Analyzing template 69/75, segment 3/8
+2026-03-18T12:35:56.960+01:00 INFO : 474 points above threshold
+2026-03-18T12:35:56.985+01:00 INFO : 360 points above threshold
+2026-03-18T12:35:56.997+01:00 INFO : Analyzing template 69/75, segment 4/8
+2026-03-18T12:35:57.016+01:00 INFO : 325 points above threshold
+2026-03-18T12:35:57.041+01:00 INFO : 275 points above threshold
+2026-03-18T12:35:57.043+01:00 INFO : Analyzing template 69/75, segment 5/8
+2026-03-18T12:35:57.062+01:00 INFO : 326 points above threshold
+2026-03-18T12:35:57.086+01:00 INFO : 291 points above threshold
+2026-03-18T12:35:57.088+01:00 INFO : Analyzing template 69/75, segment 6/8
+2026-03-18T12:35:57.107+01:00 INFO : 174 points above threshold
+2026-03-18T12:35:57.132+01:00 INFO : 354 points above threshold
+2026-03-18T12:35:57.134+01:00 INFO : Analyzing template 69/75, segment 7/8
+2026-03-18T12:35:57.153+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:57.177+01:00 INFO : 428 points above threshold
+2026-03-18T12:35:57.180+01:00 INFO : Analyzing template 69/75, segment 8/8
+2026-03-18T12:35:57.199+01:00 INFO : 200 points above threshold
+2026-03-18T12:35:57.223+01:00 INFO : 462 points above threshold
+2026-03-18T12:35:57.226+01:00 INFO : 69: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:57.259+01:00 INFO : Analyzing template 70/75, segment 1/8
+2026-03-18T12:35:57.278+01:00 INFO : 291 points above threshold
+2026-03-18T12:35:57.302+01:00 INFO : 271 points above threshold
+2026-03-18T12:35:57.313+01:00 INFO : Analyzing template 70/75, segment 2/8
+2026-03-18T12:35:57.332+01:00 INFO : 310 points above threshold
+2026-03-18T12:35:57.357+01:00 INFO : 344 points above threshold
+2026-03-18T12:35:57.359+01:00 INFO : Analyzing template 70/75, segment 3/8
+2026-03-18T12:35:57.378+01:00 INFO : 513 points above threshold
+2026-03-18T12:35:57.403+01:00 INFO : 373 points above threshold
+2026-03-18T12:35:57.410+01:00 INFO : Analyzing template 70/75, segment 4/8
+2026-03-18T12:35:57.430+01:00 INFO : 290 points above threshold
+2026-03-18T12:35:57.455+01:00 INFO : 268 points above threshold
+2026-03-18T12:35:57.457+01:00 INFO : Analyzing template 70/75, segment 5/8
+2026-03-18T12:35:57.476+01:00 INFO : 352 points above threshold
+2026-03-18T12:35:57.500+01:00 INFO : 252 points above threshold
+2026-03-18T12:35:57.503+01:00 INFO : Analyzing template 70/75, segment 6/8
+2026-03-18T12:35:57.521+01:00 INFO : 200 points above threshold
+2026-03-18T12:35:57.546+01:00 INFO : 347 points above threshold
+2026-03-18T12:35:57.548+01:00 INFO : Analyzing template 70/75, segment 7/8
+2026-03-18T12:35:57.567+01:00 INFO : 286 points above threshold
+2026-03-18T12:35:57.591+01:00 INFO : 416 points above threshold
+2026-03-18T12:35:57.594+01:00 INFO : Analyzing template 70/75, segment 8/8
+2026-03-18T12:35:57.613+01:00 INFO : 207 points above threshold
+2026-03-18T12:35:57.637+01:00 INFO : 427 points above threshold
+2026-03-18T12:35:57.640+01:00 INFO : 70: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:57.673+01:00 INFO : Analyzing template 71/75, segment 1/8
+2026-03-18T12:35:57.691+01:00 INFO : 271 points above threshold
+2026-03-18T12:35:57.715+01:00 INFO : 308 points above threshold
+2026-03-18T12:35:57.718+01:00 INFO : Analyzing template 71/75, segment 2/8
+2026-03-18T12:35:57.736+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:57.761+01:00 INFO : 386 points above threshold
+2026-03-18T12:35:57.763+01:00 INFO : Analyzing template 71/75, segment 3/8
+2026-03-18T12:35:57.782+01:00 INFO : 524 points above threshold
+2026-03-18T12:35:57.806+01:00 INFO : 402 points above threshold
+2026-03-18T12:35:57.818+01:00 INFO : Analyzing template 71/75, segment 4/8
+2026-03-18T12:35:57.837+01:00 INFO : 300 points above threshold
+2026-03-18T12:35:57.862+01:00 INFO : 313 points above threshold
+2026-03-18T12:35:57.864+01:00 INFO : Analyzing template 71/75, segment 5/8
+2026-03-18T12:35:57.883+01:00 INFO : 334 points above threshold
+2026-03-18T12:35:57.907+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:57.909+01:00 INFO : Analyzing template 71/75, segment 6/8
+2026-03-18T12:35:57.928+01:00 INFO : 263 points above threshold
+2026-03-18T12:35:57.952+01:00 INFO : 320 points above threshold
+2026-03-18T12:35:57.955+01:00 INFO : Analyzing template 71/75, segment 7/8
+2026-03-18T12:35:57.973+01:00 INFO : 260 points above threshold
+2026-03-18T12:35:57.998+01:00 INFO : 517 points above threshold
+2026-03-18T12:35:58.000+01:00 INFO : Analyzing template 71/75, segment 8/8
+2026-03-18T12:35:58.019+01:00 INFO : 226 points above threshold
+2026-03-18T12:35:58.043+01:00 INFO : 356 points above threshold
+2026-03-18T12:35:58.046+01:00 INFO : 71: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:58.079+01:00 INFO : Analyzing template 72/75, segment 1/8
+2026-03-18T12:35:58.099+01:00 INFO : 251 points above threshold
+2026-03-18T12:35:58.123+01:00 INFO : 316 points above threshold
+2026-03-18T12:35:58.125+01:00 INFO : Analyzing template 72/75, segment 2/8
+2026-03-18T12:35:58.144+01:00 INFO : 285 points above threshold
+2026-03-18T12:35:58.169+01:00 INFO : 475 points above threshold
+2026-03-18T12:35:58.171+01:00 INFO : Analyzing template 72/75, segment 3/8
+2026-03-18T12:35:58.190+01:00 INFO : 456 points above threshold
+2026-03-18T12:35:58.214+01:00 INFO : 422 points above threshold
+2026-03-18T12:35:58.227+01:00 INFO : Analyzing template 72/75, segment 4/8
+2026-03-18T12:35:58.245+01:00 INFO : 312 points above threshold
+2026-03-18T12:35:58.270+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:58.272+01:00 INFO : Analyzing template 72/75, segment 5/8
+2026-03-18T12:35:58.290+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:58.314+01:00 INFO : 332 points above threshold
+2026-03-18T12:35:58.316+01:00 INFO : Analyzing template 72/75, segment 6/8
+2026-03-18T12:35:58.335+01:00 INFO : 287 points above threshold
+2026-03-18T12:35:58.359+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:58.361+01:00 INFO : Analyzing template 72/75, segment 7/8
+2026-03-18T12:35:58.380+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:58.404+01:00 INFO : 539 points above threshold
+2026-03-18T12:35:58.406+01:00 INFO : Analyzing template 72/75, segment 8/8
+2026-03-18T12:35:58.425+01:00 INFO : 233 points above threshold
+2026-03-18T12:35:58.449+01:00 INFO : 341 points above threshold
+2026-03-18T12:35:58.451+01:00 INFO : 72: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:58.484+01:00 INFO : Analyzing template 73/75, segment 1/8
+2026-03-18T12:35:58.503+01:00 INFO : 236 points above threshold
+2026-03-18T12:35:58.527+01:00 INFO : 324 points above threshold
+2026-03-18T12:35:58.529+01:00 INFO : Analyzing template 73/75, segment 2/8
+2026-03-18T12:35:58.548+01:00 INFO : 276 points above threshold
+2026-03-18T12:35:58.572+01:00 INFO : 452 points above threshold
+2026-03-18T12:35:58.574+01:00 INFO : Analyzing template 73/75, segment 3/8
+2026-03-18T12:35:58.593+01:00 INFO : 423 points above threshold
+2026-03-18T12:35:58.617+01:00 INFO : 351 points above threshold
+2026-03-18T12:35:58.628+01:00 INFO : Analyzing template 73/75, segment 4/8
+2026-03-18T12:35:58.647+01:00 INFO : 327 points above threshold
+2026-03-18T12:35:58.670+01:00 INFO : 255 points above threshold
+2026-03-18T12:35:58.673+01:00 INFO : Analyzing template 73/75, segment 5/8
+2026-03-18T12:35:58.691+01:00 INFO : 337 points above threshold
+2026-03-18T12:35:58.716+01:00 INFO : 381 points above threshold
+2026-03-18T12:35:58.721+01:00 INFO : Analyzing template 73/75, segment 6/8
+2026-03-18T12:35:58.740+01:00 INFO : 251 points above threshold
+2026-03-18T12:35:58.764+01:00 INFO : 344 points above threshold
+2026-03-18T12:35:58.766+01:00 INFO : Analyzing template 73/75, segment 7/8
+2026-03-18T12:35:58.785+01:00 INFO : 307 points above threshold
+2026-03-18T12:35:58.809+01:00 INFO : 513 points above threshold
+2026-03-18T12:35:58.812+01:00 INFO : Analyzing template 73/75, segment 8/8
+2026-03-18T12:35:58.831+01:00 INFO : 274 points above threshold
+2026-03-18T12:35:58.855+01:00 INFO : 386 points above threshold
+2026-03-18T12:35:58.858+01:00 INFO : 73: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:58.891+01:00 INFO : Analyzing template 74/75, segment 1/8
+2026-03-18T12:35:58.910+01:00 INFO : 226 points above threshold
+2026-03-18T12:35:58.934+01:00 INFO : 350 points above threshold
+2026-03-18T12:35:58.936+01:00 INFO : Analyzing template 74/75, segment 2/8
+2026-03-18T12:35:58.955+01:00 INFO : 278 points above threshold
+2026-03-18T12:35:58.979+01:00 INFO : 427 points above threshold
+2026-03-18T12:35:58.981+01:00 INFO : Analyzing template 74/75, segment 3/8
+2026-03-18T12:35:59.000+01:00 INFO : 431 points above threshold
+2026-03-18T12:35:59.024+01:00 INFO : 353 points above threshold
+2026-03-18T12:35:59.035+01:00 INFO : Analyzing template 74/75, segment 4/8
+2026-03-18T12:35:59.054+01:00 INFO : 325 points above threshold
+2026-03-18T12:35:59.079+01:00 INFO : 282 points above threshold
+2026-03-18T12:35:59.081+01:00 INFO : Analyzing template 74/75, segment 5/8
+2026-03-18T12:35:59.100+01:00 INFO : 341 points above threshold
+2026-03-18T12:35:59.124+01:00 INFO : 454 points above threshold
+2026-03-18T12:35:59.126+01:00 INFO : Analyzing template 74/75, segment 6/8
+2026-03-18T12:35:59.145+01:00 INFO : 292 points above threshold
+2026-03-18T12:35:59.169+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:59.171+01:00 INFO : Analyzing template 74/75, segment 7/8
+2026-03-18T12:35:59.190+01:00 INFO : 296 points above threshold
+2026-03-18T12:35:59.214+01:00 INFO : 536 points above threshold
+2026-03-18T12:35:59.217+01:00 INFO : Analyzing template 74/75, segment 8/8
+2026-03-18T12:35:59.235+01:00 INFO : 269 points above threshold
+2026-03-18T12:35:59.259+01:00 INFO : 364 points above threshold
+2026-03-18T12:35:59.262+01:00 INFO : 74: generating TaylorF2 from 30.0 Hz
+2026-03-18T12:35:59.294+01:00 INFO : Analyzing template 75/75, segment 1/8
+2026-03-18T12:35:59.313+01:00 INFO : 249 points above threshold
+2026-03-18T12:35:59.337+01:00 INFO : 360 points above threshold
+2026-03-18T12:35:59.340+01:00 INFO : Analyzing template 75/75, segment 2/8
+2026-03-18T12:35:59.359+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:59.385+01:00 INFO : 462 points above threshold
+2026-03-18T12:35:59.387+01:00 INFO : Analyzing template 75/75, segment 3/8
+2026-03-18T12:35:59.407+01:00 INFO : 403 points above threshold
+2026-03-18T12:35:59.432+01:00 INFO : 372 points above threshold
+2026-03-18T12:35:59.434+01:00 INFO : Analyzing template 75/75, segment 4/8
+2026-03-18T12:35:59.454+01:00 INFO : 273 points above threshold
+2026-03-18T12:35:59.478+01:00 INFO : 331 points above threshold
+2026-03-18T12:35:59.480+01:00 INFO : Analyzing template 75/75, segment 5/8
+2026-03-18T12:35:59.499+01:00 INFO : 319 points above threshold
+2026-03-18T12:35:59.524+01:00 INFO : 437 points above threshold
+2026-03-18T12:35:59.526+01:00 INFO : Analyzing template 75/75, segment 6/8
+2026-03-18T12:35:59.545+01:00 INFO : 279 points above threshold
+2026-03-18T12:35:59.571+01:00 INFO : 299 points above threshold
+2026-03-18T12:35:59.573+01:00 INFO : Analyzing template 75/75, segment 7/8
+2026-03-18T12:35:59.593+01:00 INFO : 304 points above threshold
+2026-03-18T12:35:59.618+01:00 INFO : 565 points above threshold
+2026-03-18T12:35:59.631+01:00 INFO : Analyzing template 75/75, segment 8/8
+2026-03-18T12:35:59.650+01:00 INFO : 267 points above threshold
+2026-03-18T12:35:59.675+01:00 INFO : 401 points above threshold
+2026-03-18T12:35:59.678+01:00 INFO : Filtering completed
+2026-03-18T12:35:59.678+01:00 INFO : Writing output
+2026-03-18T12:35:59.691+01:00 INFO : Finished
+2026-03-18T12:35:59.691+01:00 INFO : Time to complete analysis: 52

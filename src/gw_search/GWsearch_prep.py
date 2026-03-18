@@ -43,7 +43,7 @@ def main():
         config = yaml.safe_load(f)
 
     # Directory
-    BASE_DIR = config['Directory']['BASE_DIR']
+    BASE_DIR = os.path.abspath(config['Directory']['BASE_DIR'])
     SUFFIX = config['Directory']['run_name']
 
     # KN data

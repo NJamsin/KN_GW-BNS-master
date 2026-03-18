@@ -1,0 +1,109 @@
+000 (3332290.000.000) 2026-03-18 12:23:05 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: PREP
+...
+001 (3332290.000.000) 2026-03-18 12:23:14 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_1@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2898558"
+	Cpus = 1
+	Disk = 41068
+	Memory = 16384
+...
+006 (3332290.000.000) 2026-03-18 12:23:19 Image size of job updated: 354420
+	342  -  MemoryUsage of job (MB)
+	349204  -  ResidentSetSize of job (KB)
+...
+006 (3332290.000.000) 2026-03-18 12:23:24 Image size of job updated: 2108000
+	2059  -  MemoryUsage of job (MB)
+	2108000  -  ResidentSetSize of job (KB)
+...
+006 (3332290.000.000) 2026-03-18 12:23:29 Image size of job updated: 5137604
+	2060  -  MemoryUsage of job (MB)
+	2108512  -  ResidentSetSize of job (KB)
+...
+005 (3332290.000.000) 2026-03-18 12:23:39 Job terminated.
+	(1) Normal termination (return value 1)
+		Usr 0 00:00:19, Sys 0 00:00:05  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:19, Sys 0 00:00:05  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     1           1     41068 
+	   Memory (MB)          :  2060       16384     16384 
+
+	Job terminated of its own accord at 2026-03-18T11:23:38Z with exit-code 1.
+...
+000 (3332292.000.000) 2026-03-18 12:33:52 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: PREP
+...
+001 (3332292.000.000) 2026-03-18 12:33:59 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_1@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2900710"
+	Cpus = 1
+	Disk = 41068
+	Memory = 16384
+...
+006 (3332292.000.000) 2026-03-18 12:34:05 Image size of job updated: 602564
+	589  -  MemoryUsage of job (MB)
+	602564  -  ResidentSetSize of job (KB)
+...
+006 (3332292.000.000) 2026-03-18 12:34:11 Image size of job updated: 4625104
+	4517  -  MemoryUsage of job (MB)
+	4625104  -  ResidentSetSize of job (KB)
+...
+006 (3332292.000.000) 2026-03-18 12:34:17 Image size of job updated: 5133880
+	4517  -  MemoryUsage of job (MB)
+	4625104  -  ResidentSetSize of job (KB)
+...
+005 (3332292.000.000) 2026-03-18 12:34:48 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:27, Sys 0 00:00:06  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:27, Sys 0 00:00:06  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.08        1         1 
+	   Disk (KB)            :     1           1     41068 
+	   Memory (MB)          :  4517       16384     16384 
+
+	Job terminated of its own accord at 2026-03-18T11:34:48Z with exit-code 0.
+...
+000 (3332294.000.000) 2026-03-18 12:36:42 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: POST
+...
+001 (3332294.000.000) 2026-03-18 12:36:50 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_1@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2902328"
+	Cpus = 1
+	Disk = 41068
+	Memory = 16384
+...
+006 (3332294.000.000) 2026-03-18 12:36:55 Image size of job updated: 419452
+	2  -  MemoryUsage of job (MB)
+	1328  -  ResidentSetSize of job (KB)
+...
+005 (3332294.000.000) 2026-03-18 12:36:55 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:03, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:03, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :        1        1     41068 
+	   Memory (MB)          :        2    16384     16384 
+
+	Job terminated of its own accord at 2026-03-18T11:36:55Z with exit-code 0.
+...

@@ -1,0 +1,382 @@
+000 (3332293.000.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.001.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.002.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.003.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.004.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.005.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.006.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.007.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.008.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+000 (3332293.009.000) 2026-03-18 12:34:57 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=schedd_2183_ef55>
+    DAG Node: SEARCH
+...
+001 (3332293.000.000) 2026-03-18 12:35:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_2@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901157"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.001.000) 2026-03-18 12:35:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_3@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901159"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.002.000) 2026-03-18 12:35:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_4@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901161"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.003.000) 2026-03-18 12:35:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_5@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901165"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.004.000) 2026-03-18 12:35:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_6@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901169"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.005.000) 2026-03-18 12:35:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_7@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901175"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.006.000) 2026-03-18 12:35:05 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_8@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901190"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.007.000) 2026-03-18 12:35:05 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_9@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901205"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+001 (3332293.008.000) 2026-03-18 12:35:05 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_10@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901231"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+006 (3332293.005.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:10 Image size of job updated: 262712
+	209  -  MemoryUsage of job (MB)
+	213828  -  ResidentSetSize of job (KB)
+...
+006 (3332293.007.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:10 Image size of job updated: 262988
+	215  -  MemoryUsage of job (MB)
+	219700  -  ResidentSetSize of job (KB)
+...
+006 (3332293.000.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.001.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.002.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.003.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.004.000) 2026-03-18 12:35:10 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:15 Image size of job updated: 463128
+	260  -  MemoryUsage of job (MB)
+	265312  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:15 Image size of job updated: 463380
+	260  -  MemoryUsage of job (MB)
+	265596  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:20 Image size of job updated: 491632
+	269  -  MemoryUsage of job (MB)
+	275428  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:20 Image size of job updated: 491852
+	270  -  MemoryUsage of job (MB)
+	275956  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:25 Image size of job updated: 598860
+	585  -  MemoryUsage of job (MB)
+	598860  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:25 Image size of job updated: 593916
+	580  -  MemoryUsage of job (MB)
+	593916  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:30 Image size of job updated: 662068
+	647  -  MemoryUsage of job (MB)
+	662068  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:30 Image size of job updated: 662220
+	647  -  MemoryUsage of job (MB)
+	662220  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:35 Image size of job updated: 812084
+	794  -  MemoryUsage of job (MB)
+	812084  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:35 Image size of job updated: 806092
+	788  -  MemoryUsage of job (MB)
+	806092  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:40 Image size of job updated: 833844
+	815  -  MemoryUsage of job (MB)
+	833844  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:40 Image size of job updated: 845260
+	826  -  MemoryUsage of job (MB)
+	845260  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:45 Image size of job updated: 873012
+	853  -  MemoryUsage of job (MB)
+	873012  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:45 Image size of job updated: 860712
+	841  -  MemoryUsage of job (MB)
+	860712  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:50 Image size of job updated: 1020140
+	997  -  MemoryUsage of job (MB)
+	1020140  -  ResidentSetSize of job (KB)
+...
+006 (3332293.008.000) 2026-03-18 12:35:50 Image size of job updated: 1043892
+	1020  -  MemoryUsage of job (MB)
+	1043892  -  ResidentSetSize of job (KB)
+...
+006 (3332293.006.000) 2026-03-18 12:35:50 Image size of job updated: 1020264
+	997  -  MemoryUsage of job (MB)
+	1020140  -  ResidentSetSize of job (KB)
+...
+005 (3332293.006.000) 2026-03-18 12:35:50 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:43, Sys 0 00:00:02  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:43, Sys 0 00:00:02  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :   997        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:50Z with exit-code 0.
+...
+001 (3332293.009.000) 2026-03-18 12:35:51 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618&alias=jupytergw&noUDP&sock=startd_2183_ef55>
+	SlotName: slot1_8@jupytergw
+	CondorScratchDir = "/var/lib/condor/execute/dir_2901889"
+	Cpus = 1
+	Disk = 4229967
+	Memory = 4096
+...
+005 (3332293.003.000) 2026-03-18 12:35:51 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:51Z with exit-code 0.
+...
+005 (3332293.004.000) 2026-03-18 12:35:51 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:51Z with exit-code 0.
+...
+006 (3332293.008.000) 2026-03-18 12:35:51 Image size of job updated: 1044236
+	1020  -  MemoryUsage of job (MB)
+	1043892  -  ResidentSetSize of job (KB)
+...
+005 (3332293.008.000) 2026-03-18 12:35:51 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:43, Sys 0 00:00:02  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:43, Sys 0 00:00:02  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :  1020        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:51Z with exit-code 0.
+...
+005 (3332293.001.000) 2026-03-18 12:35:53 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:53Z with exit-code 0.
+...
+005 (3332293.005.000) 2026-03-18 12:35:53 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:53Z with exit-code 0.
+...
+005 (3332293.007.000) 2026-03-18 12:35:53 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:53Z with exit-code 0.
+...
+006 (3332293.009.000) 2026-03-18 12:35:56 Image size of job updated: 2
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+005 (3332293.000.000) 2026-03-18 12:35:57 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:35:57Z with exit-code 0.
+...
+005 (3332293.002.000) 2026-03-18 12:36:00 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:36:00Z with exit-code 0.
+...
+005 (3332293.009.000) 2026-03-18 12:36:32 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     1.00        1         1 
+	   Disk (KB)            :     2     4194304   4229967 
+	   Memory (MB)          :     0        4096      4096 
+
+	Job terminated of its own accord at 2026-03-18T11:36:32Z with exit-code 0.
+...

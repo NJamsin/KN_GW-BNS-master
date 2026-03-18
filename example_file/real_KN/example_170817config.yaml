@@ -1,5 +1,5 @@
 Directory:
-  BASE_DIR: test_real_data # Update this to your desired base directory for the run !!! ideally use one directory per run to avoid confusion
+  BASE_DIR: master_package/test_real_data # Update this to your desired base directory for the run !!! ideally use one directory per run to avoid confusion
   run_name: test_run # A unique name for this run, used for naming outputs and logs 
 
 KN_data:

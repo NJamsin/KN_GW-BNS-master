@@ -28,7 +28,7 @@ def main():
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
     
-    base_dir = config['Directory']['BASE_DIR']
+    base_dir = os.path.abspath(config['Directory']['BASE_DIR'])
 
     # Ensure BASE_DIR and a logs folder exist
     os.makedirs(base_dir, exist_ok=True)

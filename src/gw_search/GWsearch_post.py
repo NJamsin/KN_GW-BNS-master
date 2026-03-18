@@ -26,7 +26,7 @@ def main():
     '''
     Step 0: Load var from the config file
     '''
-    BASE_DIR = config['Directory']['BASE_DIR']
+    BASE_DIR = os.path.abspath(config['Directory']['BASE_DIR'])
     SUFFIX = config['Directory']['run_name']
     KN_detection_date = config['KN_data']['first_detection']
     KN_EM_post = config['KN_data']['EM_post_file']
