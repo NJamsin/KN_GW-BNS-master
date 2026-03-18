@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kn_to_gw_search"
+version = "0.1.1"
+description = "A PyCBC pipeline generator for coherent GW searches based on information extracted from KNe"
+dependencies = [
+    "numpy",
+    "pandas",
+    "h5py",
+    "pyyaml",
+    "astropy",
+    "matplotlib",
+    "gwpy",
+    "gwosc",
+    "pycbc"
+]
+
+[project.scripts]
+# This creates terminal commands that point to your main() functions!
+gw-setup-pipeline = "gw_search.setup_pipeline:main"
+gw-search-prep = "gw_search.GWsearch_prep:main"
+gw-search-post = "gw_search.GWsearch_post:main"
