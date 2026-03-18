@@ -145,12 +145,37 @@ PARENT SEARCH CHILD POST
         # Define log file paths to monitor based on the config
         SUFFIX = config['Directory']['run_name']
         prep_out = f"{base_dir}/logs/prep.out"
+        prep_err = f"{base_dir}/logs/{SUFFIX}_prep.err"
         post_out = f"{base_dir}/logs/post.out"
+        post_err = f"{base_dir}/logs/{SUFFIX}_post.err"
         trigger_dir = f"{base_dir}/out"
         window_file = f"{base_dir}/{SUFFIX}_windows.txt"
+        dag_log = f"{dag_path}.dagman.log"
+
+        def check_for_critical_errors():
+                """Checks standard error files and the DAG log for fatal crashes."""
+                # Check Condor DAG log for overall job failures
+                if os.path.exists(dag_log):
+                    with open(dag_log, 'r') as dl:
+                        log_content = dl.read()
+                        if "Job failed" in log_content or "Abnormal termination" in log_content:
+                            print("\n\nCRITICAL ERROR: HTCondor reported a job failure in the DAG log!")
+                            sys.exit(1)
+                
+                # Check specific error files (if they exist and have content)
+                if os.path.exists(prep_err) and os.path.getsize(prep_err) > 0:
+                    with open(prep_err, 'r') as err_file:
+                        err_text = err_file.read()
+                        if "Traceback" in err_text or "Error" in err_text:
+                            print("\n\nCRITICAL ERROR IN PREP STAGE:")
+                            print(err_text)
+                            sys.exit(1)
 
         try:
             print(f"--- SEARCH PREPARATION ---")
+            while not os.path.exists(prep_out):
+                check_for_critical_errors() # Look for instant crashes
+                time.sleep(2)
             # Wait for Condor to create the prep log
             while not os.path.exists(prep_out):
                 time.sleep(5)
@@ -165,6 +190,7 @@ PARENT SEARCH CHILD POST
                         if "Search preparation complete!" in line:
                             break
                     else:
+                        check_for_critical_errors() # Look for crashes that happen after the initial prep log creation
                         time.sleep(3) # wait a bit before trying to read new lines to avoid busy waiting
             
             print("\n\n--- PYCBC SEARCH (PARALLEL) ---")
