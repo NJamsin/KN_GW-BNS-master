@@ -18,6 +18,7 @@ def main():
     parser.add_argument("--expected-trigger-time", default=None, help="Expected trigger time to be searched, in gps format. Used only in the final trigger distribution plot.")
     parser.add_argument("--plot-spectrogram", default=False, action="store_true", help="If true, will generate a spectrogram plot for the top trigger in the post-processing step. This can be useful for visually inspecting the trigger.")
     parser.add_argument("--spectrogram-range", default="0,15", help="vmin and vmax for the spectrogram plot. Only used if --plot-spectrogram is set.")
+    parser.add_argument("--injection", default=False, action="store_true", help="If true, will indicate that the pipeline is running in injection mode. This can be used to adjust the post-processing behavior if needed (e.g., to look for the injected signal).")
     args = parser.parse_args()
 
     with open(args.config, 'r') as f:
@@ -152,6 +153,21 @@ def main():
         expected_time = float(args.expected_trigger_time)
         if min(plot_times) < expected_time < max(plot_times):
             plt.axvline(x=expected_time, color='green', linestyle='--', label=f'Expected Trigger Time (GPS={expected_time})', zorder=0)
+    if args.injection:
+        # get the merger injection time (we must find it in prep.out)
+        prep_out_file = os.path.join(f"{BASE_DIR}/logs", f'prep.out')
+        with open(prep_out_file, 'r') as f:
+            lines = f.readlines()
+            injection_time = None
+            for line in lines:
+                # look for the line that indicates the injection time, which should be in the format " -> Injection successful! (Merger time: 1234567890.123)"
+                if " -> Injection successful! (Merger time:" in line:
+                    injection_time = str(line.split(":")[-1].strip())
+                    injection_time = float(injection_time[:-1]) # remove the last character which should be ")"
+                    break        
+        if injection_time is not None and min(plot_times) < injection_time < max(plot_times):
+            plt.axvline(x=injection_time, color='orange', linestyle='--', label=f'Injection Merger Time (GPS={injection_time})', zorder=0)
+
     plt.xlabel('GPS Time')
     plt.ylabel('Reweighted SNR')
     plt.title(f'Trigger Distribution (Top {len(plot_times)})')
@@ -183,7 +199,10 @@ def main():
             ax = fig.gca()
             ax.set_epoch(best_time) # Sets "0" on the X-axis for display
             ax.set_xlim(best_time - 7, best_time + 0.5) # CORRECTED: Use absolute GPS times for limits!
-            ax.set_title(f"{label} Spectrogram (Q-transform)")
+            if args.injection:
+                ax.set_title(f"{label} Spectrogram around Best Candidate (Injection Mode)")
+            else:
+                ax.set_title(f"{label} Spectrogram around Best Candidate")
             ax.set_ylabel("Frequency (Hz)")
             ax.set_xlabel(f"Time from {best_time} (s)")
             ax.colorbar(label="Normalized Energy")

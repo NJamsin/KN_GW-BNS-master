@@ -51,7 +51,7 @@ def main():
         cmd_path = os.path.join(bin_dir, cmd_name)
         # Add dynamic arg to be passed to the prep and post scripts, so that they can read the config file path from the DAG variables
         cmd_args = "$(config)"
-        if args.injection and sub_name == "prep.sub": # only add the --injection flag to the prep script, since it's the one that will generate the injection
+        if args.injection: # add the --injection flag to the command if the user specified it to both prep and post 
             cmd_args += " --injection"
         if args.expected_trigger_time and sub_name == "post.sub": # only add the --expected-trigger-time flag to the post script, since it's the one that will generate the final trigger distribution plot
             cmd_args += f" --expected-trigger-time {args.expected_trigger_time}"

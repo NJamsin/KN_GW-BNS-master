@@ -1,5 +1,5 @@
 Directory:
-  BASE_DIR: test_injection # Update this to your desired base directory for the run !!! ideally use one directory per run to avoid confusion
+  BASE_DIR: master_package/test_injection # Update this to your desired base directory for the run !!! ideally use one directory per run to avoid confusion
   run_name: inj # A unique name for this run, used for naming outputs and logs
 
 KN_data:
@@ -22,4 +22,5 @@ Injection: # only taken if --injection=True is passed as an argument to the comm
   polarization: 0.0   # Polarization angle
   approximant: 'IMRPhenomD' # Waveform approximant to use for the injection
   # How many seconds after the start of your (global) search window should the merger happen?
-  time_offset: 5000.0 # make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
+  time_offset: 4700.0 # make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
+  # 4700 seconds is purely arbitrary and just chosen to be a few hours after the start of the search window, which is defined by the first_detection time in the KN_data section.
