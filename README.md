@@ -57,3 +57,26 @@ Injection: # only taken if --injection is passed as an argument to the command-l
   time_offset: # How many seconds after the start of your (global) search window should the merger happen? Make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
 ```
 ***
+## ``kn-make-grid``
+``kn-make-grid`` produces a grid of pseudo randomly sampled synthetic kilonovae lightcurves generated via [NMMA](https://nuclear-multimessenger-astronomy.github.io/nmma/index.html)/[FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) using the model [``Bu2026_MLP``](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main/surrogates/KN/Bu2026_MLP).
+### Arguments:
+- ``--out-dir``: Base directory for the output files.
+- ``--num-lc``: Number of lightcurves to generate. Default is 25.
+- ``--filters``: Filters used for the fake observations. Should be passed as ``--filters filt1 filt2 ...``.
+- ``--eos-path``: Path to the EOS file (.dat) for the fitting formulae. The structure of the file should be ``mass  radius`` in solar mass and km respectively.
+- ``--noise-level``: Value corresponds to the standard deviation of the Gaussian noise to be added to the model magnitude (noise=0.2 will add a np.random.normal(0, 0.2) to each model point). Default is 0.2.
+- ``--max-error-level``: Value corresponds to the maximun error added to the model magnitude (max_error=0.4 will add an error np.random.uniform(0, 0.4) to each detections point). Default is 0.4.
+- ``--trigger-isot``: Trigger time for the synthetic lightcurves. Default is '2020-01-07T00:00:00' (/!\ it is a str).
+- ``--cadence``: Number of detection per day.
+- ``--obs-duration``: Observation duration in days for the synthetic lightcurves. Default is 7.
+- ``--jitter``: Value corresponds to the maximum jitter (time fluctuation) to be added to the sample times in days (jitter=0.1 will add a np.random.uniform(-0.1, 0.1) to each time stamp in sample times). Default is 0.
+- ``--detection-limit``: Detection limits for the synthetic data in the format: filter1:limit1 filter2:limit2 ... (e.g., --detect_limit ps1::g=24.7 ps1::r=24.2).
+- ``--param-ranges``: Parameter ranges for the synthetic lightcurves in the format: param1=(min,max) param2=(min,max) ... (/!\ Params are the parameters of Bu2026_MLP).
+-- ``save-json``: Whether to save the times and magnitudes for each sample in a json file. (json files will be saved in the same directory as the .dat files).
+
+### Example utilisation
+A grid made with the command is avaiable in the [``example_file``](https://github.com/NJamsin/KN_GW-BNS-master/tree/package/example_file) directory, in the subdir ``KN_grid``. The exact command used was:
+```
+kn-make-grid --out-dir master_package/example_file/KN_grid --filters ps1::r ps1::g ps1::z ps1::i ps1::y --eos-path master_package/example_file/KN_grid/eos.dat --detection-limit ps1::r=24 ps1::g=24 --save-json
+```
+***
