@@ -1,7 +1,11 @@
 # Pseudo Package made for my master thesis
-Contains a unique command line ``gw-setup-pipeline`` that performs coherent GW search based on data extracted from KNe.
+Contains a command line ``gw-setup-pipeline`` that performs coherent GW search based on data extracted from KNe.
+
+Another command line, ``kn-make-grid`` is also avaiable. This command-line generates a grid of lightcurve using the Bu2026_MLP model using FIESTA/NMMA (see below)
 ### IMPORTANT REMARK !
 The package requires and uses [HTCondor](https://htcondor.readthedocs.io/en/latest/) a lot (creates multiples .sub or .dag files), make sure that you have HTCondor installed on your device. Dynamic slots are recommended as the main job submitted by ``gw-setup-pipeline`` reserves 16 Gb of RAM and each sub job that performs the coherent search reserves 4 Gb of RAM (a bit much, could be manually reduced if needed).
+
+If you want to use ``kn-make-grid`` make sure to build FIESTA and NMMA from source in the same environment as this package !
 ***
 # Intallation
 Simply clone the repo with
