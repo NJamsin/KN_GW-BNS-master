@@ -27,6 +27,7 @@ pip install -e .
 - ``--skip-search``: If true, will skip the search step and directly run the post-processing script. Only works if you already have triggers generated from a previous search run.
 - ``--plot-spectrogram``: If true, will generate a spectrogram plot for the top trigger in the post-processing step. This can be useful for visually inspecting the trigger.
   - ``spectrogram-range``: vmin and vmax for the spectrogram plot. Only used if ``--plot-spectrogram`` is set, default values are ``vmin=0, vmax=15``.
+- ``--template-bank``: Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation step.
 - ``--monitor``: If true, will monitor the pipeline execution. /!\ Won't have any effect if you use ``--skip-search``.
 ### Example utilisation
 Two examples are provided:

@@ -22,7 +22,7 @@ def main():
     parser.add_argument("--plot-spectrogram", default=None, action="store_true", help="If true, will generate a spectrogram plot for the top trigger in the post-processing step. This can be useful for visually inspecting the trigger.")
     parser.add_argument("--spectrogram-range", default="0,15", help="vmin and vmax for the spectrogram plot. Only used if --plot-spectrogram is set.")
     parser.add_argument("--monitor", default=False, action="store_true", help="If true, will monitor the pipeline execution.")
-    parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation step for testing purposes. The template bank will still be split for parrallelization. /!\ Expect an hdf file.")
+    parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation. The template bank will still be split for parrallelization. /!\ Expect an hdf file.")
     args = parser.parse_args()
 
     config_path = os.path.abspath(args.config)
