@@ -30,6 +30,7 @@ def main():
     parser = argparse.ArgumentParser(description="PyCBC Pipeline Step")
     parser.add_argument("config", help="Path to the config file")
     parser.add_argument("--injection", action="store_true", help="Inject a fake signal")
+    parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation step for testing purposes.")
     args = parser.parse_args()
 
     # Dynamically find the Conda bin directory
@@ -65,34 +66,38 @@ def main():
     '''
     Step 1: generate the template bank
     '''
-    sample = pd.read_csv(KN_resamp_post, delimiter=' ', dtype=np.float32)
-
-    # transform the chirp mass and mass ratio to component masses
-    m1 = sample['chirp_mass'].values * (1 + sample['mass_ratio'].values)**(1/5) / (sample['mass_ratio'].values)**(3/5)
-    m2 = sample['chirp_mass'].values * (1 + sample['mass_ratio'].values)**(1/5) * (sample['mass_ratio'].values)**(2/5)
-
-    # use that to generate the template bank:
-    OUT_FILE_BANK = f"{BASE_DIR}/{SUFFIX}_tmplt.hdf"
-    # Check if the bank file already exists, if so, skip the generation step
-    if os.path.exists(OUT_FILE_BANK):
-        print(f"Template bank file {OUT_FILE_BANK} already exists. Skipping generation.")
+    if args.template_bank:
+        print(f"Using user-provided template bank at {args.template_bank}. Skipping generation step.")
+        OUT_FILE_BANK = args.template_bank
     else:
-        CMD = [pycbc_geom,
-            "--min-mass1", f"{np.percentile(m1,16):.4f}",     
-            "--max-mass1",  f"{np.percentile(m1, 84):.4f}",     
-            "--min-mass2", f"{np.percentile(m2, 16):.4f}",     
-            "--max-mass2", f"{np.percentile(m2, 84):.4f}",     
-            "--f-low", "30.0",     
-            "--f-upper", "2048.0", 
-            "--delta-f", "0.01",     
-            "--pn-order", "threePointFivePN",     
-            "--min-match", "0.97",
-            "--psd-model", "aLIGOZeroDetHighPower",     
-            "--output-file", f"{OUT_FILE_BANK}", 
-            "--verbose"]
-        print(f"Generating non-spinning geometric template bank")
-        subprocess.run(CMD, check=True, cwd=BASE_DIR)
-        print(f"Template bank generated and saved as '{OUT_FILE_BANK}'")
+        sample = pd.read_csv(KN_resamp_post, delimiter=' ', dtype=np.float32)
+
+        # transform the chirp mass and mass ratio to component masses
+        m1 = sample['chirp_mass'].values * (1 + sample['mass_ratio'].values)**(1/5) / (sample['mass_ratio'].values)**(3/5)
+        m2 = sample['chirp_mass'].values * (1 + sample['mass_ratio'].values)**(1/5) * (sample['mass_ratio'].values)**(2/5)
+
+        # use that to generate the template bank:
+        OUT_FILE_BANK = f"{BASE_DIR}/{SUFFIX}_tmplt.hdf"
+        # Check if the bank file already exists, if so, skip the generation step
+        if os.path.exists(OUT_FILE_BANK):
+            print(f"Template bank file {OUT_FILE_BANK} already exists. Skipping generation.")
+        else:
+            CMD = [pycbc_geom,
+                "--min-mass1", f"{np.percentile(m1,16):.4f}",     
+                "--max-mass1",  f"{np.percentile(m1, 84):.4f}",     
+                "--min-mass2", f"{np.percentile(m2, 16):.4f}",     
+                "--max-mass2", f"{np.percentile(m2, 84):.4f}",     
+                "--f-low", "30.0",     
+                "--f-upper", "2048.0", 
+                "--delta-f", "0.01",     
+                "--pn-order", "threePointFivePN",     
+                "--min-match", "0.97",
+                "--psd-model", "aLIGOZeroDetHighPower",     
+                "--output-file", f"{OUT_FILE_BANK}", 
+                "--verbose"]
+            print(f"Generating non-spinning geometric template bank")
+            subprocess.run(CMD, check=True, cwd=BASE_DIR)
+            print(f"Template bank generated and saved as '{OUT_FILE_BANK}'")
 
     # Open the geometric bank file to get the numb of template
     bank = h5py.File(OUT_FILE_BANK, 'r')
@@ -136,7 +141,10 @@ def main():
     ax.set_ylabel(r'Mass 2 ($M_{\odot}$)')
     ax.set_title('Template Bank Mass Distribution')
     ax.grid(True)
-    cbar.set_ticklabels(str(idx) for idx in np.arange(0.,NUM_SPLITS,1))
+    if NUM_SPLITS <= 20: # to avoid overcrowding the colorbar ticks
+        cbar.set_ticklabels([str(idx) for idx in np.arange(0.,NUM_SPLITS,1)])
+    else:
+        cbar.set_ticklabels([str(idx) for idx in np.arange(0.,NUM_SPLITS,1)], fontsize=6)
     PLOT_DIR = f"{BASE_DIR}/plots"
     os.makedirs(PLOT_DIR, exist_ok=True)
     plt.savefig(f"{PLOT_DIR}/{SUFFIX}_template_bank.png")

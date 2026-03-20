@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--plot-spectrogram", default=None, action="store_true", help="If true, will generate a spectrogram plot for the top trigger in the post-processing step. This can be useful for visually inspecting the trigger.")
     parser.add_argument("--spectrogram-range", default="0,15", help="vmin and vmax for the spectrogram plot. Only used if --plot-spectrogram is set.")
     parser.add_argument("--monitor", default=False, action="store_true", help="If true, will monitor the pipeline execution.")
+    parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation step for testing purposes. The template bank will still be split for parrallelization. /!\ Expect an hdf file.")
     args = parser.parse_args()
 
     config_path = os.path.abspath(args.config)
@@ -53,6 +54,8 @@ def main():
         cmd_args = "$(config)"
         if args.injection: # add the --injection flag to the command if the user specified it to both prep and post 
             cmd_args += " --injection"
+        if args.template_bank and sub_name == "prep.sub": # add the --template-bank flag to the command if the user specified it to both prep and post
+            cmd_args += f" --template-bank {args.template_bank}"
         if args.expected_trigger_time and sub_name == "post.sub": # only add the --expected-trigger-time flag to the post script, since it's the one that will generate the final trigger distribution plot
             cmd_args += f" --expected-trigger-time {args.expected_trigger_time}"
         if args.plot_spectrogram and sub_name == "post.sub": # only add the --plot-spectrogram flag to the post script, since it's the one that will generate the spectrogram plots
