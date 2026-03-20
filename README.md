@@ -82,6 +82,6 @@ Injection: # only taken if --injection is passed as an argument to the command-l
 ### Example utilisation
 A grid made with the command is avaiable in the [``example_file``](https://github.com/NJamsin/KN_GW-BNS-master/tree/package/example_file) directory, in the subdir ``KN_grid``. The exact command used was:
 ```
-kn-make-grid --out-dir master_package/example_file/KN_grid --filters ps1::r ps1::g ps1::z ps1::i ps1::y --eos-path master_package/example_file/KN_grid/eos.dat --detection-limit ps1::r=24 ps1::g=24 --save-json
+kn-make-grid --out-dir KN_GW-BNS-master/example_file/KN_grid --filters ps1::r ps1::g ps1::z ps1::i ps1::y --eos-path KN_GW-BNS-master/example_file/KN_grid/eos.dat --detection-limit ps1::r=24 ps1::g=24 --save-json
 ```
 ***
