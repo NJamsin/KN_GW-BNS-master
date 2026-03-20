@@ -71,7 +71,7 @@ Injection: # only taken if --injection is passed as an argument to the command-l
 - ``--eos-path``: Path to the EOS file (.dat) for the fitting formulae. The structure of the file should be ``mass  radius`` in solar mass and km respectively.
 - ``--noise-level``: Value corresponds to the standard deviation of the Gaussian noise to be added to the model magnitude (noise=0.2 will add a np.random.normal(0, 0.2) to each model point). Default is 0.2.
 - ``--max-error-level``: Value corresponds to the maximun error added to the model magnitude (max_error=0.4 will add an error np.random.uniform(0, 0.4) to each detections point). Default is 0.4.
-- ``--trigger-isot``: Trigger time for the synthetic lightcurves. Default is '2020-01-07T00:00:00' (/!\ it is a str).
+- ``--trigger-isot``: Trigger time for the synthetic lightcurves. Default is '2020-01-07T00:00:00' (date is in O3b) (/!\ it is a str).
 - ``--cadence``: Number of detection per day.
 - ``--obs-duration``: Observation duration in days for the synthetic lightcurves. Default is 7.
 - ``--jitter``: Value corresponds to the maximum jitter (time fluctuation) to be added to the sample times in days (jitter=0.1 will add a np.random.uniform(-0.1, 0.1) to each time stamp in sample times). Default is 0.
