@@ -21,6 +21,6 @@ Injection: # only taken if --injection=True is passed as an argument to the comm
   dec: -0.408         # Declination (radians)
   polarization: 0.0   # Polarization angle
   approximant: 'IMRPhenomD' # Waveform approximant to use for the injection
-  # How many seconds after the start of your (global) search window should the merger happen?
-  time_offset: 4700.0 # make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
+  # How many seconds after the middle of your (global) search window should the merger happen?
+  time_offset: 150 # make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
   # 4700 seconds is purely arbitrary and just chosen to be a few hours after the start of the search window, which is defined by the first_detection time in the KN_data section.

@@ -11,4 +11,4 @@ KN_data:
 
 GW_search:
   num_splits: 10 # Number of splits for the template bank
-  window_size: 3600 # Size of the max time window in seconds
+  window_size: 1000 # Size of the max time window in seconds

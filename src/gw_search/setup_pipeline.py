@@ -22,7 +22,9 @@ def main():
     parser.add_argument("--plot-spectrogram", default=None, action="store_true", help="If true, will generate a spectrogram plot for the top trigger in the post-processing step. This can be useful for visually inspecting the trigger.")
     parser.add_argument("--spectrogram-range", default="0,15", help="vmin and vmax for the spectrogram plot. Only used if --plot-spectrogram is set.")
     parser.add_argument("--monitor", default=False, action="store_true", help="If true, will monitor the pipeline execution.")
-    parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation. The template bank will still be split for parrallelization. /!\ Expect an hdf file.")
+    parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation. The template bank will still be split for parrallelization. /!\\ Expect an hdf file.")
+    parser.add_argument("--detector-treshold", default=0.5, type=float, help="Minimum antenna response required to launch the search. Default is 0.5, can be useful to avoid long search for time windows where the detectors are barely sensitive to the source. Only applied to injections because the merger time is needed for the antenna response.")
+    parser.add_argument("--plot-antenna-pattern", default=None, action="store_true", help="If true, will generate an antenna pattern plot for the source location and the injection merger time. Only applied to injections because the merger time is needed for the antenna response. /!\\ The plot is generated at the end of the preparation so if the search is stopped by the treshold it won't be generated.")
     args = parser.parse_args()
 
     config_path = os.path.abspath(args.config)
@@ -37,6 +39,14 @@ def main():
     os.makedirs(logs_dir, exist_ok=True)
     sub_files_dir = os.path.join(base_dir, 'sub_files')
     os.makedirs(sub_files_dir, exist_ok=True)
+
+    # check that prep and post .out file exist, if so deletes them to avoid problem with the --monitor flag
+    prep_out = os.path.join(logs_dir, "prep.out")
+    post_out = os.path.join(logs_dir, "post.out")
+    if os.path.exists(prep_out):
+        os.remove(prep_out)
+    if os.path.exists(post_out):
+        os.remove(post_out)
     
     # Dynamically grab the exact Python interpreter currently running this CLI
     current_python = sys.executable 
@@ -56,6 +66,10 @@ def main():
             cmd_args += " --injection"
         if args.template_bank and sub_name == "prep.sub": # add the --template-bank flag to the command if the user specified it to both prep and post
             cmd_args += f" --template-bank {args.template_bank}"
+        if args.detector_treshold and sub_name == "prep.sub": # add the --detector-treshold flag to the command if the user specified it to both prep and post
+            cmd_args += f" --detector-treshold {args.detector_treshold}"
+        if args.plot_antenna_pattern and sub_name == "prep.sub": # add the --plot-antenna-pattern flag to the command if the user specified it to both prep and post
+            cmd_args += f" --plot-antenna-pattern"
         if args.expected_trigger_time and sub_name == "post.sub": # only add the --expected-trigger-time flag to the post script, since it's the one that will generate the final trigger distribution plot
             cmd_args += f" --expected-trigger-time {args.expected_trigger_time}"
         if args.plot_spectrogram and sub_name == "post.sub": # only add the --plot-spectrogram flag to the post script, since it's the one that will generate the spectrogram plots
@@ -148,9 +162,9 @@ PARENT SEARCH CHILD POST
         # Define log file paths to monitor based on the config
         SUFFIX = config['Directory']['run_name']
         prep_out = f"{base_dir}/logs/prep.out"
-        prep_err = f"{base_dir}/logs/{SUFFIX}_prep.err"
+        prep_err = f"{base_dir}/logs/prep.err"
         post_out = f"{base_dir}/logs/post.out"
-        post_err = f"{base_dir}/logs/{SUFFIX}_post.err"
+        post_err = f"{base_dir}/logs/post.err"
         trigger_dir = f"{base_dir}/out"
         window_file = f"{base_dir}/{SUFFIX}_windows.txt"
         dag_log = f"{dag_path}.dagman.log"
@@ -173,6 +187,14 @@ PARENT SEARCH CHILD POST
                             print("\n\nCRITICAL ERROR IN PREP STAGE:")
                             print(err_text)
                             sys.exit(1)
+                #  Check specific error files (if they exist and have content)
+                if os.path.exists(post_err) and os.path.getsize(post_err) > 0:
+                    with open(post_err, 'r') as err_file:
+                        err_text = err_file.read()
+                        if "Traceback" in err_text or "Error" in err_text:
+                            print("\n\nCRITICAL ERROR IN POST STAGE:")
+                            print(err_text)
+                            sys.exit(1)
 
         try:
             print(f"--- SEARCH PREPARATION ---")
@@ -189,6 +211,8 @@ PARENT SEARCH CHILD POST
                     line = f.readline()
                     if line:
                         sys.stdout.write(line)
+                        # check for error 
+                        check_for_critical_errors() # Look for crashes that happen after the initial prep log creation
                         # Stop streaming when we see your specific success message!
                         if "Search preparation complete!" in line:
                             break
@@ -215,6 +239,8 @@ PARENT SEARCH CHILD POST
                 sys.stdout.flush()
                 
                 if completed < total_jobs:
+                    # check for critical errors during the search
+                    check_for_critical_errors() # Look for crashes that happen during the search
                     time.sleep(5)
 
             print("\n\n--- POST-PROCESSING ---")
@@ -226,10 +252,13 @@ PARENT SEARCH CHILD POST
                     line = f.readline()
                     if line:
                         sys.stdout.write(line)
+                        # check for error
+                        check_for_critical_errors() # Look for crashes that happen after the initial post log creation
                         # Replace this with whatever the final line of your post script prints!
                         if "Post-processing completed. Check the output and plots directory." in line: 
                             break
                     else:
+                        check_for_critical_errors() # Look for crashes that happen after the initial post log creation
                         time.sleep(3)
 
             print("\n\n Search pipeline completed successfully! Check the logs for details and outputs and plots for results.")

@@ -1,5 +1,5 @@
 executable     = /home/stu_jamsin/.conda/envs/fiesta/bin/gw-search-post
-arguments      = $(config) --expected-trigger-time 1187008882.4287 --plot-spectrogram --spectrogram-range 0,15
+arguments      = $(config) --expected-trigger-time 1187008882.4 --plot-spectrogram --spectrogram-range 0,15
 universe       = vanilla
 
 output         = /home/stu_jamsin/master_package/test_real_data/logs/post.out

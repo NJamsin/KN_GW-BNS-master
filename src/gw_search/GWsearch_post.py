@@ -32,6 +32,8 @@ def main():
     KN_detection_date = config['KN_data']['first_detection']
     KN_EM_post = config['KN_data']['EM_post_file']
 
+    if args.injection:
+        offset = config['Injection']['time_offset']
     '''
     Step 1: Scan the output directory for all trigger files and collect triggers with their ranking statistic, time, and other relevant info.
     '''
@@ -133,8 +135,32 @@ def main():
     p16, p50, p84 = np.percentile(EM_samp['timeshift'], [15.865, 50, 84.135])
 
     # 3. Define the search window around the median timeshift, extending to the 1sigma interval
-    t_start = KN_t0 + p50 + p16
-    DATA_START_TIME = Time(t_start, format='mjd').gps - 16 # start of the window -16s for padding
+    t_start = KN_t0 + p16
+    t_end = KN_t0 + p84
+    time_gps = Time((t_start, t_end), format='mjd').gps
+    
+    # Replicate the EXACT padding and integer truncation from the prep script
+    gps_start = int(time_gps[0]) - 32
+    gps_end = int(time_gps[1]) + 32
+    t_start_pycbc = gps_start - 16
+    t_end_pycbc = gps_end + 16
+
+    # For the plot boundaries (this matches what PyCBC searched)
+    DATA_START_TIME = t_start_pycbc
+    DATA_END_TIME = t_end_pycbc
+
+    if args.injection:
+        # open the injection trigger time file
+        inj_time_file = os.path.join(f"{BASE_DIR}", f'{SUFFIX}_injection_time.txt')
+        if os.path.exists(inj_time_file):
+            with open(inj_time_file, 'r') as f:
+                line = f.readline().strip()
+                try:
+                    injection_time = float(line)
+                    print(f"Loaded injection trigger time: {injection_time} (GPS)")
+                except ValueError:
+                    print(f"Could not parse injection time from file. Got: '{line}'. Ignoring injection time.")
+                    injection_time = time_gps[0]  # fallback to start of the search window
 
     # Collect plot data 
     plot_times = [t['time'] for t in all_triggers]
@@ -152,19 +178,8 @@ def main():
     if args.expected_trigger_time:
         expected_time = float(args.expected_trigger_time)
         if min(plot_times) < expected_time < max(plot_times):
-            plt.axvline(x=expected_time, color='green', linestyle='--', label=f'Expected Trigger Time (GPS={expected_time})', zorder=0)
-    if args.injection:
-        # get the merger injection time (we must find it in prep.out)
-        prep_out_file = os.path.join(f"{BASE_DIR}/logs", f'prep.out')
-        with open(prep_out_file, 'r') as f:
-            lines = f.readlines()
-            injection_time = None
-            for line in lines:
-                # look for the line that indicates the injection time, which should be in the format " -> Injection successful! (Merger time: 1234567890.123)"
-                if " -> Injection successful! (Merger time:" in line:
-                    injection_time = str(line.split(":")[-1].strip())
-                    injection_time = float(injection_time[:-1]) # remove the last character which should be ")"
-                    break        
+            plt.axvline(x=expected_time, color='green', linestyle='--', label=f'Expected Trigger Time (GPS={expected_time})', zorder=0)  
+    if args.injection: 
         if injection_time is not None and min(plot_times) < injection_time < max(plot_times):
             plt.axvline(x=injection_time, color='orange', linestyle='--', label=f'Injection Merger Time (GPS={injection_time})', zorder=0)
 
@@ -180,34 +195,46 @@ def main():
     '''
     if args.plot_spectrogram:
         print("\nGenerating spectrogram for the best candidate")
-        best_time = best_cand['time']
-        window = (-0.75, 0.15) # seconds around the trigger time
+        if args.injection:
+            best_time = injection_time
+        else:
+            best_time = best_cand['time']
+        start = best_time - 30
+        end = best_time + 10
         # load the strain data around the best candidate time
-        H1_file = f"{BASE_DIR}/data/{SUFFIX}_H1_READY.gwf"
-        L1_file = f"{BASE_DIR}/data/{SUFFIX}_L1_READY.gwf"
+        H1_file = f"{BASE_DIR}/data/{SUFFIX}_H1.lcf"
+        L1_file = f"{BASE_DIR}/data/{SUFFIX}_L1.lcf"
         from gwpy.timeseries import TimeSeries
-        H1_strain = TimeSeries.read(H1_file, channel='H1:GWOSC-4KHZ_R1_STRAIN')
-        L1_strain = TimeSeries.read(L1_file, channel='L1:GWOSC-4KHZ_R1_STRAIN')
-        # prepare the data
-        for ts, label in zip([H1_strain, L1_strain], ['H1', 'L1']):
-            padded_data = ts.crop(best_time -30, best_time + 10) # get 30s-10s of data around the trigger time
-            q_scan = padded_data.q_transform(outseg=(best_time - 7, best_time + 0.5), frange=(30, 512), qrange=(80, 120))
-            # 3. Plot
-            vmin = float(args.spectrogram_range.split(',')[0])
-            vmax = float(args.spectrogram_range.split(',')[1])
-            fig = q_scan.plot(figsize=(12, 5), vmin=vmin, vmax=vmax)
-            ax = fig.gca()
-            ax.set_epoch(best_time) # Sets "0" on the X-axis for display
-            ax.set_xlim(best_time - 7, best_time + 0.5) # CORRECTED: Use absolute GPS times for limits!
-            if args.injection:
-                ax.set_title(f"{label} Spectrogram around Best Candidate (Injection Mode)")
-            else:
-                ax.set_title(f"{label} Spectrogram around Best Candidate")
-            ax.set_ylabel("Frequency (Hz)")
-            ax.set_xlabel(f"Time from {best_time} (s)")
-            ax.colorbar(label="Normalized Energy")
-            fig.savefig(os.path.join(f"{BASE_DIR}/plots", f'{SUFFIX}_{label}_best_candidate_spectrogram.png'))
-            print(f"Saved spectrogram for {label} as '{SUFFIX}_{label}_best_candidate_spectrogram.png'")
+
+        for label, channel in zip(['H1', 'L1'], ['H1:GWOSC-4KHZ_R1_STRAIN', 'L1:GWOSC-4KHZ_R1_STRAIN']):
+            
+            try:
+                if label == 'H1':
+                    cache_file = H1_file
+                else:
+                    cache_file = L1_file
+                print(f"Reading data from cache: {cache_file}...")
+                ts = TimeSeries.read(cache_file, channel, start=start, end=end)
+                
+                q_scan = ts.q_transform(outseg=(best_time - 7, best_time + 0.5), frange=(30, 512), qrange=(80, 120))
+                vmin = float(args.spectrogram_range.split(',')[0])
+                vmax = float(args.spectrogram_range.split(',')[1])
+                fig = q_scan.plot(figsize=(12, 5), vmin=vmin, vmax=vmax)
+                ax = fig.gca()
+                ax.set_epoch(best_time)
+                ax.set_xlim(best_time - 7, best_time + 0.5)
+                if args.injection:
+                    ax.set_title(f"{label} Spectrogram around Best Candidate (Injection Mode)")
+                else:
+                    ax.set_title(f"{label} Spectrogram around Best Candidate")
+                ax.set_ylabel("Frequency (Hz)")
+                ax.set_xlabel(f"Time from {best_time} (s)")
+                ax.colorbar(label="Normalized Energy")
+                fig.savefig(os.path.join(f"{BASE_DIR}/plots", f'{SUFFIX}_{label}_best_candidate_spectrogram.png'))
+                print(f"Saved spectrogram for {label} as '{SUFFIX}_{label}_best_candidate_spectrogram.png'")
+
+            except Exception as e:
+                print(f"Failed to read from cache or generate plot: {e}")
 
     print("\n")
     print("Post-processing completed. Check the output and plots directory.")

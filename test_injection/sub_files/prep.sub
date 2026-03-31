@@ -1,5 +1,5 @@
 executable     = /home/stu_jamsin/.conda/envs/fiesta/bin/gw-search-prep
-arguments      = $(config) --injection
+arguments      = $(config) --injection --detector-treshold 0.5 --plot-antenna-pattern
 universe       = vanilla
 
 output         = /home/stu_jamsin/master_package/test_injection/logs/prep.out

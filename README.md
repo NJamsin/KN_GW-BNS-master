@@ -1,7 +1,15 @@
 # Pseudo Package made for my master thesis
-Contains a command line ``gw-setup-pipeline`` that performs coherent GW search based on data extracted from KNe.
+Contains a command line ``gw-setup-pipeline`` that performs coherent GW search (via ``pycbc_multi_inspiral``) based on data extracted from KNe.
 
 Another command line, ``kn-make-grid`` is also avaiable. This command-line generates a grid of lightcurve using the Bu2026_MLP model using FIESTA/NMMA (see below)
+
+## Changelog
+Completely changed the pre-treatment of the .gwf files. Now uses cache files (.lcf) $\rightarrow$ reduces the computing time.
+
+Modified the ``--monitor`` argument to correctly print errors. 
+
+Added a ``--detector-treshold`` argument for injection to early-stop the search if the detector response is to low with respect to the sky position of the injected signal.
+
 ### IMPORTANT REMARK !
 ``gw-setup-pipeline`` requires and uses [HTCondor](https://htcondor.readthedocs.io/en/latest/) a lot (creates multiples .sub or .dag files), make sure that you have HTCondor installed on your device. Dynamic slots are recommended as the main job submitted by ``gw-setup-pipeline`` reserves 16 Gb of RAM and each sub job that performs the coherent search reserves 4 Gb of RAM (a bit much, could be manually reduced if needed).
 
@@ -27,6 +35,8 @@ pip install -e .
 - ``--skip-search``: If true, will skip the search step and directly run the post-processing script. Only works if you already have triggers generated from a previous search run.
 - ``--plot-spectrogram``: If true, will generate a spectrogram plot for the top trigger in the post-processing step. This can be useful for visually inspecting the trigger.
   - ``spectrogram-range``: vmin and vmax for the spectrogram plot. Only used if ``--plot-spectrogram`` is set, default values are ``vmin=0, vmax=15``.
+- ``detector-treshold``: Minimum antenna response required to launch the search. Default is 0.5, can be useful to avoid long search for time windows where the detectors are barely sensitive to the source. Only applied to injections because the merger time is needed for the antenna pattern.
+- ``--plot-antenna-pattern``: If true, will generate an antenna pattern plot for the source location and the injection merger time. Only applied to injections because the merger time is needed for the antenna response. /!\ The plot is generated at the end of the preparation so if the search is stopped by the treshold it won't be generated.
 - ``--template-bank``: Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation step.
 - ``--monitor``: If true, will monitor the pipeline execution. /!\ Won't have any effect if you use ``--skip-search``.
 ### Example utilisation
@@ -59,8 +69,10 @@ Injection: # only taken if --injection is passed as an argument to the command-l
   dec: # Declination (radians) same as above
   polarization: # Polarization angle
   approximant: # Waveform approximant to use for the injection (str)
-  time_offset: # How many seconds after the start of your (global) search window should the merger happen? Make sure this is smaller than the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
+  time_offset: # How many seconds after the middle of your (global) search window should the merger happen? Make sure this is smaller than half the window_size defined in the GW_search section, otherwise the injection will be outside of the search window and won't be found by the pipeline
 ```
+### Known issues
+It is possible that an ``OOM`` error kills the search jobs despite the 4GB of RAM requested for each job. I am not sure why this happens but simply rerunning the command solve the problem most of the times.
 ***
 ## ``kn-make-grid``
 ``kn-make-grid`` produces a grid of pseudo randomly sampled synthetic kilonovae lightcurves generated via [NMMA](https://nuclear-multimessenger-astronomy.github.io/nmma/index.html)/[FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) using the model [``Bu2026_MLP``](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main/surrogates/KN/Bu2026_MLP).

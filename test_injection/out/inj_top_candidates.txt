@@ -1,5 +1,5 @@
-1. Rank Stat: 43.8135 | Coherent SNR: 73.1256 | Time: 1262210708.9792 | File: injtriggers_bank4_1262209641-1262213241.hdf
-2. Rank Stat: 30.4686 | Coherent SNR: 71.5399 | Time: 1262210708.9797 | File: injtriggers_bank7_1262209641-1262213241.hdf
-3. Rank Stat: 23.4560 | Coherent SNR: 71.1227 | Time: 1262210708.9797 | File: injtriggers_bank9_1262209641-1262213241.hdf
-4. Rank Stat: 21.7480 | Coherent SNR: 71.4414 | Time: 1262210708.9792 | File: injtriggers_bank7_1262209641-1262213241.hdf
-5. Rank Stat: 21.1430 | Coherent SNR: 69.2833 | Time: 1262210708.9805 | File: injtriggers_bank9_1262209641-1262213241.hdf
+1. Rank Stat: 54.1522 | Coherent SNR: 66.7019 | Time: 1262233720.9976 | File: injtriggers_bank4_1262231145-1262234745.hdf
+2. Rank Stat: 34.4763 | Coherent SNR: 65.3173 | Time: 1262233720.9980 | File: injtriggers_bank7_1262231145-1262234745.hdf
+3. Rank Stat: 32.7357 | Coherent SNR: 65.4022 | Time: 1262233720.9976 | File: injtriggers_bank7_1262231145-1262234745.hdf
+4. Rank Stat: 31.6205 | Coherent SNR: 65.0697 | Time: 1262233720.9980 | File: injtriggers_bank9_1262231145-1262234745.hdf
+5. Rank Stat: 27.4829 | Coherent SNR: 64.3061 | Time: 1262233720.9973 | File: injtriggers_bank4_1262231145-1262234745.hdf

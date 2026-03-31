@@ -1,5 +1,5 @@
 executable     = /home/stu_jamsin/.conda/envs/fiesta/bin/gw-search-prep
-arguments      = $(config)
+arguments      = $(config) --detector-treshold 0.5
 universe       = vanilla
 
 output         = /home/stu_jamsin/master_package/test_real_data/logs/prep.out

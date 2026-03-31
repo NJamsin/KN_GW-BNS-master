@@ -14,14 +14,16 @@ from gwpy.timeseries import TimeSeries
 import urllib.request
 from gwosc.locate import get_urls
 import glob
-import h5py
 import yaml
 import stat
 import argparse
 from pycbc.waveform import get_td_waveform
 from pycbc.detector import Detector
 import gc
-
+from pycbc.types import TimeSeries as PyCBCTimeSeries
+from pycbc.noise import noise_from_psd
+import pycbc.noise
+import pycbc.psd
 
 def main():
     '''
@@ -31,6 +33,8 @@ def main():
     parser.add_argument("config", help="Path to the config file")
     parser.add_argument("--injection", action="store_true", help="Inject a fake signal")
     parser.add_argument("--template-bank", default=None, help="Path to the template bank file if you want to specify it instead of generating through the resampling posterior. This can be useful if you want to use a custom template bank or if you want to skip the template bank generation step for testing purposes.")
+    parser.add_argument("--detector-treshold", default=0.5, type=float, help="Minimum antenna response required to launch the search. Default is 0.5, can be useful to avoid long search for time windows where the detectors are barely sensitive to the source.")
+    parser.add_argument("--plot-antenna-pattern", default=None, action="store_true", help="If true, will generate an antenna pattern plot for the source location and the injection merger time. Only applied to injections because the merger time is needed for the antenna response.")
     args = parser.parse_args()
 
     # Dynamically find the Conda bin directory
@@ -148,6 +152,7 @@ def main():
     PLOT_DIR = f"{BASE_DIR}/plots"
     os.makedirs(PLOT_DIR, exist_ok=True)
     plt.savefig(f"{PLOT_DIR}/{SUFFIX}_template_bank.png")
+    plt.close(fig)
     print(f"Template bank mass distribution plot saved as '{SUFFIX}_template_bank.png'")
 
     '''
@@ -209,12 +214,12 @@ def main():
     DATA_DIR = f"{BASE_DIR}/data"
     os.makedirs(DATA_DIR, exist_ok=True)
 
-    H1_file = f"{DATA_DIR}/{SUFFIX}_H1_READY.gwf"
-    L1_file = f"{DATA_DIR}/{SUFFIX}_L1_READY.gwf"
+    h1_cache = f"{DATA_DIR}/{SUFFIX}_H1.lcf"
+    l1_cache = f"{DATA_DIR}/{SUFFIX}_L1.lcf"
     detectors = ['H1', 'L1']
 
-    if os.path.exists(H1_file) and os.path.exists(L1_file):
-        print(f"Cleaned and merged files {H1_file} and {L1_file} already exist. Skipping download and preparation.")
+    if os.path.exists(h1_cache) and os.path.exists(l1_cache):
+        print(f"Cleaned and merged files {h1_cache} and {l1_cache} already exist. Skipping download and preparation.")
     else:
         def robust_get_urls(detector, start, end):
             from gwosc.locate import get_urls
@@ -269,18 +274,82 @@ def main():
 
         fichiers_l1 = downloaded_files['L1']
 
-        def preparer_donnees(fichiers, canal, ifo, t_start, t_end, output_name):
-            print(f"Cleaning and merging files for {canal}...")
-            # gwpy lit et fusionne automatiquement la liste de fichiers
-            if len(fichiers) == 0:
-                print(f" -> WARNING: {ifo} was entirely offline! Synthesizing pure noise to keep PyCBC happy...")
-                duration = t_end - t_start
-                num_samples = int(duration * 4096)
-                # Create a perfectly continuous 4096 Hz array of LIGO-like noise
-                data = TimeSeries(np.random.normal(0, 1e-20, num_samples), 
-                                  t0=t_start, sample_rate=4096, name=canal)
-            else:
-                data = TimeSeries.read(fichiers, canal, pad=np.nan)
+        def preparer_donnees(fichiers, canal, ifo, t_start, t_end, chunk_size=4096):
+            print(f"Processing strain data files for {canal}...")
+
+            if args.injection: # prepare the injected signal before processing the data
+                print(f" -> Generating injection waveform for {ifo}...")
+                inj = config['Injection']
+                center_time = t_start + (t_end - t_start) / 2
+                merger_time = center_time + inj['time_offset']
+                
+                hp, hc = get_td_waveform(
+                    approximant=inj['approximant'], 
+                    mass1=inj['mass1'], 
+                    mass2=inj['mass2'],
+                    distance=inj['distance'], 
+                    delta_t=1.0/4096.0, # supposedely same as data.dt.value
+                    f_lower=30.0
+                )
+                hp.start_time += merger_time
+                hc.start_time += merger_time
+                
+                det = Detector(ifo)
+                f_plus, f_cross = det.antenna_pattern(inj['ra'], inj['dec'], inj['polarization'], merger_time)
+                # Calculate the total response (Scale of 0 to 1)
+                total_response = np.sqrt(f_plus**2 + f_cross**2)
+                if args.detector_treshold and total_response < args.detector_treshold:
+                    print(f"    *** Antenna response for this injection is {total_response:.2f}, which is below the specified threshold of {args.detector_treshold}. Stopping the search. ***")
+                    sys.exit(0)
+                ht = det.project_wave(hp, hc, inj['ra'], inj['dec'], inj['polarization'], reference_time=merger_time)
+                
+                ht_start_time = float(ht.start_time)
+                # Calculate absolute end time of the waveform
+                ht_end_time = ht_start_time + (len(ht) / ht.sample_rate)
+
+            cache_entries = []
+            
+            current_start = t_start
+            chunk_idx = 0
+
+            while current_start < t_end:
+                current_end = min(current_start + chunk_size, t_end)
+                # Format: Observatory(H/L) - IFO_Tag - StartTime - Duration .gwf
+                out_name = f"{DATA_DIR}/{ifo[0]}-{ifo}_{SUFFIX}-{int(current_start)}-{int(current_end-current_start)}.gwf"
+                
+                print(f" -> Chunk {chunk_idx}: {int(current_start)} to {int(current_end)}")
+
+                # find files overlapping with the current chunk (we want to pass only those to gwpy to minimize padding issues and speed up the reading)
+                overlapping_files = []
+                for f in fichiers:
+                    basename = os.path.basename(f)
+                    # Example format: H-H1_GWOSC_O3b_4KHZ_R1-1262125056-4096.gwf
+                    parts = basename.replace('.gwf', '').split('-')
+                    file_start = int(parts[-2])
+                    file_duration = int(parts[-1])
+                    file_end = file_start + file_duration
+                    
+                    if file_start < current_end and file_end > current_start:
+                        overlapping_files.append(f)
+
+                # 2. read files or replace with noise if no files or if gwpy read fails
+                if not overlapping_files:
+                    # The detector was offline for this entire chunk. Skip reading completely!
+                    print(f"    *** No data files found for this chunk. Synthesizing noise... ***")
+                    duration = current_end - current_start
+                    data = TimeSeries(np.random.normal(0, 1e-22, int(duration * 4096)), 
+                                      t0=current_start, sample_rate=4096, name=canal)
+                else:
+                    try:
+                        # Pass ONLY the overlapping files, preventing massive padding leaks
+                        data = TimeSeries.read(overlapping_files, canal, start=current_start, end=current_end, pad=np.nan)
+                    except Exception as e:
+                        print(f"    *** gwpy read failed: {e}. Synthesizing noise... ***")
+                        duration = current_end - current_start
+                        data = TimeSeries(np.random.normal(0, 1e-22, int(duration * 4096)), 
+                                          t0=current_start, sample_rate=4096, name=canal)
+                
+                # Clean NaNs and Zeros 
                 zero_mask = (data.value == 0.0)
                 data.value[zero_mask] = np.nan
                 print("Replacing NaN values with Gaussian noise...")
@@ -288,75 +357,61 @@ def main():
                 if np.any(nan_mask):
                     valid_data = data.value[~nan_mask]
                     if len(valid_data) > 0:
-                        std_bruit = np.std(valid_data)
+                        std_bruit = np.std(valid_data) * 1e-3 # inject noise at 0.1% of the std because of the bucket
                     else:
                         # Fallback if the ENTIRE file was empty/zeros
                         std_bruit = 1e-22 # low noise but we loose the "realistic" aspect of the noise (no 100Hz bucket)
                     data.value[nan_mask] = np.random.normal(0, std_bruit, size=np.sum(nan_mask))
                     print(f" -> {np.sum(nan_mask)} values corrected. Gaussian noise injected with std={std_bruit:.2e}.")
-                    
-                print(f"Cutting to requested times...")
-                # We cut while keeping a safety margin for PyCBC "pads"
-                data = data.crop(t_start, t_end)
                 
-                # Force canal name to match for lalsuite compatibility
                 data.name = canal
 
-            # INJECTION PART
-            if args.injection:
-                print(f"Injecting fake signal for {ifo}...")
-                inj = config['Injection']
-                # Generate the injection waveform
-                hp, hc = get_td_waveform(
-                    approximant=config['Injection']['approximant'],
-                    mass1=config['Injection']['mass1'],
-                    mass2=config['Injection']['mass2'],
-                    distance=config['Injection']['distance'],
-                    delta_t=data.dt.value,
-                    f_lower=30.0
-                )
-                # Align the waveform so the merger happens at the specified time offset from the start of the search window
-                merger_time = t_start + inj['time_offset']
-                hp.start_time = merger_time + hp.start_time
-                hc.start_time = merger_time + hc.start_time
+                if args.injection:
+                    if ht_end_time > current_start and ht_start_time < current_end:
+                        print(f"    -> Adding injection to this chunk...")
+                        pycbc_data = data.to_pycbc()
+                        # add the injection to the data with pycbc built in method (better than my numpy slicing)
+                        pycbc_data = pycbc_data.add_into(ht)
+                        # convert back to gwpy TimeSeries for saving
+                        try:
+                            data = TimeSeries(pycbc_data.numpy(), t0=data.t0.value, dt=pycbc_data.delta_t, channel=canal)
+                        except Exception as e:
+                            print(f"    *** Failed to convert back to gwpy TimeSeries: {e} ***")
+                        print(f"       Injection added! (Merger time: {merger_time}) in chunk {chunk_idx} ({int(current_start)} to {int(current_end)})")
+                        # save to a txt file the merger time for later use in the search 
+                        with open(f"{BASE_DIR}/{SUFFIX}_injection_time.txt", "w") as f:
+                            f.write(f"{merger_time}\n")
 
-                # Get the detector response for the specified sky location and polarization
-                det = Detector(ifo)
-                fp, fc = det.antenna_pattern(inj['ra'], inj['dec'], inj['polarization'], merger_time)
-                ht = fp * hp + fc * hc 
-
-                # Add the injection to the data
-                start_idx = int((ht.start_time - float(data.t0.value)) * data.sample_rate.value)
-                end_idx = start_idx + len(ht)
+                # Write chunk to disk
+                data.write(out_name, format='gwf')
                 
-                data_start = max(0, start_idx)
-                data_end = min(len(data.value), end_idx)
-                ht_start = data_start - start_idx
-                ht_end = ht_start + (data_end - data_start)
+                # Create LAL Cache Entry Format
+                ifo_letter = ifo[0]
+                duration = current_end - current_start
+                cache_entries.append(f"{ifo_letter} {canal.replace(':', '_')} {int(current_start)} {int(duration)} file://localhost{os.path.abspath(out_name)}")
                 
-                if data_start < data_end:
-                    data.value[data_start:data_end] += ht.data[ht_start:ht_end]
-                    print(f" -> Injection successful! (Merger time: {merger_time})")
-
-            print(f"Saving to {output_name}...\n")
-            data.write(output_name, format='gwf')
-
-            # free some memory
-            print(f"Freeing memory for {ifo}...")
-            del data
+                # Force Memory Cleanup
+                del data
+                gc.collect()
+                
+                current_start = current_end
+                chunk_idx += 1
+                
+            # Write out the cache file for PyCBC
+            cache_file = f"{DATA_DIR}/{SUFFIX}_{ifo}.lcf"
+            with open(cache_file, "w") as f:
+                f.write("\n".join(cache_entries) + "\n")
             if args.injection:
-                try:
-                    del hp, hc, ht
-                except NameError:
-                    pass
-            gc.collect()
+                return cache_file, merger_time
+            else:
+                return cache_file, None
 
         # because your PyCBC command has a padding of 8 seconds.
         t_start_pycbc = gps_start - 16
         t_end_pycbc = gps_end + 16
 
-        preparer_donnees(fichiers_h1, "H1:GWOSC-4KHZ_R1_STRAIN", "H1", t_start_pycbc, t_end_pycbc, f"{DATA_DIR}/{SUFFIX}_H1_READY.gwf")
-        preparer_donnees(fichiers_l1, "L1:GWOSC-4KHZ_R1_STRAIN", "L1", t_start_pycbc, t_end_pycbc, f"{DATA_DIR}/{SUFFIX}_L1_READY.gwf")
+        h1_cache, merger_time = preparer_donnees(fichiers_h1, "H1:GWOSC-4KHZ_R1_STRAIN", "H1", t_start_pycbc, t_end_pycbc)
+        l1_cache, _ = preparer_donnees(fichiers_l1, "L1:GWOSC-4KHZ_R1_STRAIN", "L1", t_start_pycbc, t_end_pycbc)
         print("Completed! The files are ready for PyCBC.")
 
         # delete the og file to clean some spaces
@@ -364,7 +419,46 @@ def main():
             for filepath in downloaded_files[ifo]:
                 os.remove(filepath)
                 print(f"Deleted {filepath}")
+        
+        # plot the antenna pattern for the injection if requested
+        if args.plot_antenna_pattern and args.injection:
+            def plot_antenna_pattern(ifo, ra, dec, merger_time, save_path):
+                det = Detector(ifo)
+                # define a sky position grid
+                ra_grid = np.linspace(-np.pi, np.pi, 200)
+                dec_grid = np.linspace(-np.pi/2, np.pi/2, 100)
+                RA, DEC = np.meshgrid(ra_grid, dec_grid)
+                RA_pycbc = RA + np.pi # pycbc convention is 0 to 2pi for RA instead of -pi to pi
+                # compute the antenna pattern response for each point in the sky grid
+                response_map = np.zeros_like(RA)
 
+                for i in range(RA.shape[0]):
+                    for j in range(RA.shape[1]):
+                        # Calculate F+ and Fx
+                        f_plus, f_cross = det.antenna_pattern(RA_pycbc[i,j], DEC[i,j], 0, merger_time)
+                        # Total response
+                        response_map[i,j] = np.sqrt(f_plus**2 + f_cross**2)
+                # Plotting
+                inj_ra_plot = ra - np.pi
+                fig = plt.figure(figsize=(10, 6))
+                ax = fig.add_subplot(111, projection='mollweide')
+
+                # Plot the heat map
+                c = ax.pcolormesh(RA, DEC, response_map, cmap='viridis', shading='auto')
+
+                # Plot your injection as a red cross
+                ax.plot(inj_ra_plot, dec, 'rx', markersize=5, markeredgewidth=3, label='Injection Location')
+
+                # Formatting
+                ax.set_title(f"{ifo} Antenna Response Map at GPS {merger_time}", pad=20)
+                ax.grid(True, linestyle='--', alpha=0.5)
+                plt.colorbar(c, label='Normalized Total Detector Sensitivity', orientation='horizontal', pad=0.1, aspect=30)
+                ax.legend(loc='upper right', numpoints=1)
+                plt.savefig(save_path)
+                plt.close(fig)
+                print(f"Antenna pattern plot saved as '{save_path}'")
+            for ifo in detectors:
+                plot_antenna_pattern(ifo, KN_ra, KN_dec, merger_time, f"{PLOT_DIR}/{SUFFIX}_{ifo}_antenna_pattern.png")
     '''
     Step 5: Create the .sh and .sub needed to run the PyCBC search on the cluster.
     '''
@@ -397,7 +491,7 @@ def main():
         --instruments H1 L1 \
         --bank-file {OUT_SPLIT}/split_bank_${{BANK_NUM}}.hdf \
         --channel-name H1:GWOSC-4KHZ_R1_STRAIN L1:GWOSC-4KHZ_R1_STRAIN \
-        --frame-files H1:{DATA_DIR}/{SUFFIX}_H1_READY.gwf L1:{DATA_DIR}/{SUFFIX}_L1_READY.gwf \
+        --frame-cache H1:{h1_cache} L1:{l1_cache} \
         --gps-start-time H1:${{START_TIME}} L1:${{START_TIME}} h1:${{START_TIME}} l1:${{START_TIME}} \
         --gps-end-time H1:${{END_TIME}} L1:${{END_TIME}} h1:${{END_TIME}} l1:${{END_TIME}} \
         --ra {KN_ra} \
@@ -444,9 +538,9 @@ def main():
     # Request resources (adjust these according to your cluster's limits)
     request_cpus   = 1
     request_memory = 4GB
-    request_disk   = 4GB
+    request_disk   = 1MB
 
-    # Queue a job for every line in the text file we generated
+    # Queue a job for every line in the text file
     queue bank, start, end, tt from {WINDOW_FILE}
     """
 
