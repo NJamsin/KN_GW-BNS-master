@@ -4,16 +4,26 @@ Contains a command line ``gw-setup-pipeline`` that performs coherent GW search (
 Another command line, ``kn-make-grid`` is also avaiable. This command-line generates a grid of lightcurve using the Bu2026_MLP model using FIESTA/NMMA (see below)
 
 ## Changelog
+### ``gw-setup-pipeline``
 Completely changed the pre-treatment of the .gwf files. Now uses cache files (.lcf) $\rightarrow$ reduces the computing time.
 
 Modified the ``--monitor`` argument to correctly print errors. 
 
 Added a ``--detector-treshold`` argument for injection to early-stop the search if the detector response is to low with respect to the sky position of the injected signal.
 
+### ``kn-make-grid``
+Added supports for ``Bu2019lm`` and ``Ka2017``. /!\ ``Bu2019lm`` requires a small modification to nmma's code (see below).
+
 ### IMPORTANT REMARK !
 ``gw-setup-pipeline`` requires and uses [HTCondor](https://htcondor.readthedocs.io/en/latest/) a lot (creates multiples .sub or .dag files), make sure that you have HTCondor installed on your device. Dynamic slots are recommended as the main job submitted by ``gw-setup-pipeline`` reserves 16 Gb of RAM and each sub job that performs the coherent search reserves 4 Gb of RAM (a bit much, could be manually reduced if needed).
 
-If you want to use ``kn-make-grid`` make sure to build [FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) and [NMMA](https://github.com/nuclear-multimessenger-astronomy/nmma) (/!\ NMMA requires python 3.12) from source in the same environment as this package and for this command, HTCondor is not required !
+If you want to use ``kn-make-grid`` make sure to build [FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) and [NMMA](https://github.com/nuclear-multimessenger-astronomy/nmma) (/!\ NMMA requires python 3.12) from source in the same environment as this package and for this command, HTCondor is not required ! Moreover, a slight modification needs to be done to ``nmma/em/model.py`` at line 637.
+You must add this line:
+```python
+def generate_lightcurve(self, sample_times, parameters, filters = 'all'):
+        parameters = self.parameter_conversion(parameters) # <-- THIS ONE
+        parameters_list = self.em_parameter_setup(parameters)
+```
 ***
 # Intallation
 Simply clone the repo with
@@ -78,6 +88,7 @@ It is possible that an ``OOM`` error kills the search jobs despite the 4GB of RA
 ``kn-make-grid`` produces a grid of pseudo randomly sampled synthetic kilonovae lightcurves generated via [NMMA](https://nuclear-multimessenger-astronomy.github.io/nmma/index.html)/[FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) using the model [``Bu2026_MLP``](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main/surrogates/KN/Bu2026_MLP).
 ### Arguments:
 - ``--out-dir``: Base directory for the output files.
+- ``--model``: Model name to use for generating synthetic lightcurves. (default: Bu2026_MLP). Currently supports 'Bu2026_MLP', 'Bu2019lm' and 'Ka2017'.
 - ``--num-lc``: Number of lightcurves to generate. Default is 25.
 - ``--filters``: Filters used for the fake observations. Should be passed as ``--filters filt1 filt2 ...``.
 - ``--eos-path``: Path to the EOS file (.dat) for the fitting formulae. The structure of the file should be ``mass  radius`` in solar mass and km respectively.

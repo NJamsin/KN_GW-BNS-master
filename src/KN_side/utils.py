@@ -515,3 +515,99 @@ def abs_to_app_mag(mag_abs, distance_mpc):
     for filter, mags in mag_abs.items():
         mag_app[filter] = mags + distance_modulus
     return mag_app
+
+def generate_synth_lc_v2(model_name='Bu2019lm',
+                    model_param={
+                            "KNphi": 30,
+                            "log10_mej_dyn": -2,
+                            "log10_mej_wind": -1,
+                            "inclination_EM": 0.5,
+                            "luminosity_distance": 40,
+                            "timeshift": 0.0
+                        },
+                    filters_band=['ps1__g', 'ps1__r', 'ps1__i'],
+                    noise_level=0.3,
+                    max_error_level=0.6,
+                    trigger_iso='2025-01-01T00:00:00',
+                    pts_per_day=2,
+                    obs_duration=15,
+                    delay = 0,
+                    jitter=0.1,
+                    save=False,
+                    filename='synthetic_kilonova_svd.dat',
+                    detection_limit_dict=None):
+    """Generate synthetic lightcurves using SVDLightCurveModel.
+    Parameters
+    ----------
+    model_name : str
+        Name of the SVD model to be used.
+    model_param : dict
+        Dictionary of model parameters.
+    filters_band : list
+        List of filters to be used for the lightcurve generation.
+    sample_times : np.ndarray
+        Array of sample times.
+    noise_level : float
+        Standard deviation of the Gaussian noise to be added.
+    max_error_level : float
+        Maximum error level to be added to the magnitudes.
+    trigger_iso : str
+        ISO formatted trigger time.
+    pts_per_day : int
+        Number of observation points per day.
+    obs_duration : int
+        Duration of the observation in days.
+    delay : float
+        Delay in days to be added to the sample times (positive delay means that the first point will be after the trigger time). (Additional delay to the timeshift parameter in model_param). (Here to combine LSST + ZTF sampling)
+    jitter : float
+        Maximum jitter to be added to the sample times in days.
+    save : bool
+        If True, save the generated data to a file.
+    filename : str
+        Filename to save the generated data if save is True.
+    detection_limit_dict : dict or None
+        Dictionary specifying detection limits for each filter. If None, no detection limits are applied.
+    
+    Returns
+    -------
+    data_nmma_svd : pd.DataFrame
+        DataFrame containing the synthetic lightcurve data in NMMA format.
+    trigger : float
+        Trigger time in MJD.
+    
+    """
+    ts = -1 * model_param["timeshift"]
+    print(f"Generating synthetic lightcurve with timeshift = {ts} days")
+    model_param["timeshift"] = 0.0 # we set timeshift to 0 for the generation and we will apply it later to the sample time array 
+    sample_times = np.arange(delay, obs_duration, 1/pts_per_day)
+    for t in range(len(sample_times)):
+        if t == 0:
+            continue # we don't want to add jitter to the first point to be sure that we have a point at the trigger time 
+        sample_times[t] += np.random.uniform(-jitter, jitter)
+    svd_path = "/home/stu_jamsin/jamsin/NMMA/svdmodels"
+    try:
+        svd_model = SVDLightCurveModel(
+                model=model_name,
+                sample_times=sample_times,
+                svd_path=svd_path,
+                interpolation_type='tensorflow',
+                filters=filters_band
+        )
+    except Exception as e:
+        print(f"  - {model_name}: error during SVD model creation ->", e)
+    mag_svd = svd_model.generate_lightcurve(sample_times, model_param)
+    mag_svd_noisy, mag_svd_errors = add_noise_error(mag_svd, noise_level=noise_level, max_error_level=max_error_level)
+    mag_svd_noisy_app = abs_to_app_mag(mag_svd_noisy, distance_mpc=model_param["luminosity_distance"])
+    model_param["timeshift"] = -1 * ts # we put back the original timeshift value for the formatting function
+    print("Filters:", filters_band)
+    data_nmma_svd, trigger = format_nmma_data_v2(sample_times, mag_svd_noisy_app, mag_svd_errors, filters_band, trigger_iso=trigger_iso, timeshift=ts)
+    if detection_limit_dict is not None:
+        # apply detection limits
+        for filter, limit in detection_limit_dict.items():
+            filter_mask = data_nmma_svd[1] == filter # all rows with this filter
+            limit_mask = data_nmma_svd[2] > limit # all rows with mag > limit (mag is an inverted scale)
+            to_remove = filter_mask & limit_mask # combine masks
+            data_nmma_svd = data_nmma_svd[~to_remove]
+    if save:
+        data_nmma_svd.to_csv(filename, sep=' ', index=False, header=False)
+    return data_nmma_svd, trigger

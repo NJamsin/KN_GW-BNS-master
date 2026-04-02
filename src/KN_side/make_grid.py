@@ -16,6 +16,7 @@ import pandas as pd
 import json
 from .utils import dyn_ej, wind_ej
 from .utils import generate_synth_lc_fiesta
+from .utils import generate_synth_lc_v2
 from nmma.em.model import FiestaKilonovaModel
 from nmma.em.model import SVDLightCurveModel
 import argparse
@@ -27,6 +28,7 @@ def main():
     '''
     parser = argparse.ArgumentParser(description="Generate a pseudo-randomly sampled grid of synthetic lightcurves using NMMA/FIESTA with Bu2026 model. And save them as photometic .dat files formatted for nmma's lightcurve-analysis.")
     parser.add_argument("--out-dir", type=str, help="Base directory for the output files.")
+    parser.add_argument("--model", type=str, default='Bu2026_MLP', help="Model name to use for generating synthetic lightcurves. (default: Bu2026_MLP). Currently supports 'Bu2026_MLP', 'Bu2019lm' and 'Ka2017'.")
     parser.add_argument("--num-lc", type=int, default=25, help="Number of lightcurves to generate.")
     parser.add_argument("--filters", nargs="+", help="Filters used for observation.")
     parser.add_argument("--eos-path", type=str, help="Path to the EOS file for the fitting formulae.")
@@ -43,6 +45,7 @@ def main():
     args = parser.parse_args()
 
     BASE_DIR = os.path.abspath(args.out_dir)
+    MODEL = args.model
     num_lc = args.num_lc
     filters_band = []
 
@@ -73,11 +76,14 @@ def main():
             "mass_1": (1.0, 2.25),
             "mass_2": (1.0, 2.25),
             "inclination_EM": (0, np.pi/2),
-            "luminosity_distance": (10, 200),
+            "luminosity_distance": (10, 200), # common parameters for Bu26 19 and Ka17
             "vej_dyn": (0.12, 0.28), 
             "vej_wind": (0.05, 0.15),
             "Ye_dyn": (0.15, 0.35),
-            "Ye_wind": (0.2, 0.4)
+            "Ye_wind": (0.2, 0.4),
+            "KNphi": (15, 75),
+            "log10_Xlan": (-9, 1),
+            "log10_vej": (-1.52, -0.53)
     }
     if len(BASE_DIR) > 60:
         print("Warning: BASE_DIR path is quite long, which may cause issues with some software. Consider using a shorter path if you encounter errors related to file paths.")
@@ -125,6 +131,9 @@ def main():
                     "vej_wind": p[5],
                     "Ye_dyn": p[6],
                     "Ye_wind": p[7],
+                    "KNphi": p[8],
+                    "log10_Xlan": p[9],
+                    "log10_vej": p[10],
                     "zeta": zeta
                 }
                 valid_samples.append(dic)
@@ -137,53 +146,113 @@ def main():
     fig, axs = plt.subplots(5, num_lc // 5, figsize=(10*(num_lc // 5), 6*(num_lc // 5)), sharex=True, sharey=True)
     for i, sample in enumerate(valid_samples):
         witness = num_lc // 5
-        model_param = {
-            "log10_mej_dyn": np.array(sample["log10_mej_dyn"]),
-            "log10_mej_wind": np.array(sample["log10_mej_wind"]),
-            "luminosity_distance": np.array(sample["luminosity_distance"]),
-            "inclination_EM": np.array(sample["inclination_EM"]),
-            "v_ej_dyn": np.array(sample["vej_dyn"]),
-            "v_ej_wind": np.array(sample["vej_wind"]),
-            "Ye_dyn": np.array(sample["Ye_dyn"]),
-            "Ye_wind": np.array(sample["Ye_wind"]),
-            "redshift": np.array(z_at_value(Planck18.luminosity_distance, sample["luminosity_distance"]*u.Mpc)),
-            "timeshift": 0
-        }
-        # save model param to csv for reference
-        OUT_DIR = f"{BASE_DIR}/{i}"
-        os.makedirs(OUT_DIR, exist_ok=True)
-        true_dic = {
-            "log10_mej_dyn": model_param["log10_mej_dyn"],
-            "log10_mej_wind": model_param["log10_mej_wind"],
-            "luminosity_distance": model_param["luminosity_distance"],
-            "mass_1": sample["mass_1"],
-            "mass_2": sample["mass_2"],
-            "zeta": sample["zeta"],
-            "inclination_EM" : model_param["inclination_EM"],
-            "v_ej_dyn": model_param["v_ej_dyn"],
-            "v_ej_wind": model_param["v_ej_wind"],
-            "Ye_dyn": model_param["Ye_dyn"],
-            "Ye_wind": model_param["Ye_wind"],
-        }
-        param_df = pd.DataFrame([true_dic])
-        param_df.to_csv(f"{OUT_DIR}/true{i}.csv", index=False)   
-        print(f"Generating synthetic lightcurve {i+1}/{num_lc}...")
-        data_nmma_svd, trig = generate_synth_lc_fiesta(
-                model_name='Bu2026_MLP',
-                model_param=model_param,
-                filters_band=filters_band,
-                noise_level=noise_level,
-                max_error_level=max_error_level,
-                trigger_iso=trigger_isot,
-                pts_per_day=cadence,
-                obs_duration=obs_duration,
-                jitter=jitter,
-                save=True,
-                filename=f"{OUT_DIR}/data{i}.dat",
-                detection_limit_dict=detect_limit_dict
-        )
+        if MODEL == 'Bu2026_MLP':
+            model_param = {
+                "log10_mej_dyn": np.array(sample["log10_mej_dyn"]),
+                "log10_mej_wind": np.array(sample["log10_mej_wind"]),
+                "luminosity_distance": np.array(sample["luminosity_distance"]),
+                "inclination_EM": np.array(sample["inclination_EM"]),
+                "v_ej_dyn": np.array(sample["vej_dyn"]),
+                "v_ej_wind": np.array(sample["vej_wind"]),
+                "Ye_dyn": np.array(sample["Ye_dyn"]),
+                "Ye_wind": np.array(sample["Ye_wind"]),
+                "redshift": np.array(z_at_value(Planck18.luminosity_distance, sample["luminosity_distance"]*u.Mpc)),
+                "timeshift": 0
+            }
+            # save model param to csv for reference
+            OUT_DIR = f"{BASE_DIR}/{i}"
+            os.makedirs(OUT_DIR, exist_ok=True)
+            true_dic = {
+                "log10_mej_dyn": model_param["log10_mej_dyn"],
+                "log10_mej_wind": model_param["log10_mej_wind"],
+                "luminosity_distance": model_param["luminosity_distance"],
+                "mass_1": sample["mass_1"],
+                "mass_2": sample["mass_2"],
+                "zeta": sample["zeta"],
+                "inclination_EM" : model_param["inclination_EM"],
+                "v_ej_dyn": model_param["v_ej_dyn"],
+                "v_ej_wind": model_param["v_ej_wind"],
+                "Ye_dyn": model_param["Ye_dyn"],
+                "Ye_wind": model_param["Ye_wind"],
+                "KNphi": sample["KNphi"],
+                "log10_Xlan": sample["log10_Xlan"],
+                "log10_vej": sample["log10_vej"]
+            }
+            param_df = pd.DataFrame([true_dic])
+            param_df.to_csv(f"{OUT_DIR}/true{i}.csv", index=False)   
+            print(f"Generating synthetic lightcurve {i+1}/{num_lc}...")
+            data_nmma_svd, trig = generate_synth_lc_fiesta(
+                    model_name='Bu2026_MLP',
+                    model_param=model_param,
+                    filters_band=filters_band,
+                    noise_level=noise_level,
+                    max_error_level=max_error_level,
+                    trigger_iso=trigger_isot,
+                    pts_per_day=cadence,
+                    obs_duration=obs_duration,
+                    jitter=jitter,
+                    save=True,
+                    filename=f"{OUT_DIR}/data{i}.dat",
+                    detection_limit_dict=detect_limit_dict
+            )
+        elif MODEL == 'Bu2019lm':
+            model_param = {
+                "KNphi": sample["KNphi"],
+                "log10_mej_dyn": sample["log10_mej_dyn"],
+                "log10_mej_wind": sample["log10_mej_wind"],
+                "inclination_EM": sample["inclination_EM"],
+                "luminosity_distance": sample["luminosity_distance"],
+                "timeshift": 0
+            }
+        elif MODEL == 'Ka2017':
+            model_param = {
+                "luminosity_distance": sample["luminosity_distance"],
+                "log10_vej": sample["log10_vej"],
+                "log10_Xlan": sample["log10_Xlan"],
+                "timeshift": 0,
+                "log10_mej": sample["log10_mej_dyn"] + np.log10(1+10**(sample["log10_mej_wind"] - sample["log10_mej_dyn"])), # total ejecta mass for Ka2017
+                "inclination_EM": sample["inclination_EM"]
+            }
+        if MODEL != 'Bu2026_MLP': # for the other two models, we can use the same function as before
+            # save model param to csv for reference
+            OUT_DIR = f"{BASE_DIR}/{i}"
+            os.makedirs(OUT_DIR, exist_ok=True)
+            true_dic = {
+                "log10_mej_dyn": sample["log10_mej_dyn"],
+                "log10_mej_wind": sample["log10_mej_wind"],
+                "luminosity_distance": model_param["luminosity_distance"],
+                "mass_1": sample["mass_1"],
+                "mass_2": sample["mass_2"],
+                "zeta": sample["zeta"],
+                "inclination_EM" : model_param["inclination_EM"],
+                "v_ej_dyn": sample["vej_dyn"],
+                "v_ej_wind": sample["vej_wind"],
+                "Ye_dyn": sample["Ye_dyn"],
+                "Ye_wind": sample["Ye_wind"],
+                "KNphi": sample["KNphi"],
+                "log10_Xlan": sample["log10_Xlan"],
+                "log10_vej": sample["log10_vej"]
+            }
+            param_df = pd.DataFrame([true_dic])
+            param_df.to_csv(f"{OUT_DIR}/true{i}.csv", index=False)   
+            print(f"Generating synthetic lightcurve {i+1}/{num_lc}...")
+            data_nmma_svd, trig = generate_synth_lc_v2(
+                    model_name=MODEL,
+                    model_param=model_param,
+                    filters_band=filters_band,
+                    noise_level=noise_level,
+                    max_error_level=max_error_level,
+                    trigger_iso=trigger_isot,
+                    pts_per_day=cadence,
+                    obs_duration=obs_duration,
+                    jitter=jitter,
+                    save=True,
+                    filename=f"{OUT_DIR}/data{i}.dat",
+                    detection_limit_dict=detect_limit_dict
+            )
 
         if args.save_json:
+            print(f"Saving times and magnitudes for sample {i+1} in a json file...")
         # save the times and magnitudes for this sample in a json file"
             # transform data_nmma_svd to a dict with filter names as keys and list of magnitudes as values, and times as a list of iso strings
             tt = (str(t) for t in data_nmma_svd[0])
@@ -198,6 +267,7 @@ def main():
                 json.dump({"times": times, "magnitudes": magnitudes, "parameters": json_safe_params}, f, indent=4)
 
         # plot part 
+        print(f"Plotting lightcurve {i+1}/{num_lc}...")
         row = i // (num_lc // 5)
         col = i % (num_lc // 5)
         ax = axs[row, col]
