@@ -13,4 +13,5 @@ eggs/
 .eggs/
 *.egg-info/
 .installed.cfg
-*.eggjamsin/
+*.egg
+jamsin/
