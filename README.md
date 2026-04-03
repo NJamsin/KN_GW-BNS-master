@@ -14,6 +14,9 @@ Added a ``--detector-treshold`` argument for injection to early-stop the search 
 ### ``kn-make-grid``
 Added supports for ``Bu2019lm`` and ``Ka2017``. /!\ ``Bu2019lm`` requires a small modification to nmma's code (see below).
 
+### ``kn-ts-loop``
+Added a new command-line tool to iteratively perform inference on light curve data by progressively removing early detection points. This allows for the tracking of the timeshift evolution. Supports optional upper limits substitutions and automatic GW resampling and corner plotting via ``gwem-resampling``. 
+
 ### IMPORTANT REMARK !
 ``gw-setup-pipeline`` requires and uses [HTCondor](https://htcondor.readthedocs.io/en/latest/) a lot (creates multiples .sub or .dag files), make sure that you have HTCondor installed on your device. Dynamic slots are recommended as the main job submitted by ``gw-setup-pipeline`` reserves 16 Gb of RAM and each sub job that performs the coherent search reserves 4 Gb of RAM (a bit much, could be manually reduced if needed).
 
@@ -85,7 +88,9 @@ Injection: # only taken if --injection is passed as an argument to the command-l
 It is possible that an ``OOM`` error kills the search jobs despite the 4GB of RAM requested for each job. I am not sure why this happens but simply rerunning the command solve the problem most of the times.
 ***
 ## ``kn-make-grid``
-``kn-make-grid`` produces a grid of pseudo randomly sampled synthetic kilonovae lightcurves generated via [NMMA](https://nuclear-multimessenger-astronomy.github.io/nmma/index.html)/[FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) using the model [``Bu2026_MLP``](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main/surrogates/KN/Bu2026_MLP).
+``kn-make-grid`` produces a grid of pseudo randomly sampled synthetic kilonovae lightcurves generated via [NMMA](https://nuclear-multimessenger-astronomy.github.io/nmma/index.html)/[FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) using the model [``Bu2026_MLP``](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main/surrogates/KN/Bu2026_MLP). 
+
+Note: other models have been implemented since first version.
 ### Arguments:
 - ``--out-dir``: Base directory for the output files.
 - ``--model``: Model name to use for generating synthetic lightcurves. (default: Bu2026_MLP). Currently supports 'Bu2026_MLP', 'Bu2019lm' and 'Ka2017'.
@@ -108,3 +113,29 @@ A grid made with the command is avaiable in the [``example_file``](https://githu
 kn-make-grid --out-dir KN_GW-BNS-master/example_file/KN_grid --filters ps1::r ps1::g ps1::z ps1::i ps1::y --eos-path KN_GW-BNS-master/example_file/KN_grid/eos.dat --detection-limit ps1::r=24 ps1::g=24 --save-json
 ```
 ***
+## ``kn-ts-loop``
+``kn-ts-loop`` performs iterative inference on synthetic or real kilonova lightcurve data. By progressively removing early detection points (and optionally substituting them with upper limits), it evaluates how the inferred timeshift and other EM parameters evolve. It can optionally run ``gwem-resampling`` immediately after the inference to extract gravitational-wave parameters (chirp mass, mass ratio, EOS, etc.) and automatically plots the resulting corner plots.
+
+Note: This command heavily relies on [NMMA](https://github.com/nuclear-multimessenger-astronomy/nmma) (specifically ``lightcurve-analysis`` and ``gwem-resampling``) and requires it to be installed in your environment.
+
+### Arguments:
+- ``--idx``: Index of the injection/lightcurve to analyze (following the same structure as the lc generated with ``kn-make-grid``). Default is 0.
+- ``--grid-dir``: Path to the base grid directory containing your data.
+- ``--model``: EM model to use for the inference. Currently supports 'Bu2019lm', 'Ka2017' and 'Bu2026_MLP'. Default is 'Bu2019lm'.
+- ``--svd-path``: Path to the SVD models directory (required if not using 'Bu2026_MLP').
+- ``--prior-file``: Path to the prior file for the lightcurve analysis.
+- ``--minus-pts``: Number of early time points to progressively remove for the inference iterations. Default is 2 (update as needed, up to the total number of time points - 1).
+- ``--add-ul``: If passed, adds an upper limit instead of completely removing the early points. Default is False.
+- ``--true-merger-time``: True merger time to use for the timeshift calculation in ISOT format. Default is '2020-01-07T00:00:00' (keep the same trigger time for all analyses to see how the timeshift evolves).
+- ``--nlive``: Number of live points for the nested sampling (pymultinest). Default is 1024. /!\ Update prior bounds if needed.
+- ``--resampling``: If passed, runs the resampling step via ``gwem-resampling`` after the EM inferences are done. Default is False.
+- ``--eos-posterior``: Path to the EOS posterior probability file for the GW samples generation. Default is ``/home/stu_jamsin/jamsin/add_files/posterior_probability.txt``.
+- ``--eos-path``: Path to the EOS models (macro) for the resampling. Default is ``/home/stu_jamsin/jamsin/NMMA/EOS/15nsat_cse_uniform_R14/macro/``.
+- ``--GW-prior``: Path to the GW prior file for the resampling. Default is ``/home/stu_jamsin/jamsin/NMMA/priors/GWBNS.prior``.
+- ``--EM-prior``: Path to the EM prior file for the resampling. Default is ``/home/stu_jamsin/jamsin/NMMA/priors/mespriors/Bu19_GW.prior``.
+
+### Example utilisation
+To run an iterative inference removing the first 2 points on the injection index `0`, adding upper limits, and executing the resampling step at the end:
+```bash
+kn-ts-loop --idx 0 --grid-dir /path/to/KN_grid --model Bu2019lm --svd-path /path/to/svd --prior-file /path/to/EM.prior --minus-pts 2 --add-ul --resampling
+``

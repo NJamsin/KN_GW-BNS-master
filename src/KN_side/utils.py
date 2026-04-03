@@ -535,7 +535,8 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
                     jitter=0.1,
                     save=False,
                     filename='synthetic_kilonova_svd.dat',
-                    detection_limit_dict=None):
+                    detection_limit_dict=None,
+                    svd_path="/home/stu_jamsin/jamsin/NMMA/svdmodels"):
     """Generate synthetic lightcurves using SVDLightCurveModel.
     Parameters
     ----------
@@ -584,7 +585,6 @@ def generate_synth_lc_v2(model_name='Bu2019lm',
         if t == 0:
             continue # we don't want to add jitter to the first point to be sure that we have a point at the trigger time 
         sample_times[t] += np.random.uniform(-jitter, jitter)
-    svd_path = "/home/stu_jamsin/jamsin/NMMA/svdmodels"
     try:
         svd_model = SVDLightCurveModel(
                 model=model_name,

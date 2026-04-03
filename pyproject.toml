@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "kn_to_gw_search"
 version = "0.1.2"
-description = "A PyCBC pipeline generator for coherent GW searches based on information extracted from KNe"
+description = "An addon package for PyCBC and NMMA/FIESTA, includes a PyCBC coherent search pipeline generator targeted at BNS and a KN synthetic lightcurve generator based on NMMA."
 dependencies = [
     "numpy",
     "pandas",
@@ -26,3 +26,4 @@ gw-search-prep = "gw_search.GWsearch_prep:main"
 gw-search-post = "gw_search.GWsearch_post:main"
 # KN side commands
 kn-make-grid = "KN_side.make_grid:main"
+kn-ts-loop = "KN_side.ts_infer:main"

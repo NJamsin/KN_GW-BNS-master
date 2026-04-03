@@ -41,6 +41,7 @@ def main():
     parser.add_argument("--detection-limit", nargs='+', help="Detection limits for the synthetic data in the format: filter1:limit1 filter2:limit2 ... (e.g., --detect_limit ps1::g=24.7 ps1::r=24.2)")
     parser.add_argument("--param-ranges", nargs="+", help="Parameter ranges for the synthetic lightcurves in the format: param1=(min,max) param2=(min,max) ...")
     parser.add_argument("--save-json", default=None, action='store_true', help="Whether to save the times and magnitudes for each sample in a json file. (json files will be saved in the same directory as the .dat files)")
+    parser.add_argument("--svd-path", type=str, default="/home/stu_jamsin/jamsin/NMMA/svdmodels", help="Path to the directory containing the svd models.")
 
     args = parser.parse_args()
 
@@ -248,7 +249,8 @@ def main():
                     jitter=jitter,
                     save=True,
                     filename=f"{OUT_DIR}/data{i}.dat",
-                    detection_limit_dict=detect_limit_dict
+                    detection_limit_dict=detect_limit_dict,
+                    svd_path=args.svd_path
             )
 
         if args.save_json:
