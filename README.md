@@ -20,13 +20,42 @@ Added a new command-line tool to iteratively perform inference on light curve da
 ### IMPORTANT REMARK !
 ``gw-setup-pipeline`` requires and uses [HTCondor](https://htcondor.readthedocs.io/en/latest/) a lot (creates multiples .sub or .dag files), make sure that you have HTCondor installed on your device. Dynamic slots are recommended as the main job submitted by ``gw-setup-pipeline`` reserves 16 Gb of RAM and each sub job that performs the coherent search reserves 4 Gb of RAM (a bit much, could be manually reduced if needed).
 
-If you want to use ``kn-make-grid`` make sure to build [FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) and [NMMA](https://github.com/nuclear-multimessenger-astronomy/nmma) (/!\ NMMA requires python 3.12) from source in the same environment as this package and for this command, HTCondor is not required ! Moreover, a slight modification needs to be done to ``nmma/em/model.py`` at line 637.
+If you want to use ``kn-make-grid`` and ``kn-ts-loop`` make sure to build [FIESTA](https://github.com/nuclear-multimessenger-astronomy/fiestaEM/tree/main) and [NMMA](https://github.com/nuclear-multimessenger-astronomy/nmma) (/!\ NMMA requires python 3.12) from source in the same environment as this package and for this command, HTCondor is not required ! 
+
+Moreover, for ``kn-make-grid``, a slight modification needs to be done to ``nmma/em/model.py`` at line 637.
 You must add this line:
 ```python
 def generate_lightcurve(self, sample_times, parameters, filters = 'all'):
         parameters = self.parameter_conversion(parameters) # <-- THIS ONE
         parameters_list = self.em_parameter_setup(parameters)
 ```
+
+And for ``kn-ts-loop``, two modification are required to ensure the good functionning of the command.
+
+One to correct a small function of ``pymultinest/analyse.py`` around line 34:
+```python
+def loadtxt2d(intext): # <-- this function
+    try:
+        return numpy.loadtxt(intext, ndmin=2)
+    except ValueError:
+        # Catch Fortran formatting missing the 'e'
+        with open(intext, 'r') as f:
+            text = f.read()
+        text = re.sub(r'(?<\=\d)(-[1-3]\d\d)', r'e\1', text) 
+        text = re.sub(r'(?<\=\d)(\+[1-3]\d\d)', r'e\1', text)
+        try:
+            return numpy.loadtxt(StringIO(text), ndmin=2)
+        except:
+            return numpy.loadtxt(StringIO(text))
+    except:
+        return numpy.loadtxt(intext)
+```
+And another one to ``nmma/post_processing/plotting_routines.py``, line 160:
+```python
+corner_plot(plot_samples.T, labels, limits, outdir=outdir) # <-- Explicitly name the argument
+```
+
+All these modifications are minimal and won't alter the functionning of either ``nmma`` nor ``pymultinest``.
 ***
 # Intallation
 Simply clone the repo with
@@ -109,7 +138,7 @@ Note: other models have been implemented since first version.
 
 ### Example utilisation
 A grid made with the command is avaiable in the [``example_file``](https://github.com/NJamsin/KN_GW-BNS-master/tree/package/example_file) directory, in the subdir ``KN_grid``. The exact command used was:
-```
+```bash
 kn-make-grid --out-dir KN_GW-BNS-master/example_file/KN_grid --filters ps1::r ps1::g ps1::z ps1::i ps1::y --eos-path KN_GW-BNS-master/example_file/KN_grid/eos.dat --detection-limit ps1::r=24 ps1::g=24 --save-json
 ```
 ***
@@ -138,4 +167,5 @@ Note: This command heavily relies on [NMMA](https://github.com/nuclear-multimess
 To run an iterative inference removing the first 2 points on the injection index `0`, adding upper limits, and executing the resampling step at the end:
 ```bash
 kn-ts-loop --idx 0 --grid-dir /path/to/KN_grid --model Bu2019lm --svd-path /path/to/svd --prior-file /path/to/EM.prior --minus-pts 2 --add-ul --resampling
-``
+```
+The output (posteriors ``.dat`` files, config ``.yaml`` files, and ``.png`` corner plots) will be systematically organized inside your grid directory under ``{grid_dir}/{idx}/minusX/``, where ``X`` goes from 0 to the value of ``--minus-pts``.
