@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--idx', default=0, type=int, help='Index of the injection to analyze (following the same structure as the lc generated with kn-make-grid)')
     parser.add_argument('--grid-dir', type=str, help='Path to the grid directory')
     parser.add_argument('--model', type=str, default='Bu2019lm', help='EM model to use for the inference (default: Bu2019lm)')
-    parser.add_argument('--svd-path', type=str, help='Path to the SVD models')
+    parser.add_argument('--svd-path', type=str, help='Path to the SVD models (not needed for Bu2026_MLP)')
     parser.add_argument('--prior-file', type=str, help='Path to the prior file')
     parser.add_argument('--minus-pts', type=int, default=2, help='Number of time points to remove for the inference (default: 2, update as needed, up to the number of time points - 1)')
     parser.add_argument('--add-ul', default=False, action='store_true', help='Whether to add an upper limit instead of the removed points (default: False)')
@@ -65,10 +65,10 @@ def main():
             truth_val = [truth_row['luminosity_distance'].values[0], truth_row['inclination_EM'].values[0], 
                         -1*ts, truth_row['log10_mej'].values[0], truth_row['log10_vej'].values[0], truth_row['log10_Xlan'].values[0]]
         elif model == 'Bu2026_MLP':
-            labels = ['$D_L$', '$\\iota$', '$t_0$', '$log_{10} M_{dyn}$', '$log_{10} M_{wind}$','$v^{\\rm{dyn}}_{\\rm{ej}}$', '$v^{\\rm{wind}}_{\\rm{ej}}$', '$Y_{\\rme}^{\\rm{dyn}}$', '$Y_{\\rme}^{\\rm{wind}}$']
-            cols = ['luminosity_distance','inclination_EM', 'timeshift', 'log10_mej_dyn', 'log10_mej_wind', 'KNphi']
+            labels = ['$D_L$', '$\\iota$', '$t_0$', '$log_{10} M_{dyn}$', '$log_{10} M_{wind}$','$v^{\\rm{dyn}}_{\\rm{ej}}$', '$v^{\\rm{wind}}_{\\rm{ej}}$', '$Y_{\\mathrm{e}}^{\\rm{dyn}}$', '$Y_{\\mathrm{e}}^{\\rm{wind}}$']
+            cols = ['luminosity_distance','inclination_EM', 'timeshift', 'log10_mej_dyn', 'log10_mej_wind', 'v_ej_dyn', 'v_ej_wind', 'Ye_dyn', 'Ye_wind']
             truth_val = [truth_row['luminosity_distance'].values[0], truth_row['inclination_EM'].values[0],
-                        -1*ts, truth_row['log10_mej_dyn'].values[0], truth_row['log10_mej_wind'].values[0], truth_row['KNphi'].values[0]]
+                        -1*ts, truth_row['log10_mej_dyn'].values[0], truth_row['log10_mej_wind'].values[0], truth_row['v_ej_dyn'].values[0], truth_row['v_ej_wind'].values[0], truth_row['Ye_dyn'].values[0], truth_row['Ye_wind'].values[0]]
 
         # limit to 32 bit float to save memory
         plot_data = samples[cols].astype(np.float32)

@@ -438,6 +438,7 @@ def generate_synth_lc_fiesta(model_name='Bu2026_MLP',
                     obs_duration=15,
                     jitter=0.,
                     save=False,
+                    delay=0,
                     filename='test_lc_fiesta.dat',
                     detection_limit_dict={'ps1::g':24.7, 'ps1::r':24.2, 'ps1::i':23.8, 'ps1::z':23.2, 'ps1::y':22.3}):
     """Generate synthetic lightcurves using SVDLightCurveModel.
@@ -463,6 +464,8 @@ def generate_synth_lc_fiesta(model_name='Bu2026_MLP',
         Duration of the observation in days.
     jitter : float
         Maximum jitter to be added to the sample times in days.
+    delay : float
+        Delay in days to be added to the sample times (positive delay means that the first point will be after the trigger time). (Additional delay to the timeshift parameter in model_param). 
     save : bool
         If True, save the generated data to a file.
     filename : str
@@ -481,7 +484,7 @@ def generate_synth_lc_fiesta(model_name='Bu2026_MLP',
     ts = -1 * model_param["timeshift"]
     print(f"Generating synthetic lightcurve with timeshift = {ts} days")
     model_param["timeshift"] = 0.0 # we set timeshift to 0 for the generation and we will apply it later to the sample time array 
-    sample_times = np.arange(0, obs_duration, 1/pts_per_day)
+    sample_times = np.arange(delay, obs_duration, 1/pts_per_day)
     for t in range(len(sample_times)):
         if t == 0:
             continue # we don't want to add jitter to the first point to be sure that we have a point at the trigger time 

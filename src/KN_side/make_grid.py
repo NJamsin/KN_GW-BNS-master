@@ -17,8 +17,6 @@ import json
 from .utils import dyn_ej, wind_ej
 from .utils import generate_synth_lc_fiesta
 from .utils import generate_synth_lc_v2
-from nmma.em.model import FiestaKilonovaModel
-from nmma.em.model import SVDLightCurveModel
 import argparse
 
 # adapt the make_grid.py to Bu2026 with NMMA/FIESTA 
@@ -38,6 +36,7 @@ def main():
     parser.add_argument("--cadence", type=float, default=0.5, help="Cadence in days for the synthetic lightcurves.")
     parser.add_argument("--obs-duration", type=float, default=7, help="Observation duration in days for the synthetic lightcurves.")
     parser.add_argument("--jitter", type=float, default=0.0, help="Jitter in days for the synthetic lightcurves.")
+    parser.add_argument("--delay", type=float, default=0.0, help="Delay in days between the trigger and the first observation.")
     parser.add_argument("--detection-limit", nargs='+', help="Detection limits for the synthetic data in the format: filter1:limit1 filter2:limit2 ... (e.g., --detect_limit ps1::g=24.7 ps1::r=24.2)")
     parser.add_argument("--param-ranges", nargs="+", help="Parameter ranges for the synthetic lightcurves in the format: param1=(min,max) param2=(min,max) ...")
     parser.add_argument("--save-json", default=None, action='store_true', help="Whether to save the times and magnitudes for each sample in a json file. (json files will be saved in the same directory as the .dat files)")
@@ -192,6 +191,7 @@ def main():
                     pts_per_day=cadence,
                     obs_duration=obs_duration,
                     jitter=jitter,
+                    delay=args.delay,
                     save=True,
                     filename=f"{OUT_DIR}/data{i}.dat",
                     detection_limit_dict=detect_limit_dict
@@ -247,6 +247,7 @@ def main():
                     pts_per_day=cadence,
                     obs_duration=obs_duration,
                     jitter=jitter,
+                    delay=args.delay,
                     save=True,
                     filename=f"{OUT_DIR}/data{i}.dat",
                     detection_limit_dict=detect_limit_dict,

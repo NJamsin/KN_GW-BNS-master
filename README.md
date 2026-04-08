@@ -130,6 +130,7 @@ Note: other models have been implemented since first version.
 - ``--max-error-level``: Value corresponds to the maximun error added to the model magnitude (max_error=0.4 will add an error np.random.uniform(0, 0.4) to each detections point). Default is 0.4.
 - ``--trigger-isot``: Trigger time for the synthetic lightcurves. Default is '2020-01-07T00:00:00' (date is in O3b) (/!\ it is a str).
 - ``--cadence``: Number of detection per day.
+- ``--delay`` : Delay in days between the trigger and the first observation (important for inference as some model may not be defined at very early times).
 - ``--obs-duration``: Observation duration in days for the synthetic lightcurves. Default is 7.
 - ``--jitter``: Value corresponds to the maximum jitter (time fluctuation) to be added to the sample times in days (jitter=0.1 will add a np.random.uniform(-0.1, 0.1) to each time stamp in sample times). Default is 0.
 - ``--detection-limit``: Detection limits for the synthetic data in the format: filter1:limit1 filter2:limit2 ... (e.g., --detect_limit ps1::g=24.7 ps1::r=24.2).
