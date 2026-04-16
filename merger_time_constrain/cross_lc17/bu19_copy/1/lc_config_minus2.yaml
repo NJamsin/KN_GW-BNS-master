@@ -1,0 +1,17 @@
+outdir : /home/stu_jamsin/memoir_grid/bu19_copy/1/minus2
+interpolation-type : tensorflow
+em-model : Bu2019lm
+em-transient-class : svd
+svd-path : /home/stu_jamsin/jamsin/NMMA/svdmodels 
+label : minus2_1
+prior-file :  /home/stu_jamsin/memoir_grid/prior/bu19.prior
+nlive : 512
+sampler : pymultinest
+light-curve-data : /home/stu_jamsin/memoir_grid/bu19_copy/1/data_minus2.dat
+trigger-time : 58859.3
+bestfit : True
+filters : ['ps1::g', 'ps1::r', 'ps1::i', 'ps1::z', 'ps1::y']
+local-only : False
+plot : True
+xlim : [-2, 12]
+ylim : [24, 16]
