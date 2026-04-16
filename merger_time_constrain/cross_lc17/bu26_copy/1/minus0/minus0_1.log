@@ -1,0 +1,71 @@
+17:53 INFO    : Running for label 'minus0_1', output will be saved to '/home/stu_jamsin/memoir_grid/bu26_copy/1/minus0'
+17:53 INFO    : Analysis priors:
+17:53 INFO    : timeshift=Uniform(minimum=-8.0, maximum=-0.25, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+17:53 INFO    : inclination_EM=Uniform(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+17:53 INFO    : log10_mej_dyn=Uniform(minimum=-4.0, maximum=-1.302, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:53 INFO    : log10_mej_wind=Uniform(minimum=-4.0, maximum=-0.56, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:53 INFO    : v_ej_dyn=Uniform(minimum=0.12, maximum=0.35, name='vej_dyn', latex_label='$V^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:53 INFO    : v_ej_wind=Uniform(minimum=0.05, maximum=0.15, name='vej_wind', latex_label='$V^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:53 INFO    : Ye_dyn=Uniform(minimum=0.15, maximum=0.35, name='Ye_dyn', latex_label='$Y_{\\rme}^{\\rm{dyn}}$', unit=None, boundary=None)
+17:53 INFO    : Ye_wind=Uniform(minimum=0.2, maximum=0.4, name='Ye_wind', latex_label='$Y_{\\rme}^{\\rm{wind}}$', unit=None, boundary=None)
+17:53 INFO    : em_syserr=Uniform(minimum=0.3, maximum=3, name='em_syserr', latex_label='$\\sigma^{\\rm{err}}_{\\rm{ej}}$', unit=None, boundary=None)
+17:53 INFO    : luminosity_distance=Uniform(minimum=10, maximum=200, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+17:53 INFO    : Ebv=0.0
+17:53 INFO    : Analysis likelihood class: <class 'nmma.em.em_likelihood.EMTransientLikelihood'>
+17:53 INFO    : Analysis likelihood noise evidence: 0.0
+17:53 INFO    : Single likelihood evaluation took 1.185e-02 s
+17:53 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+17:53 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+17:53 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 512, 'n_params': 10, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x66fec351eb0>>}
+17:53 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+17:53 INFO    : Using temporary file /tmp/tmpuzbeqovo
+17:53 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:54 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:54 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:55 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:55 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:56 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:57 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+17:59 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+18:00 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+18:01 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+18:02 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+18:02 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+18:02 INFO    : Overwriting /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/pm_minus0_1/ with /tmp/tmpuzbeqovo/
+18:02 INFO    : Sampling time: 0:08:47.881770
+18:02 INFO    : Summary of results:
+nsamples: 5964
+ln_noise_evidence:  0.000
+ln_evidence: -56.444 +/-  0.155
+ln_bayes_factor: -56.444 +/-  0.155
+
+18:02 INFO    : No extension given, defaulting to JSON.
+18:02 INFO    : Writing samples file to /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/minus0_1_posterior_samples.dat
+22:10 INFO    : Running for label 'minus0_1', output will be saved to '/home/stu_jamsin/memoir_grid/bu26_copy/1/minus0'
+22:10 INFO    : Analysis priors:
+22:10 INFO    : timeshift=Uniform(minimum=-8.0, maximum=-0.25, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+22:10 INFO    : inclination_EM=Uniform(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+22:10 INFO    : log10_mej_dyn=Uniform(minimum=-4.0, maximum=-1.302, name='log10_mej_dyn', latex_label='$\\log_{10}M^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+22:10 INFO    : log10_mej_wind=Uniform(minimum=-4.0, maximum=-0.56, name='log10_mej_wind', latex_label='$\\log_{10}M^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+22:10 INFO    : v_ej_dyn=Uniform(minimum=0.12, maximum=0.35, name='vej_dyn', latex_label='$V^{\\rm{dyn}}_{\\rm{ej}}$', unit=None, boundary=None)
+22:10 INFO    : v_ej_wind=Uniform(minimum=0.05, maximum=0.15, name='vej_wind', latex_label='$V^{\\rm{wind}}_{\\rm{ej}}$', unit=None, boundary=None)
+22:10 INFO    : Ye_dyn=Uniform(minimum=0.15, maximum=0.35, name='Ye_dyn', latex_label='$Y_{\\rme}^{\\rm{dyn}}$', unit=None, boundary=None)
+22:10 INFO    : Ye_wind=Uniform(minimum=0.2, maximum=0.4, name='Ye_wind', latex_label='$Y_{\\rme}^{\\rm{wind}}$', unit=None, boundary=None)
+22:10 INFO    : em_syserr=Uniform(minimum=0.3, maximum=3, name='em_syserr', latex_label='$\\sigma^{\\rm{err}}_{\\rm{ej}}$', unit=None, boundary=None)
+22:10 INFO    : luminosity_distance=Uniform(minimum=10, maximum=200, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+22:10 INFO    : Ebv=0.0
+22:10 INFO    : Analysis likelihood class: <class 'nmma.em.em_likelihood.EMTransientLikelihood'>
+22:10 INFO    : Analysis likelihood noise evidence: 0.0
+22:10 INFO    : Single likelihood evaluation took 1.162e-02 s
+22:10 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+22:10 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+22:10 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+22:10 WARNING : Using cached result
+22:10 INFO    : Summary of results:
+nsamples: 5964
+ln_noise_evidence:  0.000
+ln_evidence: -56.444 +/-  0.155
+ln_bayes_factor: -56.444 +/-  0.155
+
+22:10 INFO    : No extension given, defaulting to JSON.
+22:10 INFO    : Writing samples file to /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0/minus0_1_posterior_samples.dat

@@ -1,0 +1,16 @@
+outdir : /home/stu_jamsin/memoir_grid/bu26_copy/1/minus0
+interpolation-type : tensorflow 
+em-model : Bu2026_MLP
+em-transient-class : fiesta_kn
+label : minus0_1
+prior-file :  /home/stu_jamsin/memoir_grid/prior/bu26.prior
+nlive : 512
+sampler : pymultinest
+light-curve-data : /home/stu_jamsin/memoir_grid/bu26_copy/1/data1.dat
+trigger-time : 58855.3
+bestfit : True
+filters : ['ps1::g', 'ps1::r', 'ps1::i', 'ps1::z', 'ps1::y']
+local-only : False
+plot : True
+xlim : [-2, 12]
+ylim : [24, 16]
