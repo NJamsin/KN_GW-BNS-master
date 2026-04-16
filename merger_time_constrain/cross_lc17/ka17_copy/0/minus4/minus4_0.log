@@ -1,0 +1,59 @@
+18:14 INFO    : Running for label 'minus4_0', output will be saved to '/home/stu_jamsin/memoir_grid/ka17_copy/0/minus4'
+18:14 INFO    : Analysis priors:
+18:14 INFO    : luminosity_distance=Uniform(minimum=10, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+18:14 INFO    : timeshift=Uniform(minimum=-8, maximum=0.0, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+18:14 INFO    : log10_mej=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej', latex_label='$\\log_{10}M_{\\rm{ej}}$', unit=None, boundary=None)
+18:14 INFO    : log10_vej=Uniform(minimum=-1.52, maximum=-0.53, name='log10_vej', latex_label='$\\log_{10}v_{\\rm{ej}}$', unit=None, boundary=None)
+18:14 INFO    : log10_Xlan=Uniform(minimum=-9, maximum=-1, name='log10_Xlan', latex_label='$\\log_{10}X_{\\rm{lan}}$', unit=None, boundary=None)
+18:14 INFO    : inclination_EM=Uniform(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+18:14 INFO    : em_syserr=Uniform(minimum=0.3, maximum=3, name='em_syserr', latex_label='$\\sigma^{\\rm{err}}_{\\rm{ej}}$', unit=None, boundary=None)
+18:14 INFO    : Ebv=0.0
+18:14 INFO    : Analysis likelihood class: <class 'nmma.em.em_likelihood.EMTransientLikelihood'>
+18:14 INFO    : Analysis likelihood noise evidence: 0.0
+18:15 INFO    : Single likelihood evaluation took 1.650e-02 s
+18:15 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+18:15 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+18:15 INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 512, 'n_params': 7, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x131d5b5e4380>>}
+18:15 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+18:15 INFO    : Using temporary file /tmp/tmpo0g6jafh
+18:15 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:16 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:16 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:17 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:17 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:17 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:17 INFO    : Overwriting /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/pm_minus4_0/ with /tmp/tmpo0g6jafh/
+18:17 INFO    : Sampling time: 0:02:31.139572
+18:17 INFO    : Summary of results:
+nsamples: 3946
+ln_noise_evidence:  0.000
+ln_evidence: -8.572 +/-  0.081
+ln_bayes_factor: -8.572 +/-  0.081
+
+18:17 INFO    : No extension given, defaulting to JSON.
+18:17 INFO    : Writing samples file to /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/minus4_0_posterior_samples.dat
+22:12 INFO    : Running for label 'minus4_0', output will be saved to '/home/stu_jamsin/memoir_grid/ka17_copy/0/minus4'
+22:12 INFO    : Analysis priors:
+22:12 INFO    : luminosity_distance=Uniform(minimum=10, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+22:12 INFO    : timeshift=Uniform(minimum=-8, maximum=0.0, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+22:12 INFO    : log10_mej=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej', latex_label='$\\log_{10}M_{\\rm{ej}}$', unit=None, boundary=None)
+22:12 INFO    : log10_vej=Uniform(minimum=-1.52, maximum=-0.53, name='log10_vej', latex_label='$\\log_{10}v_{\\rm{ej}}$', unit=None, boundary=None)
+22:12 INFO    : log10_Xlan=Uniform(minimum=-9, maximum=-1, name='log10_Xlan', latex_label='$\\log_{10}X_{\\rm{lan}}$', unit=None, boundary=None)
+22:12 INFO    : inclination_EM=Uniform(minimum=0.0, maximum=1.5707963267948966, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+22:12 INFO    : em_syserr=Uniform(minimum=0.3, maximum=3, name='em_syserr', latex_label='$\\sigma^{\\rm{err}}_{\\rm{ej}}$', unit=None, boundary=None)
+22:12 INFO    : Ebv=0.0
+22:12 INFO    : Analysis likelihood class: <class 'nmma.em.em_likelihood.EMTransientLikelihood'>
+22:12 INFO    : Analysis likelihood noise evidence: 0.0
+22:12 INFO    : Single likelihood evaluation took 1.938e-02 s
+22:12 WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+22:12 WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+22:12 INFO    : Global meta data was removed from the result object for compatibility. Use the `BILBY_INCLUDE_GLOBAL_METADATA` environment variable to include it. This behaviour will be removed in a future release. For more details see: https://bilby-dev.github.io/bilby/faq.html#global-meta-data
+22:12 WARNING : Using cached result
+22:12 INFO    : Summary of results:
+nsamples: 3946
+ln_noise_evidence:  0.000
+ln_evidence: -8.572 +/-  0.081
+ln_bayes_factor: -8.572 +/-  0.081
+
+22:12 INFO    : No extension given, defaulting to JSON.
+22:12 INFO    : Writing samples file to /home/stu_jamsin/memoir_grid/ka17_copy/0/minus4/minus4_0_posterior_samples.dat
