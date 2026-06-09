@@ -1,0 +1,16 @@
+outdir : /home/liteul/memoir_code/GRIDS/LSST_bu26_5/9/minus0
+interpolation-type : tensorflow 
+em-model : Bu2026_MLP
+em-transient-class : fiesta_kn
+label : minus0_9
+prior-file :  /home/liteul/memoir_code/GRIDS/prior/bu26.prior
+nlive : 512
+sampler : pymultinest
+light-curve-data : /home/liteul/memoir_code/GRIDS/LSST_bu26_5/9/data9.dat
+trigger-time : 61021.19107141204
+bestfit : True
+filters : ['ps1::g', 'sdssu']
+local-only : False
+plot : True
+xlim : [-2, 12]
+ylim : [24, 16]
